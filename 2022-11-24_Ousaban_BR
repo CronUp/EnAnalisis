@@ -1,0 +1,297 @@
+Clientes Online : 294
+
+# 	Data e Hora 	IP 	Estado 	Cidade 	País
+1	2022-11-22 18:50:42	185.54.230.110	Sao Paulo	São Paulo	Brazil
+2	2022-11-22 19:08:25	138.204.203.175	Rio de Janeiro	Teresopolis	Brazil
+3	2022-11-22 19:09:50	201.9.228.65	Para	Belém	Brazil
+4	2022-11-22 19:09:59	177.223.98.22	Sao Paulo	Itai	Brazil
+5	2022-11-22 19:12:02	187.17.196.157	Sao Paulo	Monte Castelo	Brazil
+6	2022-11-22 19:12:24	181.216.72.20	-	-	Brazil
+7	2022-11-22 19:15:41	179.208.243.64	Sao Paulo	São Paulo	Brazil
+8	2022-11-22 19:19:38	177.223.76.191	Rio Grande do Sul	Parobe	Brazil
+9	2022-11-22 19:21:17	190.102.49.244	-	-	Brazil
+10	2022-11-22 19:22:06	189.9.52.2	Federal District	Brasília	Brazil
+11	2022-11-22 19:27:16	200.146.120.146	Santa Catarina	Florianópolis	Brazil
+12	2022-11-22 19:27:28	170.238.118.54	Sao Paulo	São Paulo	Brazil
+13	2022-11-22 19:28:03	187.0.33.75	Espirito Santo	-	Brazil
+14	2022-11-22 19:28:27	179.154.244.98	Parana	Maringá	Brazil
+15	2022-11-22 19:31:08	177.184.140.100	Ceara	Fortaleza	Brazil
+16	2022-11-22 19:31:15	167.250.26.126	Goias	Quirinopolis	Brazil
+17	2022-11-22 19:33:28	186.210.53.255	Minas Gerais	Uberlândia	Brazil
+18	2022-11-22 19:36:16	179.104.83.90	Minas Gerais	Campina Verde	Brazil
+19	2022-11-22 19:41:01	177.157.46.14	Parana	Maringá	Brazil
+20	2022-11-22 19:42:39	179.70.41.57	Bahia	Barreiras	Brazil
+21	2022-11-22 19:43:08	189.34.37.71	Santa Catarina	Florianópolis	Brazil
+22	2022-11-22 19:43:22	138.59.222.125	Minas Gerais	Itambacuri	Brazil
+23	2022-11-22 19:43:47	186.223.64.101	Sao Paulo	Americana	Brazil
+24	2022-11-22 19:44:18	190.112.152.17	Sao Paulo	Mineiros do Tiete	Brazil
+25	2022-11-22 19:44:18	168.197.61.95	Minas Gerais	Alvinopolis	Brazil
+26	2022-11-22 19:45:44	152.249.36.71	Sao Paulo	Jacareí	Brazil
+27	2022-11-22 19:46:44	177.4.57.209	Rio Grande do Sul	Porto Alegre	Brazil
+28	2022-11-22 19:46:55	200.152.68.204	Sao Paulo	São Paulo	Brazil
+29	2022-11-22 19:47:06	177.74.61.129	Para	Belém	Brazil
+30	2022-11-22 19:47:20	160.238.242.34	Rondonia	Ariquemes	Brazil
+31	2022-11-22 19:49:48	191.5.33.117	Minas Gerais	Betim	Brazil
+32	2022-11-22 19:49:50	189.75.208.112	Parana	São José dos Pinhais	Brazil
+33	2022-11-22 19:50:56	45.167.154.41	Sao Paulo	Cajamar	Brazil
+34	2022-11-22 19:51:16	189.84.216.42	Espirito Santo	Vila Velha	Brazil
+35	2022-11-22 19:57:46	201.222.28.254	Minas Gerais	Lagoa da Prata	Brazil
+36	2022-11-22 20:00:51	45.181.16.129	Sao Paulo	Sorocaba	Brazil
+37	2022-11-22 20:03:19	187.63.95.108	Sao Paulo	Brotas	Brazil
+38	2022-11-22 20:06:06	170.150.237.99	Parana	Fazenda Rio Grande	Brazil
+39	2022-11-22 20:06:50	186.236.68.167	Sao Paulo	Guaratingueta	Brazil
+40	2022-11-22 20:07:37	187.44.144.158	Bahia	Madre de Deus	Brazil
+41	2022-11-22 20:08:26	168.121.66.80	Sao Paulo	Atibaia	Brazil
+42	2022-11-22 20:10:09	191.205.9.187	Sao Paulo	São Paulo	Brazil
+43	2022-11-22 20:11:43	189.27.160.121	Rio Grande do Sul	Porto Alegre	Brazil
+44	2022-11-22 20:12:01	177.102.7.90	Sao Paulo	São Paulo	Brazil
+45	2022-11-22 20:12:31	179.104.119.217	Sao Paulo	Orlandia	Brazil
+46	2022-11-22 20:13:43	186.212.32.120	Parana	Curitiba	Brazil
+47	2022-11-22 20:15:02	170.82.181.202	Para	Castanhal	Brazil
+48	2022-11-22 20:20:29	186.236.127.34	Sao Paulo	Pirassununga	Brazil
+49	2022-11-22 20:22:09	191.35.59.53	Minas Gerais	Belo Horizonte	Brazil
+50	2022-11-22 20:25:09	201.139.92.235	Rio Grande do Sul	Caxias do Sul	Brazil
+51	2022-11-22 20:28:31	187.60.164.38	Espirito Santo	Linhares	Brazil
+52	2022-11-22 20:28:45	128.201.232.89	Rio Grande do Sul	Sao Vicente do Sul	Brazil
+53	2022-11-22 20:29:30	143.255.103.63	Parana	Toledo	Brazil
+54	2022-11-22 20:30:44	181.213.51.93	Alagoas	Maceió	Brazil
+55	2022-11-22 20:32:50	177.180.248.191	Paraíba	João Pessoa	Brazil
+56	2022-11-22 20:33:30	191.185.78.44	Minas Gerais	Belo Horizonte	Brazil
+57	2022-11-22 20:35:30	2.57.171.44	Sao Paulo	São Paulo	Brazil
+58	2022-11-22 20:36:12	177.128.224.245	Minas Gerais	Sete Lagoas	Brazil
+59	2022-11-22 20:39:10	45.184.172.226	Parana	Ipiranga	Brazil
+60	2022-11-22 20:44:40	189.8.123.167	Goias	Aguas Lindas de Goias	Brazil
+61	2022-11-22 20:46:59	187.75.99.228	Sao Paulo	São Paulo	Brazil
+62	2022-11-22 20:47:06	177.84.66.0	Rio de Janeiro	Volta Redonda	Brazil
+63	2022-11-22 20:50:37	186.236.68.167	Sao Paulo	Guaratingueta	Brazil
+64	2022-11-22 20:51:07	200.222.88.18	Rio de Janeiro	Volta Redonda	Brazil
+65	2022-11-22 21:00:06	177.51.2.195	Paraíba	João Pessoa	Brazil
+66	2022-11-22 21:00:59	189.8.123.167	Goias	Aguas Lindas de Goias	Brazil
+67	2022-11-22 21:04:09	170.247.198.237	Alagoas	Traipu	Brazil
+68	2022-11-22 21:04:27	187.72.181.25	Sao Paulo	Batatais	Brazil
+69	2022-11-22 21:06:23	200.150.101.222	Parana	Curitiba	Brazil
+70	2022-11-22 21:10:35	201.19.22.101	Bahia	Salvador	Brazil
+71	2022-11-22 21:11:14	170.81.204.18	Para	-	Brazil
+72	2022-11-22 21:11:38	177.131.169.158	Espirito Santo	Cariacica	Brazil
+73	2022-11-22 21:15:54	191.255.231.163	Sao Paulo	São Paulo	Brazil
+74	2022-11-22 21:16:41	187.95.58.217	Sao Paulo	São Paulo	Brazil
+75	2022-11-22 21:17:56	200.169.179.208	Mato Grosso do Sul	Dourados	Brazil
+76	2022-11-22 21:19:02	177.75.237.250	Para	Tucuma	Brazil
+77	2022-11-22 21:22:17	201.21.193.40	-	-	Brazil
+78	2022-11-22 21:31:49	177.4.174.100	Mato Grosso	Sinop	Brazil
+79	2022-11-22 21:33:55	201.130.20.219	Sao Paulo	Cosmopolis	Brazil
+80	2022-11-22 21:35:08	177.204.206.13	Parana	Foz do Iguaçu	Brazil
+81	2022-11-22 21:41:08	177.22.111.241	Rondonia	Cacoal	Brazil
+82	2022-11-22 21:41:15	143.0.10.27	Rio de Janeiro	Rio de Janeiro	Brazil
+83	2022-11-22 21:57:23	189.90.248.149	Minas Gerais	Itabira	Brazil
+84	2022-11-22 21:59:08	138.59.222.125	Minas Gerais	Itambacuri	Brazil
+85	2022-11-22 22:04:02	200.187.84.250	Sao Paulo	Cesario Lange	Brazil
+86	2022-11-22 22:07:16	177.137.146.184	Sao Paulo	Catanduva	Brazil
+87	2022-11-22 22:09:11	200.242.45.66	Amazonas	Manaus	Brazil
+88	2022-11-22 22:27:20	201.17.158.68	Minas Gerais	Belo Horizonte	Brazil
+89	2022-11-22 22:29:56	177.11.120.219	Espirito Santo	Presidente Kennedy	Brazil
+90	2022-11-22 22:32:54	177.62.189.68	Sao Paulo	São Paulo	Brazil
+91	2022-11-22 22:32:57	177.127.130.101	Rondonia	Porto Velho	Brazil
+92	2022-11-22 22:39:58	177.94.237.190	Sao Paulo	Santos	Brazil
+93	2022-11-22 22:41:25	179.215.124.25	Sao Paulo	Santos	Brazil
+94	2022-11-22 22:43:46	177.34.120.182	Para	Belém	Brazil
+95	2022-11-22 22:48:21	187.19.50.2	Rio de Janeiro	Sao Fidelis	Brazil
+96	2022-11-22 22:52:22	177.155.125.34	Parana	Dois Vizinhos	Brazil
+97	2022-11-22 22:52:33	186.236.71.123	Sao Paulo	Guaratingueta	Brazil
+98	2022-11-22 22:52:48	189.59.15.170	Goias	Goiânia	Brazil
+99	2022-11-22 22:55:00	177.5.75.130	Federal District	Brasília	Brazil
+100	2022-11-22 22:58:24	45.4.48.61	Santa Catarina	Criciúma	Brazil
+101	2022-11-22 23:02:25	201.75.104.200	Amazonas	Manaus	Brazil
+102	2022-11-22 23:08:53	189.70.109.181	Minas Gerais	Ouro Preto	Brazil
+103	2022-11-22 23:13:12	167.250.72.135	Para	Irituia	Brazil
+104	2022-11-22 23:39:57	189.126.214.180	Federal District	Brasília	Brazil
+105	2022-11-22 23:43:42	177.156.124.89	Parana	Toledo	Brazil
+106	2022-11-22 23:47:45	191.240.147.2	Sao Paulo	São Paulo	Brazil
+107	2022-11-22 23:55:39	201.48.183.161	Santa Catarina	Itajaí	Brazil
+108	2022-11-23 00:01:30	187.53.104.73	Parana	Curitiba	Brazil
+109	2022-11-23 00:02:59	189.111.203.221	Sao Paulo	São José dos Campos	Brazil
+110	2022-11-23 00:09:16	187.75.217.62	Sao Paulo	Guarulhos	Brazil
+111	2022-11-23 00:20:15	170.239.222.116	Minas Gerais	Caete	Brazil
+112	2022-11-23 00:27:12	179.35.252.99	Rio de Janeiro	Duque de Caxias	Brazil
+113	2022-11-23 00:32:22	179.108.169.11	Santa Catarina	Criciúma	Brazil
+114	2022-11-23 00:50:17	200.196.134.248	Espirito Santo	Cachoeiro de Itapemirim	Brazil
+115	2022-11-23 00:50:49	177.73.101.247	Parana	Foz do Iguaçu	Brazil
+116	2022-11-23 00:51:37	189.49.109.11	Bahia	Salvador	Brazil
+117	2022-11-23 01:06:42	45.164.58.11	Piaui	Vila Nova do Piaui	Brazil
+118	2022-11-23 01:10:08	138.118.237.203	Minas Gerais	Realeza	Brazil
+119	2022-11-23 01:16:25	200.136.26.5	Sao Paulo	Guarulhos	Brazil
+120	2022-11-23 01:28:57	177.66.253.213	Minas Gerais	Bocaina de Minas	Brazil
+121	2022-11-23 01:30:04	177.73.101.247	Parana	Foz do Iguaçu	Brazil
+122	2022-11-23 01:32:58	200.2.100.37	Parana	Loanda	Brazil
+123	2022-11-23 01:33:41	201.17.216.251	Minas Gerais	Montes Claros	Brazil
+124	2022-11-23 01:35:42	201.43.240.184	Sao Paulo	Santo André	Brazil
+125	2022-11-23 01:49:55	45.184.172.226	Parana	Ipiranga	Brazil
+126	2022-11-23 01:55:28	170.79.225.18	Minas Gerais	Patos de Minas	Brazil
+127	2022-11-23 01:56:21	187.108.210.38	Santa Catarina	Rio do Sul	Brazil
+128	2022-11-23 02:11:02	45.231.120.162	Rio de Janeiro	Sao Goncalo	Brazil
+129	2022-11-23 02:18:09	201.92.247.88	Sao Paulo	São Paulo	Brazil
+130	2022-11-23 02:18:32	177.84.247.119	Sao Paulo	Mairinque	Brazil
+131	2022-11-23 02:18:57	177.32.79.130	Sao Paulo	São Paulo	Brazil
+132	2022-11-23 02:21:57	177.223.64.180	Rio Grande do Sul	Parobe	Brazil
+133	2022-11-23 02:27:00	190.89.91.214	Pernambuco	Recife	Brazil
+134	2022-11-23 02:29:17	138.204.24.3	Parana	Curitiba	Brazil
+135	2022-11-23 02:34:33	191.6.39.10	Espirito Santo	Guarapari	Brazil
+136	2022-11-23 02:35:54	187.34.85.188	Sao Paulo	São Paulo	Brazil
+137	2022-11-23 02:37:57	177.138.193.177	Sao Paulo	Itapeva	Brazil
+138	2022-11-23 02:38:42	200.174.152.72	Amazonas	Manaus	Brazil
+139	2022-11-23 03:01:12	177.92.55.20	Parana	Curitiba	Brazil
+140	2022-11-23 03:14:18	189.115.127.112	Minas Gerais	Belo Horizonte	Brazil
+141	2022-11-23 03:39:00	186.226.127.175	Santa Catarina	Saudades	Brazil
+142	2022-11-23 03:47:33	45.238.85.115	-	-	Brazil
+143	2022-11-23 04:00:04	189.41.20.238	Minas Gerais	Uberlândia	Brazil
+144	2022-11-23 04:04:42	45.238.200.209	Sergipe	Lagarto	Brazil
+145	2022-11-23 04:18:18	170.83.172.250	Acre	Rio Branco	Brazil
+146	2022-11-23 04:32:09	179.93.141.107	Sao Paulo	Mogi das Cruzes	Brazil
+147	2022-11-23 04:49:22	170.82.193.52	Santa Catarina	Botuvera	Brazil
+148	2022-11-23 04:51:04	189.39.52.253	Sao Paulo	São Paulo	Brazil
+149	2022-11-23 05:11:03	177.135.136.10	Rio de Janeiro	Rio de Janeiro	Brazil
+150	2022-11-23 05:27:19	201.2.21.8	Goias	Aparecida de Goiania	Brazil
+151	2022-11-23 05:55:11	179.250.207.241	Minas Gerais	Contagem	Brazil
+152	2022-11-23 06:36:21	191.37.144.39	Sao Paulo	Registro	Brazil
+153	2022-11-23 06:57:48	138.99.198.160	Rio Grande do Sul	Cachoeirinha	Brazil
+154	2022-11-23 09:28:20	138.185.188.18	Piaui	Sao Juliao	Brazil
+155	2022-11-23 18:14:25	131.100.131.18	Sao Paulo	Itaquaquecetuba	Brazil
+156	2022-11-23 18:22:57	177.12.16.157	Rio de Janeiro	Niterói	Brazil
+157	2022-11-23 18:28:38	168.90.58.155	Parana	Ibipora	Brazil
+158	2022-11-23 18:33:27	177.155.135.188	Santa Catarina	Caçador	Brazil
+159	2022-11-23 18:34:51	187.73.157.70	Sao Paulo	Bebedouro	Brazil
+160	2022-11-23 18:36:28	189.90.136.50	Sao Paulo	Franca	Brazil
+161	2022-11-23 18:41:59	177.0.51.62	Goias	Aruana	Brazil
+162	2022-11-23 19:02:27	45.65.140.84	Minas Gerais	Pecanha	Brazil
+163	2022-11-23 19:09:13	45.7.200.47	Mato Grosso	-	Brazil
+164	2022-11-23 19:22:55	179.182.233.91	Goias	Goiânia	Brazil
+165	2022-11-23 19:23:54	177.191.240.40	Minas Gerais	Ituiutaba	Brazil
+166	2022-11-23 19:35:28	177.136.115.106	Bahia	Lauro de Freitas	Brazil
+167	2022-11-23 19:36:44	189.84.223.162	Espirito Santo	Vila Velha	Brazil
+168	2022-11-23 19:39:16	177.92.144.141	Sao Paulo	Limeira	Brazil
+169	2022-11-23 19:48:11	201.76.174.50	Rio de Janeiro	Rio de Janeiro	Brazil
+170	2022-11-23 19:54:47	131.161.92.138	Minas Gerais	Ipatinga	Brazil
+171	2022-11-23 19:58:25	192.144.65.110	Rondonia	-	Brazil
+172	2022-11-23 19:58:38	179.234.97.47	Sao Paulo	Jaú	Brazil
+173	2022-11-23 20:22:49	179.178.147.96	Pernambuco	Caruaru	Brazil
+174	2022-11-23 21:03:45	177.131.170.229	Rio de Janeiro	Niterói	Brazil
+175	2022-11-23 21:08:37	177.96.58.170	Santa Catarina	Joinville	Brazil
+176	2022-11-23 21:15:06	186.194.170.146	Sao Paulo	São José dos Campos	Brazil
+177	2022-11-23 21:15:36	201.43.167.172	Sao Paulo	Sumaré	Brazil
+178	2022-11-23 21:19:32	177.69.202.81	Sao Paulo	Franca	Brazil
+179	2022-11-23 21:28:23	179.235.94.172	Sao Paulo	Taubate	Brazil
+180	2022-11-23 21:51:57	200.136.110.106	Sao Paulo	Aguai	Brazil
+181	2022-11-23 22:26:22	177.60.63.150	-	-	Brazil
+182	2022-11-23 22:30:44	191.54.82.13	Santa Catarina	Balneário Camboriú	Brazil
+183	2022-11-23 22:32:53	179.124.30.240	Para	Santarém	Brazil
+184	2022-11-23 22:44:58	177.11.85.17	Minas Gerais	Carmo do Rio Claro	Brazil
+185	2022-11-23 22:49:53	45.235.202.192	Minas Gerais	Santa Barbara	Brazil
+186	2022-11-23 22:53:33	200.170.224.34	Rio de Janeiro	Rio de Janeiro	Brazil
+187	2022-11-23 23:10:53	177.67.193.202	Mato Grosso	Cuiabá	Brazil
+188	2022-11-23 23:17:36	179.107.159.189	Rio de Janeiro	Volta Redonda	Brazil
+189	2022-11-23 23:36:37	200.171.7.189	Sao Paulo	São Paulo	Brazil
+190	2022-11-23 23:43:22	189.126.165.162	Sao Paulo	Candido Mota	Brazil
+191	2022-11-24 00:02:00	179.250.83.38	Goias	Goiânia	Brazil
+192	2022-11-24 00:20:28	201.17.115.166	Rio de Janeiro	Rio de Janeiro	Brazil
+193	2022-11-24 01:13:16	160.238.243.251	Rondonia	Ariquemes	Brazil
+194	2022-11-24 01:24:47	201.27.108.40	Sao Paulo	São Paulo	Brazil
+195	2022-11-24 01:53:45	177.194.67.3	Sao Paulo	Campinas	Brazil
+196	2022-11-24 01:55:55	201.33.193.50	Sao Paulo	Motuca	Brazil
+197	2022-11-24 02:18:06	189.106.63.168	Bahia	Jequié	Brazil
+198	2022-11-24 02:27:45	191.178.178.2	Para	Ananindeua	Brazil
+199	2022-11-24 02:29:23	138.99.35.76	-	-	Brazil
+200	2022-11-24 02:43:18	177.85.140.254	Minas Gerais	Carmo de Minas	Brazil
+201	2022-11-24 03:02:15	177.182.198.52	Minas Gerais	Belo Horizonte	Brazil
+202	2022-11-24 03:21:28	186.232.166.20	Minas Gerais	Ibirite	Brazil
+203	2022-11-24 03:39:09	189.33.189.6	Sao Paulo	São Paulo	Brazil
+204	2022-11-24 03:49:26	187.34.210.173	Sao Paulo	São Paulo	Brazil
+205	2022-11-24 04:02:11	200.144.25.7	Sao Paulo	São Paulo	Brazil
+206	2022-11-24 04:17:42	187.114.9.239	Minas Gerais	Belo Horizonte	Brazil
+207	2022-11-24 04:23:11	187.32.23.1	Sao Paulo	Praia Grande	Brazil
+208	2022-11-24 04:44:05	187.99.124.97	-	-	Brazil
+209	2022-11-24 04:59:07	187.19.252.23	Rio Grande do Norte	Pau dos Ferros	Brazil
+210	2022-11-24 05:02:26	138.99.251.94	Parana	Cascavel	Brazil
+211	2022-11-24 07:24:30	189.78.99.1	Sao Paulo	São Paulo	Brazil
+212	2022-11-24 07:25:42	152.249.22.180	Sao Paulo	Maua	Brazil
+213	2022-11-24 07:32:52	177.116.115.84	-	-	Brazil
+214	2022-11-24 08:01:10	187.10.209.43	Sao Paulo	São Paulo	Brazil
+215	2022-11-24 08:06:53	189.16.255.122	Maranhao	São Luís	Brazil
+216	2022-11-24 08:21:13	186.250.53.110	Sao Paulo	São Paulo	Brazil
+217	2022-11-24 08:41:56	201.49.89.151	Sao Paulo	Sao Jose do Rio Preto	Brazil
+218	2022-11-24 08:44:18	201.46.27.240	Sao Paulo	São Paulo	Brazil
+219	2022-11-24 08:44:54	186.216.139.146	Minas Gerais	Itabira	Brazil
+220	2022-11-24 08:59:16	201.71.140.134	Mato Grosso	Cuiabá	Brazil
+221	2022-11-24 09:02:19	177.188.121.60	Sao Paulo	São Paulo	Brazil
+222	2022-11-24 09:05:31	201.46.31.32	Sao Paulo	São Paulo	Brazil
+223	2022-11-24 09:14:00	186.250.52.138	Sao Paulo	São Paulo	Brazil
+224	2022-11-24 09:14:04	177.152.140.50	Sao Paulo	Barueri	Brazil
+225	2022-11-24 09:14:27	189.84.254.133	Rio de Janeiro	Nova Friburgo	Brazil
+226	2022-11-24 09:14:49	186.194.146.237	Parana	Medianeira	Brazil
+227	2022-11-24 09:16:43	201.140.212.169	Sao Paulo	Guarulhos	Brazil
+228	2022-11-24 09:17:02	200.168.3.114	Sao Paulo	Mogi das Cruzes	Brazil
+229	2022-11-24 09:22:47	186.214.184.82	Bahia	Salvador	Brazil
+230	2022-11-24 09:30:52	177.152.187.62	Sao Paulo	São Paulo	Brazil
+231	2022-11-24 09:31:44	170.238.117.58	Sao Paulo	São Paulo	Brazil
+232	2022-11-24 09:33:08	179.191.15.239	Mato Grosso do Sul	Três Lagoas	Brazil
+233	2022-11-24 09:45:33	186.220.51.165	Sao Paulo	São Paulo	Brazil
+234	2022-11-24 11:02:23	200.0.32.78	Goias	Posse	Brazil
+235	2022-11-24 11:26:44	187.73.239.0	Espirito Santo	Serra	Brazil
+236	2022-11-24 13:30:43	152.245.143.27	Bahia	Salvador	Brazil
+237	2022-11-24 13:39:46	168.121.76.190	Rio de Janeiro	Rio de Janeiro	Brazil
+238	2022-11-24 17:10:43	179.111.206.175	Sao Paulo	São Paulo	Brazil
+239	2022-11-24 17:11:11	177.184.196.74	Sao Paulo	São Paulo	Brazil
+240	2022-11-24 17:17:56	200.137.73.7	Espirito Santo	Santa Teresa	Brazil
+241	2022-11-24 17:21:09	187.59.116.120	Pernambuco	Recife	Brazil
+242	2022-11-24 17:29:28	177.95.10.10	Sao Paulo	São Paulo	Brazil
+243	2022-11-24 17:43:33	177.190.72.200	Sao Paulo	Presidente Epitacio	Brazil
+244	2022-11-24 17:43:41	150.163.19.132	Sao Paulo	São José dos Campos	Brazil
+245	2022-11-24 17:44:44	189.84.21.44	Rio de Janeiro	Rio de Janeiro	Brazil
+246	2022-11-24 17:54:57	179.93.149.198	Sao Paulo	São Paulo	Brazil
+247	2022-11-24 17:58:51	200.49.49.170	Sao Paulo	São Paulo	Brazil
+248	2022-11-24 17:58:58	177.39.209.56	Parana	Palotina	Brazil
+249	2022-11-24 18:01:14	187.21.65.136	Sao Paulo	Guaruja	Brazil
+250	2022-11-24 18:05:46	150.165.162.14	Paraíba	João Pessoa	Brazil
+251	2022-11-24 18:07:22	201.43.116.56	Sao Paulo	São Paulo	Brazil
+252	2022-11-24 18:13:43	187.109.237.126	Rio Grande do Sul	Santa Rosa	Brazil
+253	2022-11-24 18:14:00	177.10.108.202	Rio Grande do Sul	Flores da Cunha	Brazil
+254	2022-11-24 18:15:45	143.0.3.122	Sao Paulo	Brodosqui	Brazil
+255	2022-11-24 18:16:16	187.75.92.50	Sao Paulo	Suzano	Brazil
+256	2022-11-24 18:16:38	177.104.16.65	Minas Gerais	Juiz de Fora	Brazil
+257	2022-11-24 18:18:19	177.220.172.158	Parana	Curitiba	Brazil
+258	2022-11-24 18:19:35	177.220.172.158	Parana	Curitiba	Brazil
+259	2022-11-24 18:21:12	177.170.15.157	Sao Paulo	Campinas	Brazil
+260	2022-11-24 18:21:12	152.238.113.208	Minas Gerais	Alfenas	Brazil
+261	2022-11-24 18:21:47	189.34.140.79	Sao Paulo	Santos	Brazil
+262	2022-11-24 18:22:32	45.188.52.35	Tocantins	Dianópolis	Brazil
+263	2022-11-24 18:24:26	201.17.173.138	Minas Gerais	Belo Horizonte	Brazil
+264	2022-11-24 18:27:20	177.80.59.2	Sao Paulo	Santo André	Brazil
+265	2022-11-24 18:29:01	186.224.68.221	Parana	Cascavel	Brazil
+266	2022-11-24 18:29:07	186.227.13.142	Sao Paulo	Lorena	Brazil
+267	2022-11-24 18:30:49	45.172.68.221	Sao Paulo	Cotia	Brazil
+268	2022-11-24 18:30:50	177.125.144.35	Espirito Santo	Afonso Claudio	Brazil
+269	2022-11-24 18:31:04	177.107.1.72	Sao Paulo	Sao Sebastiao da Grama	Brazil
+270	2022-11-24 18:32:53	177.102.221.107	Sao Paulo	Diadema	Brazil
+271	2022-11-24 18:34:24	200.232.24.42	Sao Paulo	São Paulo	Brazil
+272	2022-11-24 18:35:03	177.62.198.28	Sao Paulo	Campinas	Brazil
+273	2022-11-24 18:36:22	177.86.144.165	Minas Gerais	Montes Claros	Brazil
+274	2022-11-24 18:37:02	191.6.25.85	Maranhao	Capinzal do Norte	Brazil
+275	2022-11-24 18:37:33	177.75.59.20	Goias	Anápolis	Brazil
+276	2022-11-24 18:38:42	181.213.41.161	Alagoas	Maceió	Brazil
+277	2022-11-24 18:40:01	179.108.180.104	Sao Paulo	Barretos	Brazil
+278	2022-11-24 18:41:04	170.254.104.180	Parana	Sao Joao do Triunfo	Brazil
+279	2022-11-24 18:41:12	170.246.217.225	Sao Paulo	Catanduva	Brazil
+280	2022-11-24 18:41:44	191.250.3.2	Goias	Goiânia	Brazil
+281	2022-11-24 18:42:19	177.36.146.22	Sao Paulo	Campinas	Brazil
+282	2022-11-24 18:42:51	187.9.141.190	Sao Paulo	Cesario Lange	Brazil
+283	2022-11-24 18:42:51	131.100.73.224	Sao Paulo	Pontal	Brazil
+284	2022-11-24 18:43:17	187.67.18.122	Rio de Janeiro	Rio de Janeiro	Brazil
+285	2022-11-24 18:43:45	177.45.74.90	Sao Paulo	Barueri	Brazil
+286	2022-11-24 18:44:44	177.45.74.90	Sao Paulo	Barueri	Brazil
+287	2022-11-24 18:45:07	45.231.1.36	Santa Catarina	Balneário Camboriú	Brazil
+288	2022-11-24 18:47:25	179.55.108.206	Pernambuco	Recife	Brazil
+289	2022-11-24 18:49:13	179.96.141.148	Sao Paulo	Marília	Brazil
+290	2022-11-24 18:55:13	187.44.251.178	Bahia	Salvador	Brazil
+291	2022-11-24 18:55:18	177.47.242.150	Sao Paulo	Itu	Brazil
+292	2022-11-24 18:56:02	200.171.186.169	Sao Paulo	São Paulo	Brazil
+293	2022-11-24 18:56:59	179.191.83.94	Sao Paulo	São Paulo	Brazil
+294	2022-11-24 18:57:26	187.183.45.138	Sao Paulo	Americana	Brazil
