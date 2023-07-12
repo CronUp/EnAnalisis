@@ -1,0 +1,855 @@
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON
+
+"""
+The `JSONObject` scalar type represents JSON objects as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSONObject
+
+"""Date custom scalar type by huyquansu"""
+scalar Date
+
+"""Date custom scalar type by huyquansu"""
+scalar DateTime
+
+"""Date custom scalar type by huyquansu"""
+scalar Time
+
+type resultCounts {
+  ok: Boolean
+  count: Int
+}
+
+input InputEmbedded {
+  field: String!
+
+  """type tìm kiếm chỉ trong những giá trị eq, in, nin , gt, gte, lt, lte"""
+  type: String!
+  value: String!
+}
+
+type resultDeletes {
+  ok: Boolean
+  deleted: Int
+}
+
+"""Input tìm kiếm Object"""
+input InputSearchObject {
+  """Bằng giá trị"""
+  in: JSONObject
+
+  """Không bằng giá trị"""
+  ne: JSONObject
+}
+
+"""Input tìm kiếm Auhtor"""
+input InputSearchAuthor {
+  embedded: InputEmbedded
+}
+
+"""Input tìm kiếm Caculate Int"""
+input InputSearchCalculateInt {
+  eq: Int
+
+  """Không bằng giá trị"""
+  ne: Int
+}
+
+"""Input tìm kiếm Caculate Float"""
+input InputSearchCalculateFloat {
+  author: Float
+}
+
+"""Input tìm kiếm String"""
+input InputSearchStringDynamic {
+  eq: Int
+
+  """Không bằng giá trị"""
+  ne: Int
+}
+
+"""Input tìm kiếm Object dynamic"""
+input InputSearchObjectsDynamic {
+  embeddeds: [InputEmbedded]
+  object: JSONObject
+}
+
+"""Input tìm kiếm Object"""
+input InputSearchJSONObject {
+  embeddeds: [InputEmbedded]
+  object: JSONObject
+}
+
+"""Input tìm kiếm text"""
+input InputSearchText {
+  search: String
+
+  """Nếu là true thì phân biệt chữ hoa, chữ thường"""
+  aseSensitive: Boolean
+
+  """Nếu là true thì Không cho phép chứa ký tự lạ"""
+  diacriticSensitive: Boolean
+}
+
+"""input cho field là String"""
+input InputSearchString {
+  """Chứa giá trị"""
+  regex: String
+
+  """
+  Bổ trợ yêu cầu regex với giá trị i là bỏ qua chữ hoa thường x là bỏ qua dấu
+  """
+  options: String
+
+  """Bằng giá trị"""
+  eq: String
+
+  """Không bằng giá trị"""
+  ne: String
+
+  """Nằm trong những giá trị"""
+  in: [String]
+
+  """Không nằm trong những giá trị"""
+  nin: [String]
+}
+
+"""Input cho field là Boolean"""
+input InputSearchBoolean {
+  eq: Boolean
+}
+
+input InputSearchTemplate {
+  eq: Boolean
+}
+
+input InputSearchTemplates {
+  eq: Boolean
+}
+
+"""Input cho field là Float"""
+input InputSearchFloat {
+  """Bé hơn giá trị"""
+  lt: Float
+
+  """Bé hơn hoặc bằng giá trị"""
+  lte: Float
+
+  """Bằng giá trị"""
+  eq: Float
+
+  """Không bằng giá trị"""
+  ne: Float
+
+  """Nằm trong những giá trị"""
+  in: [Float]
+
+  """Không nằm trong những giá trị"""
+  nin: [Float]
+
+  """Lón hơn giá trị"""
+  gt: Float
+
+  """Lón hơn hoặc bằng giá trị"""
+  gte: Float
+}
+
+input InputSearchNumber {
+  """Bé hơn giá trị"""
+  lt: Int
+
+  """Bé hơn hoặc bằng giá trị"""
+  lte: Int
+
+  """Bằng giá trị"""
+  eq: Int
+
+  """Không bằng giá trị"""
+  ne: Int
+
+  """Nằm trong những giá trị"""
+  in: [Int]
+
+  """Không nằm trong những giá trị"""
+  nin: [Int]
+
+  """Lón hơn giá trị"""
+  gt: Int
+
+  """Lón hơn hoặc bằng giá trị"""
+  gte: Int
+}
+
+input InputSearchInt {
+  """Bé hơn giá trị"""
+  lt: Int
+
+  """Bé hơn hoặc bằng giá trị"""
+  lte: Int
+
+  """Bằng giá trị"""
+  eq: Int
+
+  """Không bằng giá trị"""
+  ne: Int
+
+  """Nằm trong những giá trị"""
+  in: [Int]
+
+  """Không nằm trong những giá trị"""
+  nin: [Int]
+
+  """Lón hơn giá trị"""
+  gt: Int
+
+  """Lón hơn hoặc bằng giá trị"""
+  gte: Int
+}
+
+input InputSearchDateTime {
+  lt: DateTime
+
+  """Bé hơn hoặc bằng giá trị"""
+  lte: DateTime
+
+  """Bằng giá trị"""
+  eq: DateTime
+
+  """Không bằng giá trị"""
+  ne: DateTime
+
+  """Nằm trong những giá trị"""
+  in: [DateTime]
+
+  """Không nằm trong những giá trị"""
+  nin: [DateTime]
+
+  """Lón hơn giá trị"""
+  gt: DateTime
+
+  """Lón hơn hoặc bằng giá trị"""
+  gte: Date
+}
+
+input InputSearchDate {
+  lt: Date
+
+  """Bé hơn hoặc bằng giá trị"""
+  lte: Date
+
+  """Bằng giá trị"""
+  eq: Date
+
+  """Không bằng giá trị"""
+  ne: Date
+
+  """Nằm trong những giá trị"""
+  in: [Date]
+
+  """Không nằm trong những giá trị"""
+  nin: [Date]
+
+  """Lón hơn giá trị"""
+  gt: Date
+
+  """Lón hơn hoặc bằng giá trị"""
+  gte: Date
+}
+
+input SearchDateinput {
+  less: String
+  greater: String
+}
+
+type Author {
+  _id: String
+  fullName: String
+  email: String
+  username: String
+  avatar: String
+  name: String
+  location: String
+  website: String
+  picture: String
+  profile: Profile
+}
+
+type security {
+  sms: Boolean
+  whiteList: [String]
+}
+
+type User {
+  _id: String
+  username: String
+  email: String
+  profile: Profile
+  rules: String
+  portfolio: Float
+  status: Boolean
+  enableTfa: Boolean
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
+type File {
+  filename: String!
+  mimetype: String!
+  encoding: String!
+}
+
+type Image {
+  _id: String!
+  name: String
+  status: Boolean
+  category: String
+  folder: String
+  label: String
+  tags: [String]
+  url: String!
+  path: String
+  height: Float
+  width: Float
+  ext: String
+  provider: String
+  ImagesStorage: String
+  thumbnail: String
+  isReady: Boolean
+  size: Float
+  description: String
+  _author: Author
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input SortImageInput {
+  createdAt: Int
+  name: Int
+  size: Int
+}
+
+input QueryImageInput {
+  status: Boolean
+  name: String
+  category: String
+  tags: String
+  label: String
+  folder: String
+  assetsStorage: String
+  createdAt: SearchDateinput
+}
+
+input CreateImageInput {
+  name: String
+  status: Boolean
+  folder: String
+  category: String
+  label: String
+  tags: [String]
+  height: Int
+  width: Int
+  provider: String
+  assetsStorage: String
+  description: String
+}
+
+input UpdateImageInput {
+  name: String
+  status: Boolean
+  category: String
+  label: String
+  folder: String
+  tags: [String]
+  height: Int
+  width: Int
+  description: String
+}
+
+type signedS3 {
+  signedRequest: String
+  url: String
+  image: Image
+}
+
+type Query {
+  images(limit: Int, sort: SortImageInput, offset: Int, noCache: Boolean, query: QueryImageInput): [Image]!
+  imageInS3: [String]
+  existImageInS3(key: String!): Boolean
+  me: User
+  users: [User]
+  duLieus(query: duLieuFindInput, sort: JSONObject, limit: Float, skip: Float): [DuLieu]
+  duLieu(_id: String!): DuLieu
+  countDuLieu(query: duLieuCountInput): Float
+  taiKhoanAdss(query: taiKhoanAdsFindInput, sort: JSONObject, limit: Float, skip: Float): [TaiKhoanAds]
+  fanpages(query: fanpageFindInput, sort: JSONObject, limit: Float, skip: Float): [Fanpage]
+  fanpage(_id: String!): Fanpage
+  businessess(query: businessesFindInput, sort: JSONObject, limit: Float, skip: Float): [Businesses]
+  businesses(_id: String!): Businesses
+}
+
+type Mutation {
+  signedLinkUpload(fileName: String!, keepType: Boolean, type: String!): signedS3
+  imageCreate(label: String, folder: String, keepType: Boolean, file: Upload!): Image
+  imageUpdate(_id: String!, image: UpdateImageInput!): Image
+  imageDelete(_id: String!): Boolean!
+  imageDeletes(_id: [String]!): Boolean!
+  imageDeleteByUrl(url: String!): Boolean!
+  newPasswordResetToken(email: String!): Boolean
+  newVerificationToken(email: String!): ReNewVe
+  verifiForGot(email: String!, password: String!, token: String!): String
+  verifiLogin(email: String!, password: String!, token: String!): String
+  signupUser(email: String!, password: String!, confirmPassword: String!): User
+  createUser(email: String!, name: String, password: String, tfa: String): User
+  updateUser(_id: String, discord: String, enableTfa: Boolean, email: String, password: String, status: Boolean, tfa: String): User
+  updateProfileUser(tfa: String): User
+  removeUser(_id: String, tfa: String): Boolean
+  createDuLieu(duLieu: duLieuCreateInput!): DuLieu
+  updateDuLieu(_id: String!, duLieu: duLieuUpdateInput!): DuLieu
+  deletesDuLieu(query: duLieuDeletesInput, sort: JSONObject, limit: Float, skip: Float): [DuLieu]
+  yeucaudulieumoiDuLieu(_id: String!, duLieu: duLieuYeucaudulieumoiInput!): DuLieu
+  capNhatTrangThaiDuLieu(_id: String!, duLieu: duLieuCapnhattrangthaiInput!): DuLieu
+  createTaiKhoanAds(taiKhoanAds: taiKhoanAdsCreateInput!): TaiKhoanAds
+  updateTaiKhoanAds(_id: String!, taiKhoanAds: taiKhoanAdsUpdateInput!): TaiKhoanAds
+  deleteTaiKhoanAds(_id: String!): TaiKhoanAds
+  deletesTaiKhoanAds(query: taiKhoanAdsDeletesInput, sort: JSONObject, limit: Float, skip: Float): [TaiKhoanAds]
+  createFanpage(fanpage: fanpageCreateInput!): Fanpage
+  updateFanpage(_id: String!, fanpage: fanpageUpdateInput!): Fanpage
+  deleteFanpage(_id: String!): Fanpage
+  deletesFanpage(query: fanpageDeletesInput, sort: JSONObject, limit: Float, skip: Float): [Fanpage]
+  createBusinesses(businesses: businessesCreateInput!): Businesses
+  updateBusinesses(_id: String!, businesses: businessesUpdateInput!): Businesses
+  deleteBusinesses(_id: String!): Businesses
+  deletesBusinesses(query: businessesDeletesInput, sort: JSONObject, limit: Float, skip: Float): [Businesses]
+}
+
+type Profile {
+  name: String
+  location: String
+  website: String
+  picture: String
+  rules: String
+  enableTfa: Boolean
+}
+
+type ReNewVe {
+  tfa: Boolean
+  status: Boolean
+}
+
+"""Dữ liệu  """
+type DuLieu {
+  ten: String
+  uid: String
+  fa: String
+  cookie: String
+  password: String
+  token: String
+  ngayLay: DateTime
+  cookieGg: String
+  email: String
+  fanpage: [Fanpage]
+  businesses: [Businesses]
+  taiKhoanAds: [TaiKhoanAds]
+  birthday: String
+  location: String
+  step: String
+  cookieOutlook: String
+  usergmail: String
+  passgmail: String
+  useroutlook: String
+  passoutlook: String
+  ip: String
+  nguongHienTaiCaoNhat: String
+  hanhDong: String
+  trinhDuyet: String
+  ngayReset: DateTime
+  getnew: String
+  _id: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  maquocgia: String
+  trangthaionline: Boolean
+  maMay: String
+}
+
+input duLieuFindInput {
+  maMay: InputSearchString
+  uid: InputSearchString
+  ip: InputSearchString
+  ten: InputSearchString
+  email: InputSearchString
+  ngayLay: InputSearchDateTime
+  ngayReset: InputSearchDateTime
+  step: InputSearchString
+  cookie: InputSearchString
+  password: InputSearchString
+  fa: InputSearchString
+  token: InputSearchString
+  cookieGg: InputSearchString
+  fanpage: fanpageFindInput
+  businesses: businessesFindInput
+  taiKhoanAds: taiKhoanAdsFindInput
+  birthday: InputSearchString
+  location: InputSearchString
+  cookieOutlook: InputSearchString
+  usergmail: InputSearchString
+  passgmail: InputSearchString
+  useroutlook: InputSearchString
+  passoutlook: InputSearchString
+  nguongHienTaiCaoNhat: InputSearchString
+  hanhDong: InputSearchString
+  trinhDuyet: InputSearchString
+  getnew: InputSearchString
+  maquocgia: InputSearchString
+  trangthaionline: InputSearchBoolean
+  _id: InputSearchString
+  searchText: InputSearchText
+  or: [duLieuFindInput]
+}
+
+input duLieuCountInput {
+  ngayLay: InputSearchDateTime
+  trinhDuyet: InputSearchString
+  ngayReset: InputSearchDateTime
+  getnew: InputSearchString
+  maquocgia: InputSearchString
+  trangthaionline: InputSearchBoolean
+  maMay: InputSearchString
+  searchText: InputSearchText
+  or: [duLieuCountInput]
+}
+
+input duLieuCreateInput {
+  maMay: String
+  uid: String
+  ten: String
+  email: String
+  step: String
+  password: String
+  cookie: String
+  fa: String
+  token: String
+  ngayLay: DateTime
+  cookieGg: String
+  fanpage: [fanpageCreateInput]
+  businesses: [businessesCreateInput]
+  taiKhoanAds: [taiKhoanAdsCreateInput]
+  birthday: String
+  location: String
+  cookieOutlook: String
+  usergmail: String
+  passgmail: String
+  useroutlook: String
+  passoutlook: String
+  ip: String
+  nguongHienTaiCaoNhat: String
+  hanhDong: String
+  trinhDuyet: String
+  ngayReset: DateTime
+  getnew: String
+  maquocgia: String
+  trangthaionline: Boolean
+}
+
+input duLieuUpdateInput {
+  ten: String
+  uid: String
+  fa: String
+  cookie: String
+  password: String
+  token: String
+  ngayLay: DateTime
+  cookieGg: String
+  email: String
+  fanpage: [fanpageUpdateInput]
+  businesses: [businessesUpdateInput]
+  taiKhoanAds: [taiKhoanAdsUpdateInput]
+  birthday: String
+  location: String
+  step: String
+  cookieOutlook: String
+  usergmail: String
+  passgmail: String
+  useroutlook: String
+  passoutlook: String
+  ip: String
+  nguongHienTaiCaoNhat: String
+  hanhDong: String
+  trinhDuyet: String
+  ngayReset: DateTime
+  getnew: String
+  maquocgia: String
+  trangthaionline: Boolean
+  maMay: String
+}
+
+input duLieuDeletesInput {
+  ten: InputSearchString
+  uid: InputSearchString
+  fa: InputSearchString
+  cookie: InputSearchString
+  password: InputSearchString
+  token: InputSearchString
+  ngayLay: InputSearchDateTime
+  cookieGg: InputSearchString
+  email: InputSearchString
+  fanpage: fanpageDeletesInput
+  businesses: businessesDeletesInput
+  taiKhoanAds: taiKhoanAdsDeletesInput
+  birthday: InputSearchString
+  location: InputSearchString
+  step: InputSearchString
+  cookieOutlook: InputSearchString
+  usergmail: InputSearchString
+  passgmail: InputSearchString
+  useroutlook: InputSearchString
+  passoutlook: InputSearchString
+  ip: InputSearchString
+  nguongHienTaiCaoNhat: InputSearchString
+  hanhDong: InputSearchString
+  trinhDuyet: InputSearchString
+  ngayReset: InputSearchDateTime
+  getnew: InputSearchString
+  maquocgia: InputSearchString
+  trangthaionline: InputSearchBoolean
+  maMay: InputSearchString
+  searchText: InputSearchText
+  or: [duLieuDeletesInput]
+}
+
+input duLieuYeucaudulieumoiInput {
+  getnew: String
+  ip: String!
+  maMay: String
+}
+
+input duLieuCapnhattrangthaiInput {
+  trangthaionline: Boolean!
+  getnew: String
+  maMay: String
+}
+
+type yeucaudulieumoiDataSType {
+  ip: String
+  _id: String
+}
+
+type yeucaudulieumoiSubType {
+  duLieu: yeucaudulieumoiDataSType
+}
+
+type Subscription {
+  yeucaudulieumoi(ip: String): yeucaudulieumoiSubType
+}
+
+"""Tài khoản ads  """
+type TaiKhoanAds {
+  trangThai: String
+  ngayTao: String
+  ngayLapHoaDon: String
+  adminAn: Int
+  loaiTaiKhoan: String
+  muiGio: String
+  theThanhToan: String
+  currency: String
+  id: String
+  gioiHanChiTieu: String
+  nguongHienTai: String
+  tongChiTieu: String
+  soDu: String
+  ten: String
+  ngayHetHan: String
+  trangThaiThe: String
+  radioToUsd: Float
+}
+
+input taiKhoanAdsFindInput {
+  trangThai: InputSearchString
+  ngayTao: InputSearchString
+  ngayLapHoaDon: InputSearchString
+  adminAn: InputSearchInt
+  loaiTaiKhoan: InputSearchString
+  muiGio: InputSearchString
+  theThanhToan: InputSearchString
+  id: InputSearchString
+  currency: InputSearchString
+  gioiHanChiTieu: InputSearchString
+  nguongHienTai: InputSearchString
+  tongChiTieu: InputSearchString
+  soDu: InputSearchString
+  ten: InputSearchString
+  radioToUsd: InputSearchFloat
+  ngayHetHan: InputSearchString
+  trangThaiThe: InputSearchString
+  or: [taiKhoanAdsFindInput]
+}
+
+input taiKhoanAdsCreateInput {
+  trangThai: String
+  ngayTao: String
+  ngayLapHoaDon: String
+  ten: String
+  adminAn: Int
+  loaiTaiKhoan: String
+  muiGio: String
+  theThanhToan: String
+  currency: String
+  id: String
+  gioiHanChiTieu: String
+  nguongHienTai: String
+  tongChiTieu: String
+  soDu: String
+  ngayHetHan: String
+  trangThaiThe: String
+  radioToUsd: Float
+}
+
+input taiKhoanAdsUpdateInput {
+  trangThai: String
+  ngayTao: String
+  ngayLapHoaDon: String
+  adminAn: Int
+  loaiTaiKhoan: String
+  muiGio: String
+  theThanhToan: String
+  currency: String
+  id: String
+  gioiHanChiTieu: String
+  tongChiTieu: String
+  soDu: String
+  nguongHienTai: String
+  ten: String
+  ngayHetHan: String
+  trangThaiThe: String
+  radioToUsd: Float
+}
+
+input taiKhoanAdsDeleteInput {
+  or: [taiKhoanAdsDeleteInput]
+}
+
+input taiKhoanAdsDeletesInput {
+  trangThai: InputSearchString
+  ngayTao: InputSearchString
+  ngayLapHoaDon: InputSearchString
+  adminAn: InputSearchInt
+  loaiTaiKhoan: InputSearchString
+  muiGio: InputSearchString
+  theThanhToan: InputSearchString
+  id: InputSearchString
+  ten: InputSearchString
+  radioToUsd: InputSearchFloat
+  or: [taiKhoanAdsDeletesInput]
+}
+
+"""Fanpage  """
+type Fanpage {
+  accessToken: String
+  id: String
+  name: String
+  verification_status: String
+  fan_count: String
+}
+
+input fanpageFindInput {
+  accessToken: InputSearchString
+  id: InputSearchString
+  name: InputSearchString
+  verification_status: InputSearchString
+  fan_count: InputSearchString
+  or: [fanpageFindInput]
+}
+
+input fanpageCreateInput {
+  accessToken: String
+  id: String
+  name: String
+  verification_status: String
+  fan_count: String
+}
+
+input fanpageUpdateInput {
+  accessToken: String
+  id: String
+  name: String
+  verification_status: String
+  fan_count: String
+}
+
+input fanpageDeleteInput {
+  or: [fanpageDeleteInput]
+}
+
+input fanpageDeletesInput {
+  accessToken: InputSearchString
+  id: InputSearchString
+  name: InputSearchString
+  or: [fanpageDeletesInput]
+}
+
+"""Businesses  """
+type Businesses {
+  ten: String
+  gioiHan: Int
+  ngayTao: String
+  role: String
+  trangThai: String
+  nguoi: Int
+  linkBm: String
+  id: String
+}
+
+input businessesFindInput {
+  ten: InputSearchString
+  gioiHan: InputSearchInt
+  ngayTao: InputSearchString
+  role: InputSearchString
+  trangThai: InputSearchString
+  nguoi: InputSearchInt
+  linkBm: InputSearchString
+  id: InputSearchString
+  or: [businessesFindInput]
+}
+
+input businessesCreateInput {
+  ten: String
+  gioiHan: Int
+  ngayTao: String
+  role: String
+  trangThai: String
+  nguoi: Int
+  linkBm: String
+  id: String
+}
+
+input businessesUpdateInput {
+  ten: String
+  gioiHan: Int
+  ngayTao: String
+  role: String
+  trangThai: String
+  nguoi: Int
+  linkBm: String
+  id: String
+}
+
+input businessesDeleteInput {
+  or: [businessesDeleteInput]
+}
+
+input businessesDeletesInput {
+  ten: InputSearchString
+  gioiHan: InputSearchInt
+  ngayTao: InputSearchString
+  role: InputSearchString
+  trangThai: InputSearchString
+  nguoi: InputSearchInt
+  linkBm: InputSearchString
+  id: InputSearchString
+  or: [businessesDeletesInput]
+}
