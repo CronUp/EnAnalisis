@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Santiago - 24/11/2023 16:25:25</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            width: 100px;
+            height: auto;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img class="logo" src="pdf.png" alt="Logo PDF">
+        <h2>Documento PDF</h2>
+        <p>Emission por Santiago - 24/11/2023 16:25:25</p>
+     </div>
+</body>
+</html>
