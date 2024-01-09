@@ -1,0 +1,55 @@
+16:32:28 >> START
+16:32:28 >> Create Mutex
+16:32:28 >> got ownership of mutex
+16:32:28 >> INITIALIZING
+16:32:28 >> Key NotFound - GenerateKeys
+16:32:28 >> initialize complete successfully.
+16:32:28 >> Create Resources
+16:32:28 >> Registry Edits
+16:32:28 >> Set StartUp
+16:32:28 >> Setup ReadMe Note
+16:32:28 >> Deleting shadowss
+16:32:28 >> reg Open Key Success.
+16:32:28 >> reg LinkedConnection value set successfully.
+16:32:28 >> reg EnableLUA value set successfully.
+16:32:28 >> Group Policy Update Successfully.
+16:32:29 >> resizing shadow space...
+16:32:29 >> resize shadow space. PATH : F:\
+16:32:29 >> resize shadow space. PATH : C:\
+16:32:29 >> Load Hidden Drives Successfully.
+16:32:29 >> Max Worker Set : 24
+16:32:29 >> ATTACK MODE : 0
+16:32:29 >> Start Encrypt
+16:32:29 >> Drive F:\ Type : 3 
+16:32:29 >> Drive C:\ Type : 3 
+16:32:29 >> Drive M:\ Type : 3 
+16:32:29 >> Can`t Access to File : C:\\Program Files\DVD Maker\directshowtap.ax
+16:32:36 >> Can`t Access to File : C:\\Program Files (x86)\Adobe\Reader 9.0\Resource\CMap\Identity-V
+16:32:49 >> Thread 0 Handle Closed
+16:32:49 >> Thread 1 Handle Closed
+16:32:49 >> Thread 2 Handle Closed
+16:32:49 >> Thread 3 Handle Closed
+16:32:49 >> Thread 4 Handle Closed
+16:32:49 >> Thread 5 Handle Closed
+16:32:49 >> Thread 6 Handle Closed
+16:32:49 >> Thread 7 Handle Closed
+16:32:49 >> Thread 8 Handle Closed
+16:32:49 >> Thread 9 Handle Closed
+16:32:49 >> Thread 10 Handle Closed
+16:32:49 >> Thread 11 Handle Closed
+16:32:49 >> Thread 12 Handle Closed
+16:32:49 >> Thread 13 Handle Closed
+16:32:49 >> Thread 14 Handle Closed
+16:32:49 >> Encrypt Complete
+16:32:49 >> Key Mutex released
+16:32:49 >> self spread using removable devices ...
+16:32:49 >> self spread using share folders ...
+16:32:49 >> Self Spread Complete
+16:32:49 >> END
+16:32:49 >> mutex successfully released.
+16:32:49 >> <--Encrypt status-->
+#FILES ENCRYPTED : 2895
+#FILES NOT ENCRYPTED : 390
+Running Time : 00m:21s 
+
+16:32:49 >> self destruction ...
