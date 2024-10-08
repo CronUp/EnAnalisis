@@ -1,0 +1,117 @@
+countries
+CL(6)
+AR(67)
+EC(1)
+PE(2)
+CO(3)
+MX(5)
+PY(1)
+ES(1)
+
+antivirus
+Windows Defender(54)
+No antivirus detected.(15)
+Sophos Intercept X Sophos Intercept X Sophos Intercept X Windows Defender Sophos Intercept X(1)
+Windows Defender McAfee Endpoint Security(1)
+Windows Defender VirusScan de McAfee(1)
+Windows Defender AVG Antivirus(1)
+Panda Dome Windows Defender(2)
+Windows Defender Avast Antivirus(1)
+Microsoft Security Essentials(1)
+Windows Defender VirusScan de McAfee VirusScan de McAfee(1)
+Panda Dome(2)
+Reason Cybersecurity Windows Defender(1)
+Windows Defender Malwarebytes(1)
+Norton Security Windows Defender Norton Security Norton Security 360 Total Security(1)
+ESET Security Windows Defender(1)
+Windows Defender Norton Security(1)
+McAfee Anti-Virus and Anti-Spyware Windows Defender(1)
+
+entries(86)
+0 	DATE/TIME 	COUNTRY 	DEVICE 	USER 	OS 	AV 	IP 				
+1	07-10-2024 11:52:59 	CL 	DESKTOP-P26AQB6 	Manuel 	Microsoft Windows 10 Home Single Language 	Windows Defender 	179.60.77.24
+2	07/10/2024 11:53:23 	CL 	V3 	Ventas3 	Microsoft Windows 11 Home Single Language 	Windows Defender 	200.72.191.178
+3	07/10/2024 11:55:48 	AR 	DESKTOP-8JBM8NF 	Mirian gigabyte 	Microsoft Windows 10 Enterprise 	Windows Defender 	138.59.0.221
+4	07/10/2024 12:02:47 	AR 	ADMIN-PC 	Admin 	Microsoft Windows 7 Professional 	No antivirus detected. 	38.51.29.22
+5	07/10/2024 12:10:13 	AR 	ONG-2097 	cgazzola 	Microsoft Windows 10 Pro 	Sophos Intercept X Sophos Intercept X Sophos Intercept X Windows Defender Sophos Intercept X 	186.125.237.194
+6	07-10-2024 12:13:46 	CL 	LAPTOP-QQ439A5M 	Ricardo Campo 	Microsoft Windows 11 Home Single Language 	Windows Defender McAfee Endpoint Security 	186.10.142.50
+7	07/10/2024 12:15:11 	AR 	DESKTOP-A8DSC2M 	Recepcion 	Microsoft Windows 11 Pro 	Windows Defender 	190.210.192.201
+8	07/10/2024 12:16:12 	AR 	DESKTOP-CQ35JG4 	IdeaPad 	Microsoft Windows 11 Home Single Language 	Windows Defender 	191.85.224.155
+9	07/10/2024 12:19:47 	AR 	DESKTOP-IN30JCF 	User 	Microsoft Windows 11 Home Single Language 	Windows Defender 	190.55.131.3
+10	07-10-2024 12:20:02 	CL 	CONTREBARA 	maria 	Microsoft Windows 11 Home Single Language 	Windows Defender VirusScan de McAfee 	191.126.179.37
+11	07/10/2024 12:21:37 	AR 	PC1ADMIN 	User 	Microsoft Windows 10 Home Single Language 	Windows Defender 	181.84.156.24
+12	07/10/2024 12:25:12 	AR 	LAPTOP-TOMNC261 	Asus 	Microsoft Windows 10 Home Single Language 	Windows Defender 	201.190.251.56
+13	07/10/2024 10:31:25 	EC 	DESKTOP-0DSOMIF 	Dell 	Microsoft Windows 10 Pro 	Windows Defender 	45.70.201.11
+14	07/10/2024 10:37:44 	PE 	COSTOSYPRECIOS 	Costos y Precios 	Microsoft Windows 10 Pro 	Windows Defender 	179.6.6.184
+15	07/10/2024 12:51:57 	AR 	DIEGOPCLOGISTIC 	pbarbara 	Microsoft Windows 10 Pro 	Windows Defender 	45.178.195.117
+16	07/10/2024 12:58:55 	AR 	DESKTOP-ETF5AO2 	Usuario 	Microsoft Windows 10 Pro 	Windows Defender AVG Antivirus 	186.121.169.99
+17	07/10/2024 13:26:51 	CL 	DESKTOP-6QC843F 	b3 	Microsoft Windows 10 Home 	Windows Defender 	64.176.6.185
+18	07/10/2024 13:03:31 	AR 	JUAN-PC 	juan 	Microsoft Windows 7 Home Basic 	No antivirus detected. 	45.161.180.246
+19	07/10/2024 13:33:11 	AR 	DESKTOP-POJ2DV4 	Usuario 	Microsoft Windows 10 Pro 	Panda Dome Windows Defender 	181.177.210.135
+20	07/10/2024 13:33:42 	AR 	CAJA 	PC 	Microsoft Windows 10 Pro 	Windows Defender 	190.30.215.60
+21	07/10/2024 13:33:42 	AR 	CAJA 	PC 	Microsoft Windows 10 Pro 	Windows Defender 	190.30.215.60
+22	07/10/2024 13:33:42 	AR 	CAJA 	PC 	Microsoft Windows 10 Pro 	Windows Defender 	190.30.215.60
+23	07/10/2024 13:34:03 	AR 	DESKTOP-EFQ73J9 	daniel 	Microsoft Windows 10 Pro 	Windows Defender 	181.117.9.92
+24	07/10/2024 11:35:49 	CO 	DESKTOP-03DU9UV 	Drivers Solutions 1 	Microsoft Windows 10 Pro 	Windows Defender Avast Antivirus 	181.206.20.50
+25	07/10/2024 13:52:44 	AR 	DESKTOP-KJ3BIPV 	MARTIN 	Microsoft Windows 10 Home Single Language 	Windows Defender 	200.117.197.49
+26	07/10/2024 13:57:49 	AR 	DESKTOP-1S0FUUK 	Juan Cruz 	Microsoft Windows 10 Home Single Language 	Windows Defender 	201.178.246.31
+27	07/10/2024 13:57:22 	CL 	DESKTOP-6QC843F 	b3 	Microsoft Windows 10 Home 	Windows Defender 	64.176.6.185
+28	07/10/2024 14:00:31 	AR 	USUARIO-PC 	Usuario 	Microsoft Windows 7 Home Basic 	Microsoft Security Essentials 	181.117.92.86
+29	07/10/2024 14:03:16 	AR 	E-00931 	ventas 	Microsoft Windows 10 Enterprise 	Windows Defender 	190.210.65.187
+30	07/10/2024 14:07:58 	AR 	DESKTOP-IJM1CEB 	MIL DISTRIBUCIONES 	Microsoft Windows 10 Home Single Language 	Windows Defender 	98.97.148.81
+31	07/10/2024 14:08:55 	AR 	LAPTOP-D9USILJ0 	yolam 	Microsoft Windows 11 Home Single Language 	Windows Defender VirusScan de McAfee VirusScan de McAfee 	181.97.142.129
+32	07/10/2024 14:35:35 	AR 	DAR-01 	Diego 	Microsoft Windows 10 Pro 	Windows Defender 	200.114.237.67
+33	07/10/2024 14:35:35 	AR 	DAR-01 	Diego 	Microsoft Windows 10 Pro 	Windows Defender 	200.114.237.67
+34	07/10/2024 14:48:28 	AR 	DESKTOP-0SPO486 	gordo 	Microsoft Windows 10 Home Single Language 	Windows Defender 	181.9.198.142
+35	07/10/2024 15:19:53 	AR 	ENTRADAS 	PC8 	Microsoft Windows 7 Professional 	Panda Dome 	186.132.1.137
+36	07/10/2024 15:24:22 	AR 	LUCAS-FERREYRA 	PLUG and PLAY 	Microsoft Windows 10 Home Single Language 	Windows Defender 	138.186.151.135
+37	07/10/2024 15:31:23 	AR 	ELI 	Usuario 	Microsoft Windows 10 Home Single Language 	Reason Cybersecurity Windows Defender 	181.16.126.136
+38	07/10/2024 15:32:04 	AR 	DESKTOP-C6NQ202 	C.R.N.L 	Microsoft Windows 10 Pro 	Windows Defender 	45.180.60.23
+39	07/10/2024 15:34:53 	AR 	DELL-PC 	DELL 	Microsoft Windows 7 Ultimate 	No antivirus detected. 	143.0.247.199
+40	07/10/2024 13:49:09 	MX 	ACERASPIRE-PC 	acer aspire 	Microsoft Windows 7 Starter 	No antivirus detected. 	187.171.206.164
+41	07/10/2024 15:50:45 	AR 	DESKTOP-OANCC85 	usuario 	Microsoft Windows 10 Pro 	Windows Defender 	190.113.178.38
+42	07/10/2024 15:52:47 	AR 	PC-MELINA 	Administracion 3 	Microsoft Windows 10 Pro 	Windows Defender Malwarebytes 	186.18.185.200
+43	07/10/2024 16:16:48 	AR 	CPU-026 	Call Center 11 	Microsoft Windows 10 Pro 	Windows Defender 	181.29.212.16
+44	07/10/2024 16:26:02 	AR 	OFICINA-002 	Pc 	Microsoft Windows 10 Pro 	Windows Defender 	201.176.16.251
+45	07/10/2024 16:41:54 	AR 	DESKTOP-N74461S 	MARTA LANDETE 	Microsoft Windows 10 Home Single Language 	Windows Defender 	186.122.89.142
+46	07/10/2024 14:46:25 	CO 	USER-PC 	User 	Microsoft Windows 7 Ultimate 	No antivirus detected. 	186.170.120.153
+47	07/10/2024 16:48:12 	AR 	PCIGNACIA 	ignacia1 	Microsoft Windows 10 Pro 	Windows Defender 	179.0.181.211
+48	07/10/2024 14:51:30 	PE 	DESKTOP-DVOHQCL 	Pedro 	Microsoft Windows 10 Home Single Language 	Norton Security Windows Defender Norton Security Norton Security 360 Total Security 	179.6.171.151
+49	07/10/2024 16:52:56 	AR 	DESKTOP-OH72OD6 	Florencia 	Microsoft Windows 10 Pro 	Windows Defender 	190.225.157.212
+50	07/10/2024 16:53:29 	AR 	HERNAN-PC 	HERNAN 	Microsoft Windows 7 Professional 	No antivirus detected. 	181.88.252.91
+51	07/10/2024 16:53:53 	AR 	DESKTOP-6BE91GM 	w11 	Microsoft Windows 11 Pro 	Windows Defender 	186.122.89.193
+52	07/10/2024 17:16:16 	AR 	LOSPOLACOS 	natal 	Microsoft Windows 11 Home 	Windows Defender 	138.186.161.167
+53	07/10/2024 14:18:47 	MX 	DESKTOP-TUONGH2 	Usuario 	Microsoft Windows 11 Home Single Language 	ESET Security Windows Defender 	45.174.173.0
+54	07/10/2024 17:23:16 	AR 	DESKTOP-PSI8MRO 	AMBAR 	Microsoft Windows 10 Home Single Language 	Windows Defender 	181.117.182.50
+55	07/10/2024 17:24:03 	AR 	DESKTOP-Q6KVVKK 	PC 	Microsoft Windows 10 Pro 	Windows Defender 	190.137.67.96
+56	07/10/2024 17:37:49 	AR 	DESKTOP-88JFMKC 	DELL 	Microsoft Windows 10 Pro 	Windows Defender 	181.166.100.188
+57	07/10/2024 17:38:14 	AR 	DESKTOP-IGOJGUB 	Usuario 	Microsoft Windows 10 Pro 	Windows Defender 	45.70.8.89
+58	07/10/2024 17:41:20 	AR 	PC12-PC 	PC13 	Microsoft Windows 7 Ultimate 	No antivirus detected. 	191.82.40.113
+59	07/10/2024 18:00:48 	AR 	EQUIPO 	usuario 	Microsoft Windows 10 Home Single Language 	Windows Defender 	190.48.87.201
+60	07/10/2024 18:02:06 	AR 	EDGARDO 	Monti & Cia 	Microsoft Windows 10 Pro 	Panda Dome Windows Defender 	201.159.60.2
+61	07/10/2024 18:04:06 	AR 	ECT-PA01 	Daniel 	Microsoft Windows 7 Professional 	No antivirus detected. 	181.168.107.115
+62	07/10/2024 18:07:39 	AR 	JORGE 	Jorge 	Microsoft Windows 7 Professional 	No antivirus detected. 	181.46.55.51
+63	07/10/2024 18:24:43 	AR 	LAPTOP-6TQM3IRD 	Gabriela 	Microsoft Windows 10 Home Single Language 	Windows Defender 	191.81.172.37
+64	07/10/2024 15:27:12 	MX 	COBRANZA-PC 	cobranza 	Microsoft Windows 10 Pro 	Windows Defender 	189.203.131.62
+65	07/10/2024 18:31:06 	AR 	WIN8 	Digiacomo 	Microsoft Windows 8.1 Pro 	Windows Defender 	190.195.9.168
+66	07/10/2024 18:32:50 	AR 	MSI 	Diego 	Microsoft Windows 10 Home 	Windows Defender Norton Security 	45.70.89.104
+67	07/10/2024 15:34:31 	MX 	DESKTOP-I4A8BPA 	DELL 	Microsoft Windows 10 Pro 	Windows Defender 	187.156.4.237
+68	07/10/2024 18:36:12 	AR 	DESKTOP-NCJ9M2T 	usuario 	Microsoft Windows 10 Pro for Workstations 	Windows Defender 	190.2.98.209
+69	07/10/2024 18:40:14 	AR 	ANA-PC 	Ana 	Microsoft Windows 7 Ultimate 	No antivirus detected. 	181.224.112.136
+70	07/10/2024 18:50:02 	AR 	DESKTOP-BUEF1M0 	Consultorio 	Microsoft Windows 10 Pro 	Windows Defender 	186.134.180.207
+71	07/10/2024 18:53:57 	AR 	DESKTOP-VIU9LAU 	Mi PC 	Microsoft Windows 10 Pro 	Windows Defender 	181.90.190.14
+72	07/10/2024 19:21:09 	PY 	DESKTOP-F5GVOIG 	martin 	Microsoft Windows 10 Pro 	Windows Defender 	177.251.32.225
+73	07/10/2024 19:35:46 	AR 	DESKTOP-9K8TRG8 	Usuario 	Microsoft Windows 10 Pro 	Windows Defender 	45.191.80.113
+74	07/10/2024 19:37:53 	AR 	DESKTOP-AHTAGRO 	lucas 	Microsoft Windows 10 Home Single Language 	Windows Defender 	181.46.9.90
+75	07/10/2024 19:49:46 	AR 	DESKTOP-CFNFC8E 	Familiar 	Microsoft Windows 10 Pro 	Windows Defender 	181.209.89.60
+76	07/10/2024 19:55:58 	AR 	DESKTOP-8TDQNH4 	Usuario 	Microsoft Windows 10 Enterprise Evaluation 	Windows Defender 	190.104.69.46
+77	07/10/2024 20:20:58 	AR 	DESKTOP-1KOFLRQ 	USUARIO 	Microsoft Windows 10 Pro 	No antivirus detected. 	190.185.155.245
+78	07/10/2024 20:23:20 	AR 	DELL 	Admin 	Microsoft Windows 8.1 with Bing 	McAfee Anti-Virus and Anti-Spyware Windows Defender 	191.52.208.14
+79	07/10/2024 18:26:33 	CO 	DESKTOP-A6PQ4CB 	HP 	Microsoft Windows 10 Pro 	Windows Defender 	191.91.170.182
+80	07/10/2024 20:27:47 	AR 	ADRIAN 	adriant 	Microsoft Windows 7 Enterprise 	No antivirus detected. 	181.164.228.78
+81	07/10/2024 20:33:54 	AR 	DESKTOP-IM1LGAM 	CRUZ 	Microsoft Windows 10 Enterprise LTSC 	No antivirus detected. 	186.182.89.199
+82	07/10/2024 21:07:40 	AR 	DESKTOP-DBELIJH 	User 	Microsoft Windows 10 Pro 	Windows Defender 	186.183.101.248
+83	07/10/2024 18:21:19 	MX 	CLAUDIA 	RADAS_00 	Microsoft Windows 7 Enterprise 	No antivirus detected. 	189.234.66.45
+84	07/10/2024 21:22:29 	AR 	TERE-PC 	Tere 	Microsoft Windows 7 Ultimate 	No antivirus detected. 	186.19.18.254
+85	07/10/2024 22:05:34 	AR 	DESKTOP-IOUPRRL 	Diego 	Microsoft Windows 10 Pro 	Windows Defender 	181.45.228.191
+86	08/10/2024 04:23:18 	ES 	PC-EXPEDICION 	Guardia 	Microsoft Windows 10 Pro 	Panda Dome 	185.104.239.45 
