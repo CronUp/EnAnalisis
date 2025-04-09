@@ -17,7 +17,6 @@ FR,iPika,100 Servers,4 vCenter/ 11 ESXi,114.2M,21.23.25DNS,$$,Restauration colle
 DIMARTINO,iPika,17 SERVERS,Hyper-V,M?,cob31-35-dns8,FF,Italy,dimartinonline.it,Def+Panda,DW,,BASTA 3.0,DATE LOCK,Food & Beverage?
 CIF,iPika,6 SERVERS,Hyper-V,6M,cob36-37-dns10,FF,FL- USA,cifglobal.com,Webroot,DW:30gb,,BASTA 3.0,DATE LOCK,Freight Forwarding Services
 CORPO,NIK LDR,25 SERVERS,Xen,53M,cob21,JJ- VV,Centrifugados Mexicanos- Mexico,www.cenmex.com,ESET- MS Defender,DW,,NAME LOCKER,DATE LOCK,Architecture- Engineering & Design
-PECO,,140 Servers,21VC/28Esxi,140M,,,Agriculture · Alabama- United States,www.pecofoods.com,Defender,DW:456gb->ftp6/3(backup),,BASTA 3.0,06.12.2023,Agriculture
 LECLAIR,TARGET GROUP,298 SERVERS,Hyper-V,42.1M,cob24- cob8dns,JJ,LeClair Group- United States,www.leclairgroup.com,MS Defender,DW: 1.4TB > ftp7 DONE,[REDACTED],,12.12.23,Insurance
 AGCNA,,6975 Servers,VMWare,$14.1B,,,Glass & Clay · Japan,www.agc.com,FireEye/Faclon/ESET/Defender,DW:1.3tb->ftp6/2(backup),[REDACTED],BASTA 3.0,17.12.2023,
 UltraFab,Brute,37 SRV,Hyper-V,$38M,,,Manufacturing · New York- United States,www.ultrafab.com,Symantec/CyberReason/Defender,,,,,Manufacturing
