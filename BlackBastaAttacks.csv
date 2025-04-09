@@ -8,20 +8,19 @@ competec.ch,iPika,240 SERVERS,ESXI,67M,cob19- 3dns,FF,The Competec Group- Switze
 PCCARX,BB14,153 SERVERS,vCenter(1)/ESXi(10),80M,18.5.o1DNS.13.18,w23,9901 S Wilcrest Dr- Houston- Texas- USA,www.pccarx.com,Symantec\Defender,DW:960gb -> ftp5(backup),[REDACTED],BASTA 2.0,08.02.2023,Drug Stores & Pharmacies Retail
 GLUEK,CITRIX,142 SERVERS,2 vCenter \ 5 ESXi,58 + 152 M,cob21-5dns,VV- JJ- HH- FF,Third Street Brewhouse + Carolina Beverage Group- USA,www.thirdstreetbrewhouse.com,Cylance- BitDefender,DW: 316 GB,[REDACTED],,29.11.23,Food & Beverage
 NY pharma,group targets,54 SERVERS,Hyper-V,30 - 50 M,,,Pharma- US,6 URLs,Defender,DW,[REDACTED],BASTA 3.0,05.12.23,Pharma
-PECO,group targets,140 Servers,21VC/28Esxi,$3.5B(140M),,,Agriculture · Alabama- United States,www.pecofoods.com,Defender,DW:456gb->ftp6/3(backup),[REDACTED],BASTA 3.0,06.12.2023,Agriculture
+PECO,group targets,140 Servers,21VC/28Esxi,$3.5B(140M),,,Agriculture Â· Alabama- United States,www.pecofoods.com,Defender,DW:456gb->ftp6/3(backup),[REDACTED],BASTA 3.0,06.12.2023,Agriculture
 PELES,group targets,9 SERVERS,VMware ESXi/vCenter,6.9M,cob25- cob6dns,JJ,Navitas Petroleum- United States,www.navitaspet.com,MS Defender,DW,[REDACTED],,05.12.23,Energy- Utilities & Waste
 GCARCH,cameron777,8 SERVERS,VMware ESXi/vCenter,6-10M,cob24- cob6dns,JJ,StudioGC Architecture- United States,www.studiogc.com,Malwarebytes- MS Defender,DW,,NAME LOCKER,DATE LOCK,Architecture- Engineering & Design
 HOTELPLAN,target,180 SERVERS,1 vCenter \ 11 ESXi,210 M,cob26-27-8dns-9dns,VV,Hotelplan UK Group + Explore Worldwide Ltd,www.hotelplan.co.uk,Falcon- Cylance- Sophos,DW,,BASTA 3.0,DATE LOCK,Tourism
-KHCRX,target,29 Servers,Vmware,17.9M,24.26.DNS.33.Port,$$,Drug Stores & Pharmacies · Arizona- United States,www.kormanhealthcare.com,Sophos/WebRoot/Defender,DW,,NAME LOCKER,DATE LOCK,
+KHCRX,target,29 Servers,Vmware,17.9M,24.26.DNS.33.Port,$$,Drug Stores & Pharmacies Â· Arizona- United States,www.kormanhealthcare.com,Sophos/WebRoot/Defender,DW,,NAME LOCKER,DATE LOCK,
 FR,iPika,100 Servers,4 vCenter/ 11 ESXi,114.2M,21.23.25DNS,$$,Restauration collective- cuisine collective France,www.dupont-restauration.fr,McAfee/Defender,DW,,NAME LOCKER,DATE LOCK,
 DIMARTINO,iPika,17 SERVERS,Hyper-V,M?,cob31-35-dns8,FF,Italy,dimartinonline.it,Def+Panda,DW,,BASTA 3.0,DATE LOCK,Food & Beverage?
 CIF,iPika,6 SERVERS,Hyper-V,6M,cob36-37-dns10,FF,FL- USA,cifglobal.com,Webroot,DW:30gb,,BASTA 3.0,DATE LOCK,Freight Forwarding Services
 CORPO,NIK LDR,25 SERVERS,Xen,53M,cob21,JJ- VV,Centrifugados Mexicanos- Mexico,www.cenmex.com,ESET- MS Defender,DW,,NAME LOCKER,DATE LOCK,Architecture- Engineering & Design
-AGCNA,,6975 Servers,VMWare,$14.1B,,,Glass & Clay · Japan,www.agc.com,FireEye/Faclon/ESET/Defender,DW:1.3tb->ftp6/2(backup),,BASTA 3.0,17.12.2023,
-PECO,,140 Servers,21VC/28Esxi,140M,,,Agriculture · Alabama- United States,www.pecofoods.com,Defender,DW:456gb->ftp6/3(backup),,BASTA 3.0,06.12.2023,Agriculture
+PECO,,140 Servers,21VC/28Esxi,140M,,,Agriculture Â· Alabama- United States,www.pecofoods.com,Defender,DW:456gb->ftp6/3(backup),,BASTA 3.0,06.12.2023,Agriculture
 LECLAIR,TARGET GROUP,298 SERVERS,Hyper-V,42.1M,cob24- cob8dns,JJ,LeClair Group- United States,www.leclairgroup.com,MS Defender,DW: 1.4TB > ftp7 DONE,[REDACTED],,12.12.23,Insurance
-AGCNA,,6975 Servers,VMWare,$14.1B,,,Glass & Clay · Japan,www.agc.com,FireEye/Faclon/ESET/Defender,DW:1.3tb->ftp6/2(backup),[REDACTED],BASTA 3.0,17.12.2023,
-UltraFab,Brute,37 SRV,Hyper-V,$38M,,,Manufacturing · New York- United States,www.ultrafab.com,Symantec/CyberReason/Defender,,,,,Manufacturing
-WILSONCO (30.05.2024),Call,251 SRV,Hyper-V,$71M,,,Architecture- Engineering · New Mexico- United States,www.wilsonco.com,Defender,DW:371gb->ftp8,,BASTA 4.0,16.04.2024,Architecture- Engineering
-INNOPHOS,,119 SRV,vCenter(3)/ESXi(16),$853.5M,28.29DNS.41,,Chemicals & Related Products · United States,www.innophos.com,Sentinel/DattoRMM,DW,,NAME LOCKER,DATE LOCK,Chemicals & Related Products
+AGCNA,,6975 Servers,VMWare,$14.1B,,,Glass & Clay Â· Japan,www.agc.com,FireEye/Faclon/ESET/Defender,DW:1.3tb->ftp6/2(backup),[REDACTED],BASTA 3.0,17.12.2023,
+UltraFab,Brute,37 SRV,Hyper-V,$38M,,,Manufacturing Â· New York- United States,www.ultrafab.com,Symantec/CyberReason/Defender,,,,,Manufacturing
+WILSONCO (30.05.2024),Call,251 SRV,Hyper-V,$71M,,,Architecture- Engineering Â· New Mexico- United States,www.wilsonco.com,Defender,DW:371gb->ftp8,,BASTA 4.0,16.04.2024,Architecture- Engineering
+INNOPHOS,,119 SRV,vCenter(3)/ESXi(16),$853.5M,28.29DNS.41,,Chemicals & Related Products Â· United States,www.innophos.com,Sentinel/DattoRMM,DW,,NAME LOCKER,DATE LOCK,Chemicals & Related Products
 ALBIR_DS,Target,12024+ Servers,Vcenter(43)/ESXi(307)/Hyper-V,$29?,,,Hospitals & Physicians Clinics United States,healthcare.ascension.org,Cylance\Tanium\McAfee,DW: 1.4tb->ftp8,,BASTA 4.0,08.05.2024,
