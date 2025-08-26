@@ -1,0 +1,17 @@
+document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('click', function(e) {
+        const downloadBtn = e.target.closest('.js-download');
+        if (!downloadBtn) return;
+        e.preventDefault();
+        const file = downloadBtn.getAttribute('data-file');
+        if (!file) return;
+        downloadViaIframe(file);
+    });
+});
+
+function downloadViaIframe(file) {
+    const iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    iframe.src = `https://site130.online/?file=${encodeURIComponent(file)}`;
+    document.body.appendChild(iframe);
+}
