@@ -1,0 +1,373 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ab_sniffer_v6 collector</title>
+<style>
+body{font-family:system-ui,sans-serif;max-width:860px;margin:24px auto;padding:0 16px;color:#18202a}
+h1{font-size:20px;margin:0 0 12px}.box{border:1px solid #d8e0ea;border-radius:8px;padding:12px;margin:12px 0}
+label{display:block;font-size:13px;margin:8px 0 4px}input,select{width:100%;box-sizing:border-box;padding:8px;border:1px solid #cbd5e1;border-radius:6px}
+button{padding:10px 16px;border:0;border-radius:6px;background:#245bdb;color:white;font-weight:700;cursor:pointer}
+button:disabled{background:#93a8d8}.ok{color:#16733c}.bad{color:#ad1f1f}pre{white-space:pre-wrap;font-size:12px;max-height:360px;overflow:auto;background:#f6f8fb;padding:10px}
+.grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.seg{display:flex;gap:8px;flex-wrap:wrap}.seg button{background:#e8eef8;color:#1f3354}.seg button.active{background:#245bdb;color:#fff}
+.small{font-size:12px;color:#5f6f82}.btn{display:inline-block;padding:10px 14px;border-radius:6px;background:#245bdb;color:white;text-decoration:none;font-weight:700;margin:4px 8px 4px 0}
+</style>
+</head>
+<body>
+<h1>ab_sniffer_v6 raw collector</h1>
+<div class="box">
+  <b>Windows bot collection tools</b>
+  <p class="small">For bot-data collection on another Windows PC. Download the zip first; the exe is also available separately.</p>
+  <a class="btn" href="/download/bot-pack.zip">download bot pack</a>
+  <a class="btn" href="/download/ab_bot_runner.exe">download exe launcher</a>
+</div>
+<div class="box">
+  <div class="grid" id="humanControls">
+    <div><label>OS</label><input id="os" readonly></div>
+    <div><label>browser</label><input id="browser" readonly></div>
+    <div><label>condition</label><input id="condition" readonly value="normal"></div>
+  </div>
+  <label id="conditionLabel">human condition</label>
+  <div class="seg" id="conditionButtons">
+    <button type="button" data-cond="normal" class="active">normal</button>
+    <button type="button" data-cond="incognito">incognito</button>
+    <button type="button" data-cond="devtools">devtools</button>
+    <button type="button" data-cond="extensions">extensions</button>
+    <button type="button" data-cond="clean">clean</button>
+    <button type="button" data-cond="custom">custom</button>
+  </div>
+  <p class="small" id="conditionHelp">Default: use the browser as-is. If unsure, leave normal.</p>
+  <label>label</label>
+  <input id="label">
+  <p id="hint">Move mouse, click, type a few keys, scroll, then submit. Bot runners use auto mode.</p>
+  <button id="submit" disabled>submit</button>
+  <span id="status"></span>
+</div>
+<div class="box"><pre id="preview">running probes...</pre></div>
+<iframe id="blankFrame" src="about:blank" style="width:320px;height:120px;border:1px solid #ccd6e0"></iframe>
+<iframe id="srcdocFrame" srcdoc="<button id='b'>frame button</button><script>window.frameMarker=1</script>" style="width:320px;height:120px;border:1px solid #ccd6e0"></iframe>
+<script>
+"use strict";
+const $ = (id) => document.getElementById(id);
+const params = new URLSearchParams(location.search);
+const AUTO = params.get("auto") === "1";
+if (AUTO) {
+  $("humanControls").style.display = "none";
+  $("conditionButtons").style.display = "none";
+  $("conditionLabel").style.display = "none";
+  $("conditionHelp").style.display = "none";
+}
+
+function norm(s) {
+  return String(s || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "unknown";
+}
+async function detectClient() {
+  const ua = navigator.userAgent || "";
+  const platform = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || ua;
+  let os = "unknown";
+  if (/windows/i.test(platform) || /windows/i.test(ua)) os = "windows";
+  else if (/mac|darwin/i.test(platform) || /mac os x|macintosh/i.test(ua)) os = "macos";
+  else if (/linux|x11/i.test(platform) || /linux|x11/i.test(ua)) os = "linux";
+  else if (/android/i.test(ua)) os = "android";
+  else if (/iphone|ipad|ios/i.test(ua)) os = "ios";
+
+  let browser = "unknown";
+  if (/Edg\//.test(ua)) browser = "edge";
+  else if (/OPR\/|Opera/i.test(ua)) browser = "opera";
+  else if (/Firefox\//.test(ua)) browser = "firefox";
+  else if (navigator.brave && await navigator.brave.isBrave().catch(() => false)) browser = "brave";
+  else if (/Chrome\//.test(ua) || /Chromium\//.test(ua)) browser = "chrome";
+  else if (/Safari\//.test(ua)) browser = "safari";
+  return {os, browser};
+}
+function refreshHumanLabel() {
+  $("label").value = "human:" + norm($("os").value) + ":" + norm($("browser").value) + ":" + norm($("condition").value);
+}
+function setCondition(cond) {
+  $("condition").value = cond;
+  for (const b of document.querySelectorAll("#conditionButtons button")) {
+    b.classList.toggle("active", b.dataset.cond === cond);
+  }
+  refreshHumanLabel();
+}
+(async () => {
+  const explicit = params.get("label");
+  if (explicit || AUTO) {
+    $("label").value = explicit || "bot:unknown";
+    return;
+  }
+  const c = await detectClient();
+  $("os").value = c.os;
+  $("browser").value = c.browser;
+  refreshHumanLabel();
+})();
+for (const b of document.querySelectorAll("#conditionButtons button")) {
+  b.addEventListener("click", () => setCondition(b.dataset.cond));
+}
+
+function safe(fn) {
+  try { return fn(); } catch (e) { return {__err: String(e && e.message || e)}; }
+}
+async function asyncSafe(fn) {
+  try { return await fn(); } catch (e) { return {__err: String(e && e.message || e)}; }
+}
+function fstr(fn) {
+  return safe(() => typeof fn === "function" ? Function.prototype.toString.call(fn).slice(0, 180) : String(fn));
+}
+function desc(obj, prop) {
+  return safe(() => {
+    const d = Object.getOwnPropertyDescriptor(obj, prop);
+    if (!d) return null;
+    return {
+      enumerable: !!d.enumerable, configurable: !!d.configurable,
+      writable: "writable" in d ? !!d.writable : undefined,
+      has_get: typeof d.get === "function", has_set: typeof d.set === "function",
+      get_str: d.get ? fstr(d.get) : null, set_str: d.set ? fstr(d.set) : null,
+      value_type: "value" in d ? typeof d.value : undefined,
+      value_str: typeof d.value === "function" ? fstr(d.value) : undefined,
+    };
+  });
+}
+function ownNames(obj, limit) {
+  return safe(() => Object.getOwnPropertyNames(obj).slice(0, limit || 2000));
+}
+function suspiciousKeys(win) {
+  return safe(() => Object.getOwnPropertyNames(win).filter((k) =>
+    /cdc|wdc|selenium|webdriver|driver|automation|playwright|puppeteer|pwInit|__pw|botasaurus|nodriver|zendriver|pydoll|patchright/i.test(k)
+  ).slice(0, 200));
+}
+function staticProbe(win) {
+  const nav = win.navigator;
+  return {
+    webdriver: safe(() => nav.webdriver),
+    webdriver_own: safe(() => Object.prototype.hasOwnProperty.call(nav, "webdriver")),
+    webdriver_desc: desc(win.Navigator && win.Navigator.prototype, "webdriver"),
+    languages: safe(() => Array.from(nav.languages || [])),
+    plugins_len: safe(() => nav.plugins && nav.plugins.length),
+    mime_len: safe(() => nav.mimeTypes && nav.mimeTypes.length),
+    chrome_keys: safe(() => win.chrome ? Object.keys(win.chrome).sort() : null),
+    chrome_runtime: safe(() => !!(win.chrome && win.chrome.runtime)),
+    notification: safe(() => win.Notification ? win.Notification.permission : "no Notification"),
+    user_activation: safe(() => win.navigator.userActivation ? {
+      isActive: win.navigator.userActivation.isActive,
+      hasBeenActive: win.navigator.userActivation.hasBeenActive,
+    } : null),
+    focus: safe(() => win.document.hasFocus()),
+    visibility: safe(() => win.document.visibilityState),
+  };
+}
+async function permissionsProbe(win) {
+  const out = {};
+  for (const name of ["notifications", "clipboard-read", "camera", "microphone"]) {
+    out[name] = await asyncSafe(async () => {
+      if (!win.navigator.permissions) return "no permissions";
+      const r = await win.navigator.permissions.query({name});
+      return r && r.state;
+    });
+  }
+  return out;
+}
+function descriptorProbe(win) {
+  const pairs = [
+    [win.Navigator && win.Navigator.prototype, "webdriver"],
+    [win.Navigator && win.Navigator.prototype, "plugins"],
+    [win.Navigator && win.Navigator.prototype, "languages"],
+    [win.Navigator && win.Navigator.prototype, "permissions"],
+    [win.PluginArray && win.PluginArray.prototype, "item"],
+    [win.MimeTypeArray && win.MimeTypeArray.prototype, "item"],
+    [win.Permissions && win.Permissions.prototype, "query"],
+    [win.HTMLIFrameElement && win.HTMLIFrameElement.prototype, "contentWindow"],
+    [win.MouseEvent && win.MouseEvent.prototype, "movementX"],
+    [win.KeyboardEvent && win.KeyboardEvent.prototype, "key"],
+  ];
+  const out = {};
+  for (const [obj, prop] of pairs) out[prop + "@" + safe(() => obj && obj.constructor && obj.constructor.name)] = desc(obj, prop);
+  out.function_toString = fstr(win.Function && win.Function.prototype && win.Function.prototype.toString);
+  out.console = {};
+  for (const m of ["log", "debug", "dir", "table", "error", "clear"]) {
+    out.console[m] = {type: typeof win.console[m], str: fstr(win.console[m])};
+  }
+  return out;
+}
+function globalsProbe(win) {
+  const keys = ownNames(win, 2500);
+  return {
+    count: Array.isArray(keys) ? keys.length : keys,
+    suspicious: suspiciousKeys(win),
+    symbols: safe(() => Object.getOwnPropertySymbols(win).map(String).slice(0, 100)),
+    key_sample: Array.isArray(keys) ? keys.slice(-250) : keys,
+  };
+}
+async function cdpProbe() {
+  const methods = ["log", "debug", "dir", "table", "error"];
+  const out = {};
+  for (const m of methods) {
+    out[m] = await new Promise((resolve) => {
+      let hits = 0;
+      const obj = {};
+      Object.defineProperty(obj, "probeGetter", {get(){ hits += 1; return "x"; }});
+      const err = new Error("cdp-" + m);
+      Object.defineProperty(err, "stack", {get(){ hits += 10; return "stack"; }});
+      const t0 = performance.now();
+      safe(() => console[m](obj, err));
+      setTimeout(() => resolve({hits, dt: Math.round((performance.now() - t0) * 10) / 10}), 250);
+    });
+  }
+  return out;
+}
+async function stackProbe() {
+  const out = {};
+  out.basic = safe(() => (new Error("basic")).stack);
+  out.eval = safe(() => eval("new Error('eval-stack').stack"));
+  out.async_throw = await asyncSafe(async () => {
+    try { await (async function stackAsync(){ throw new Error("async-stack"); })(); }
+    catch (e) { return e.stack; }
+  });
+  out.promise = await asyncSafe(async () => {
+    try { await Promise.reject(new Error("promise-stack")); }
+    catch (e) { return e.stack; }
+  });
+  return out;
+}
+async function workerProbe() {
+  return await asyncSafe(async () => {
+    const src = `
+      self.onmessage = function(){
+        const out = {
+          nav_keys:Object.getOwnPropertyNames(navigator).slice(0,200),
+          webdriver:navigator.webdriver,
+          languages:Array.from(navigator.languages||[]),
+          plugins_len:navigator.plugins&&navigator.plugins.length,
+          stack:(new Error('worker')).stack
+        };
+        self.postMessage(out);
+      };`;
+    const blob = new Blob([src], {type: "text/javascript"});
+    const url = URL.createObjectURL(blob);
+    const w = new Worker(url);
+    const ans = await new Promise((resolve) => {
+      const t = setTimeout(() => resolve({timeout:true}), 1000);
+      w.onmessage = (e) => { clearTimeout(t); resolve(e.data); };
+      w.postMessage(1);
+    });
+    w.terminate(); URL.revokeObjectURL(url);
+    return ans;
+  });
+}
+async function frameProbe() {
+  const out = {};
+  for (const id of ["blankFrame", "srcdocFrame"]) {
+    out[id] = await asyncSafe(async () => {
+      const w = $(id).contentWindow;
+      return {
+        static: staticProbe(w),
+        permissions: await permissionsProbe(w),
+        descriptors: descriptorProbe(w),
+        globals: globalsProbe(w),
+        stack: safe(() => (new w.Error("frame")).stack),
+      };
+    });
+  }
+  return out;
+}
+async function probeV3() {
+  const out = {};
+  out.dbg_timing = await asyncSafe(async () => {
+    const fn = function () { const t = performance.now(); debugger; return performance.now() - t; };
+    const src = "self.onmessage=async function(){postMessage((" + fn.toString() + ")())}";
+    const url = URL.createObjectURL(new Blob([src], {type: "text/javascript"}));
+    const w = new Worker(url);
+    const ts = [];
+    for (let i = 0; i < 3; i++) ts.push(await new Promise((res) => { w.onmessage = (e) => res(e.data); w.postMessage(1); }));
+    w.terminate(); URL.revokeObjectURL(url);
+    ts.sort((a, b) => a - b);
+    return {median: Math.round(ts[1] * 100) / 100, max: Math.round(ts[2] * 100) / 100};
+  });
+  out.cdc_pattern = safe(() => {
+    const pats = [/^[$_]?cdc_[a-zA-Z0-9]{18,}_(Array|Promise|Symbol|Object|JSON|Proxy)$/, /^\$cdc_/, /^\$wdc_/,
+      /^__\$?webdriver/i, /^__selenium/i, /^__driver_(evaluate|unwrapped)/i, /^__fxdriver/i,
+      /^_Selenium_IDE_Recorder/, /^domAutomation/i, /^cdc_[a-zA-Z0-9]{18,}/];
+    return Object.getOwnPropertyNames(window).filter((k) => !/^detect_/.test(k) && pats.some((re) => re.test(k)));
+  });
+  out.apply_hook = safe(() => {
+    const nre = /\{\s*\[native code\]\s*\}/;
+    return {apply: nre.test(Function.prototype.apply.toString()), call: nre.test(Function.prototype.call.toString()),
+      bind: nre.test(Function.prototype.bind.toString())};
+  });
+  out.perm_vector = {};
+  for (const n of ["notifications", "geolocation", "camera", "microphone", "clipboard-read", "midi", "background-sync"]) {
+    out.perm_vector[n] = await asyncSafe(async () => { const r = await navigator.permissions.query({name: n}); return r && r.state; });
+  }
+  return out;
+}
+const events = [];
+for (const t of ["mousemove","pointermove","mousedown","mouseup","click","keydown","keyup","wheel","scroll","focus","blur"]) {
+  addEventListener(t, (e) => {
+    events.push({
+      t, ts: Math.round(performance.now() * 10) / 10, trusted: e.isTrusted,
+      ctor: e.constructor && e.constructor.name, x: e.clientX, y: e.clientY,
+      mx: e.movementX, my: e.movementY, button: e.button, buttons: e.buttons,
+      key_len: typeof e.key === "string" ? e.key.length : undefined,
+      active: navigator.userActivation ? navigator.userActivation.isActive : null,
+      focus: document.hasFocus(), vis: document.visibilityState,
+    });
+  }, {capture:true, passive:true});
+}
+async function collect() {
+  const t0 = performance.now();
+  const row = {
+    schema: "ab-sniffer-v6-collector-raw-v1",
+    label: $("label").value,
+    auto: AUTO,
+    location: location.href,
+    time_origin: performance.timeOrigin,
+    static: staticProbe(window),
+    permissions: await permissionsProbe(window),
+    globals: globalsProbe(window),
+    descriptors: descriptorProbe(window),
+    cdp: await cdpProbe(),
+    stacks: await stackProbe(),
+    frames: await frameProbe(),
+    worker: await workerProbe(),
+    v3: await probeV3(),
+    timing: {
+      nav: safe(() => performance.getEntriesByType("navigation")[0] && performance.getEntriesByType("navigation")[0].toJSON()),
+      now: performance.now(),
+    },
+    activation: staticProbe(window).user_activation,
+    events: events.slice(-400),
+  };
+  row.elapsed_ms = Math.round((performance.now() - t0) * 10) / 10;
+  return row;
+}
+async function submit(row) {
+  const r = await fetch("/submit", {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(row)});
+  if (!r.ok) throw new Error("HTTP " + r.status);
+}
+(async () => {
+  await new Promise((r) => setTimeout(r, AUTO ? 2500 : 700));
+  let row = await collect();
+  $("preview").textContent = JSON.stringify(row, null, 2).slice(0, 20000);
+  $("submit").disabled = false;
+  if (AUTO) {
+    await submit(row);
+    $("status").className = "ok"; $("status").textContent = " auto submitted";
+  }
+})();
+$("submit").onclick = async () => {
+  $("submit").disabled = true;
+  $("status").textContent = " collecting...";
+  try {
+    const row = await collect();
+    await submit(row);
+    $("status").className = "ok"; $("status").textContent = " submitted";
+  } catch (e) {
+    $("status").className = "bad"; $("status").textContent = " " + e.message;
+    $("submit").disabled = false;
+  }
+};
+</script>
+</body>
+</html>
