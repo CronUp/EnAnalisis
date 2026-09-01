@@ -1,0 +1,233 @@
+(function() {
+    var API = '/api';
+    var TOKEN_KEY = '_tk';
+    var USER_KEY = '_us';
+    var $ = function(id) { return document.getElementById(id); };
+    var $$ = function(sel) { return document.querySelectorAll(sel); };
+    var _token = localStorage.getItem(TOKEN_KEY);
+
+    function authFetch(url, opts) {
+        opts = opts || {};
+        opts.credentials = 'include';
+        if (_token) {
+            opts.headers = opts.headers || {};
+            if (!opts.headers['Authorization']) opts.headers['Authorization'] = 'Bearer ' + _token;
+        }
+        return fetch(url, opts);
+    }
+
+    $$('.auth-tab').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            $$('.auth-tab').forEach(function(b) { b.classList.remove('active'); });
+            btn.classList.add('active');
+            var tab = btn.dataset.tab;
+            $('formLogin').classList.toggle('hidden', tab !== 'login');
+            $('formRegister').classList.toggle('hidden', tab !== 'register');
+            $('authError').textContent = '';
+        });
+    });
+
+    $('formLogin').addEventListener('submit', function(e) {
+        e.preventDefault();
+        $('authError').textContent = '';
+        var fd = new FormData($('formLogin'));
+        var username = fd.get('username').trim();
+        var password = fd.get('password');
+        if (!username || !password) return;
+        authFetch(API + '/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username: username, password: password })
+        }).then(function(res) {
+            return res.json().then(function(data) { return { ok: res.ok, data: data }; });
+        }).then(function(r) {
+            if (r.ok) {
+                onAuthSuccess(r.data);
+            } else if (r.data.requires2fa) {
+                $('formLogin').classList.add('hidden');
+                $('auth2faBlock').classList.remove('hidden');
+                $('authError').textContent = '';
+                $('auth2faBlock').dataset.username = username;
+                $('auth2faBlock').dataset.password = password;
+                var c = $('auth2faCode'); if (c) c.focus();
+            } else {
+                $('authError').textContent = r.data.error || t('auth.loginError');
+            }
+        }).catch(function() { $('authError').textContent = t('auth.noConnection'); });
+    });
+
+    var b2fa = $('btnAuth2faSubmit');
+    if (b2fa) b2fa.addEventListener('click', function() {
+        var code = ($('auth2faCode').value || '').trim();
+        if (!code || code.length !== 6) { $('authError').textContent = t('auth.enterCode6'); return; }
+        var username = $('auth2faBlock').dataset.username;
+        var password = $('auth2faBlock').dataset.password;
+        $('authError').textContent = '';
+        authFetch(API + '/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username: username, password: password, totpCode: code })
+        }).then(function(res) {
+            return res.json().then(function(data) { return { ok: res.ok, data: data }; });
+        }).then(function(r) {
+            if (r.ok) {
+                $('auth2faBlock').classList.add('hidden');
+                $('formLogin').classList.remove('hidden');
+                onAuthSuccess(r.data);
+            } else {
+                $('authError').textContent = r.data.error || t('auth.incorrectCode');
+            }
+        }).catch(function() { $('authError').textContent = t('auth.noConnection'); });
+    });
+
+    var c2fa = $('auth2faCode');
+    if (c2fa) c2fa.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') { e.preventDefault(); var b = $('btnAuth2faSubmit'); if (b) b.click(); }
+    });
+
+    var bBack = $('btnAuth2faBack');
+    if (bBack) bBack.addEventListener('click', function() {
+        $('auth2faBlock').classList.add('hidden');
+        $('formLogin').classList.remove('hidden');
+        $('authError').textContent = '';
+    });
+
+    $('formRegister').addEventListener('submit', function(e) {
+        e.preventDefault();
+        $('authError').textContent = '';
+        var fd = new FormData($('formRegister'));
+        var inviteCode = (fd.get('inviteCode') || '').toString().trim();
+        var username = fd.get('username').trim();
+        var password = fd.get('password');
+        if (!inviteCode) { $('authError').textContent = t('auth.enterInviteCode'); return; }
+        if (!username || !password) return;
+        if (password.length < 4) { $('authError').textContent = t('auth.passwordMinLength'); return; }
+        authFetch(API + '/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username: username, password: password, inviteCode: inviteCode })
+        }).then(function(res) {
+            return res.json().then(function(data) { return { ok: res.ok, data: data }; });
+        }).then(function(r) {
+            if (r.ok) {
+                onAuthSuccess(r.data);
+            } else {
+                $('authError').textContent = r.data.error || t('auth.registerError');
+            }
+        }).catch(function() { $('authError').textContent = t('auth.noConnection'); });
+    });
+
+    function onAuthSuccess(data) {
+        _token = data.token;
+        localStorage.setItem(TOKEN_KEY, data.token);
+        localStorage.setItem(USER_KEY, JSON.stringify({
+            username: data.username, group: data.group, role: data.role || 'user',
+            subscriptionExpires: data.subscriptionExpires || 0,
+            subscriptionActive: data.subscriptionActive || false
+        }));
+        loadProtectedApp(data.role || 'user');
+    }
+
+    var CDN_DEPS = [
+        { type: 'css',  url: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap' },
+        { type: 'css',  url: 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css' },
+        { type: 'js',   url: 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js' },
+        { type: 'js',   url: 'https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js' },
+        { type: 'js',   url: 'https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js' },
+        { type: 'css',  url: 'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/atom-one-dark.min.css' },
+        { type: 'js',   url: 'https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js' }
+    ];
+
+    function loadCdnDeps(cb) {
+        var remaining = CDN_DEPS.length;
+        if (remaining === 0) { cb(); return; }
+        CDN_DEPS.forEach(function(dep) {
+            if (dep.type === 'css') {
+                var link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.href = dep.url;
+                document.head.appendChild(link);
+                if (--remaining === 0) cb();
+            } else {
+                var s = document.createElement('script');
+                s.src = dep.url;
+                s.onload = s.onerror = function() { if (--remaining === 0) cb(); };
+                document.head.appendChild(s);
+            }
+        });
+    }
+
+    function loadProtectedApp(role) {
+        var tk = _token || localStorage.getItem(TOKEN_KEY);
+        if (!tk) return;
+        if (!role) {
+            try { role = JSON.parse(localStorage.getItem(USER_KEY) || '{}').role || 'user'; } catch(e) { role = 'user'; }
+        }
+
+        $('screenAuth').classList.add('hidden');
+        var loader = $('appLoader');
+        if (loader) loader.classList.remove('hidden');
+
+        var ts = Date.now();
+        loadCdnDeps(function() {
+            loadScript('/i18n.js?_v=' + ts, function() {
+                loadHtml('/app-shell.html?_v=' + ts, function(html) {
+                    var root = $('appRoot');
+                    if (root) root.innerHTML = html;
+                    loadScript('/app.js?_v=' + ts, function() {
+                        if (loader) loader.classList.add('hidden');
+                    });
+                });
+            });
+        });
+    }
+
+    function loadScript(url, cb) {
+        var s = document.createElement('script');
+        s.src = url;
+        s.onload = function() { if (cb) cb(); };
+        s.onerror = function() {
+            localStorage.removeItem(TOKEN_KEY);
+            localStorage.removeItem(USER_KEY);
+            location.reload();
+        };
+        document.body.appendChild(s);
+    }
+
+    function loadHtml(url, cb) {
+        var tk = _token || localStorage.getItem(TOKEN_KEY);
+        fetch(url, {
+            headers: tk ? { 'Authorization': 'Bearer ' + tk } : {}
+        }).then(function(r) {
+            if (!r.ok) throw new Error(r.status);
+            return r.text();
+        }).then(function(html) {
+            if (cb) cb(html);
+        }).catch(function() {
+            localStorage.removeItem(TOKEN_KEY);
+            localStorage.removeItem(USER_KEY);
+            location.reload();
+        });
+    }
+
+    if (_token) {
+        authFetch(API + '/me').then(function(r) {
+            if (r.ok) {
+                return r.json().then(function(data) {
+                    var role = (data && data.role) || 'user';
+                    localStorage.setItem(USER_KEY, JSON.stringify({
+                        username: data.username, group: data.group, role: role,
+                        subscriptionExpires: data.subscriptionExpires || 0,
+                        subscriptionActive: data.subscriptionActive || false
+                    }));
+                    loadProtectedApp(role);
+                });
+            }
+            else { $('screenAuth').classList.remove('hidden'); }
+        }).catch(function() { $('screenAuth').classList.remove('hidden'); });
+    } else {
+        $('screenAuth').classList.remove('hidden');
+    }
+
+    applyTranslations();
+})();
